@@ -62,136 +62,33 @@ func slide(delta):
 		sliding = false
 	
 func direction():
-	if dir == 1:
-		$Sprite.flip_h = true
-		if motion.x == 0:
-
-			if falling:
-				# $AnimationPlayer.play("falling")
-				state_machine.travel("falling")
-
-			elif !jumping:
-				# $AnimationPlayer.play("idle")
-				state_machine.travel("idle")
-
-			elif !sliding:
-				# $AnimationPlayer.play("jump")
-				state_machine.travel("jump")
-
-			# elif climbing:
-			# 	$AnimatedSprite.play("slide")
-
-			# else:
-			# 	$AnimatedSprite.play("slide")
-			
-		else:
-			
-			if falling:
-				# $AnimationPlayer.play("falling")
-				state_machine.travel("falling")
-
-			elif !jumping:
-				# $AnimationPlayer.play("run")
-				state_machine.travel("run")
-
-			elif !sliding:
-				# $AnimationPlayer.play("jump")
-				state_machine.travel("jump")
-
-		# elif climbing:
-		# 	$AnimatedSprite.play("slide")
-
-		# else:
-		# 	$AnimatedSprite.play("slide")
-
-
-	if dir == -1:
-		$Sprite.flip_h = false
-		if motion.x == 0:
-		# $RayCast2D.scale.x = 1
+	match dir:
+		1:
+			$Sprite.flip_h = true
+		-1:
+			$Sprite.flip_h = false
 		
-			
-			if falling:
-				# $AnimationPlayer.play("falling")
-				state_machine.travel("falling")
 
-			elif !jumping:
-				# $AnimationPlayer.play("idle")
-				state_machine.travel("idle")
-
-			elif !sliding:
-				# $AnimationPlayer.play("jump")
-				state_machine.travel("jump")
-
-			# elif climbing:
-			# 	$AnimatedSprite.play("slide")
-
-			# else:
-			# 	$AnimatedSprite.play("slide")
-
-		else:
-			
-			if falling:
-				# $AnimationPlayer.play("falling")
-				state_machine.travel("falling")
-
-			elif !jumping:
-				# $AnimationPlayer.play("run")
-				state_machine.travel("run")
-
-			elif !sliding:
-				# $AnimationPlayer.play("jump")
-				state_machine.travel("jump")
-
-			# elif climbing:
-			# 	$AnimatedSprite.play("slide")
-
-			# else:
-			# 	$AnimatedSprite.play("slide")
-
-		
 func movement(friction):
-	if Input.is_action_just_pressed("attack_1"):
-		state_machine.travel("punch1")
-	if is_on_floor():
-		if falling:
-			if motion.y > 2000:
-				$AnimatedSprite.play("landing")
-				print("landed high")
-			falling = false
+	var current = state_machine.get_current_node()
 
-		if jumping:
-			# var new_jump_particle = jump_particle.instance()
-			# get_parent().add_child(new_jump_particle)
-			# new_jump_particle.position = $jump_position.get_global_position()
-			pass
-		jumping = false
-		
-	else:
-		jumping = true
-
-	if motion.y > 100:
-		print(motion.y)
-		falling = true
-
+	if Input.is_action_just_pressed("down"):
+		set_collision_mask_bit(1, false)
+	if Input.is_action_just_released("down"):
+		set_collision_mask_bit(1, true)
+	
 	if Input.is_action_just_released("jump") and motion.y < 0:
 		motion.y = lerp(motion.y, 0, 0.5)	
-	
-	if canmove:
-		### Left and right
-		if Input.is_action_pressed("right"):
-			
-			if not on_ice and motion.x < 0 and is_on_floor():
+
+	if Input.is_action_pressed("right"):
+		if not on_ice and motion.x < 0 and is_on_floor():
 				
-				motion.x = lerp(motion.x, 0, 0.5)
-				
-			motion.x = min(motion.x+ACCELERATION, MAX_SPEED)
+			motion.x = lerp(motion.x, 0, 0.5)
 			
-			dir = -1
-			
+		motion.x = min(motion.x+ACCELERATION, MAX_SPEED)
 		
-		elif Input.is_action_pressed("left"):
-			
+		dir = -1
+	elif Input.is_action_pressed("left"):
 			if not on_ice and motion.x > 0 and is_on_floor():
 				
 				motion.x = lerp(motion.x, 0, 0.5)
@@ -199,51 +96,30 @@ func movement(friction):
 			motion.x = max(motion.x-ACCELERATION, -MAX_SPEED)
 			
 			dir = 1
+	else:
+		friction = true
+	if is_on_floor() and canmove or climbing: 
 
-		else:
-			friction = true
-	
-	#jump
-	if is_on_floor() and canmove or climbing:
-		
-		
 		if Input.is_action_just_pressed("jump"):
-			
-			# GRAVITY = 9.8 * 500
-			# $jump_timer.s tart()
+			state_machine.travel("jump")
 			motion.y += JUMP_HEIGHT
-			# var new_jump_particle = jump_particle.instance()
-			# get_parent().add_child(new_jump_particle)
-			# new_jump_particle.position = $jump_position.get_global_position()
+
 		if friction == true and not on_ice:
 			motion.x = lerp(motion.x, 0, FRICTION)
-	
-	elif on_wall and canmove:
-		
-		# if on_ice:
-		# 	motion.y += (GRAVITY*0.01)
-		if Input.is_action_just_pressed("jump") and not on_ice:
+
+	if motion.y > 100 and not ray_on_floor():
+		state_machine.travel("falling")
+	elif motion.y < 48 and not ray_on_floor():
+		state_machine.travel("jump")
+	elif motion.x != 0:
+		state_machine.travel("run")
+	elif ray_on_floor() and motion.x == 0:
+		state_machine.travel("idle")
 
 
-			# GRAVITY = 9.8 * 500
-			# $jump_timer.start()
-			# $particles/wall_jump.emitting = true
-			var motion_change =  (6 * Vector2(256,-256))#$RayCast2D/Sprite.position)
-			print(dir)
-			motion_change.x *= which_wall
-			# var new_jump_particle = jump_particle.instance()
-			# get_parent().add_child(new_jump_particle)
-			#match which_wall:
-			#	-1:
-			#		new_jump_particle.position = $right_wall_jump_position.get_global_position()
-			#	1:
-			#		new_jump_particle.position = $left_wall_jump_position.get_global_position()
 
-			motion = motion_change
-			print(motion_change)
-			
-	else:
-		pass
+func ray_on_floor():
+	return $down.is_colliding() or $down2.is_colliding()
 
 func die():
 	canmove = false
