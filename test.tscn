@@ -16,3 +16,7 @@ scale = Vector2( 10, 1 )
 [node name="DEFAULT TILE2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 651.015, 417.924 )
 scale = Vector2( 10, 1 )
+
+[node name="DEFAULT TILE3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 943.808, 180.277 )
+scale = Vector2( 1, 7.686 )

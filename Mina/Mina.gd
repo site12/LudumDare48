@@ -25,7 +25,7 @@ var jump_particle = load("res://land.tscn")
 var current_zone = 'village'
 var has_pick = false
 var has_machete = false
-onready var jt = $'jump Timer'
+onready var jt = $'jump_timer'
 onready var camerapos = $camerapos
 onready var camera = $camerapos/Camera2D
 onready var root = get_tree().get_root().get_node('root')
@@ -63,17 +63,17 @@ func slide(delta):
 	
 func direction():
 	if dir == 1:
-		$AnimatedSprite.flip_h = true
+		$Sprite.flip_h = true
 		if motion.x == 0:
 
 			if falling:
-				$AnimatedSprite.play("falling")
+				$AnimationPlayer.play("falling")
 
 			elif !jumping:
-				$AnimatedSprite.play("idle")
+				$AnimationPlayer.play("idle")
 
 			elif !sliding:
-				$AnimatedSprite.play("jump")
+				$AnimationPlayer.play("jump")
 
 			# elif climbing:
 			# 	$AnimatedSprite.play("slide")
@@ -84,13 +84,13 @@ func direction():
 		else:
 			
 			if falling:
-				$AnimatedSprite.play("falling")
+				$AnimationPlayer.play("falling")
 
 			elif !jumping:
-				$AnimatedSprite.play("run")
+				$AnimationPlayer.play("run")
 
 			elif !sliding:
-				$AnimatedSprite.play("jump")
+				$AnimationPlayer.play("jump")
 
 		# elif climbing:
 		# 	$AnimatedSprite.play("slide")
@@ -100,19 +100,19 @@ func direction():
 
 
 	if dir == -1:
-		$AnimatedSprite.flip_h = false
+		$Sprite.flip_h = false
 		if motion.x == 0:
 		# $RayCast2D.scale.x = 1
 		
 			
 			if falling:
-				$AnimatedSprite.play("falling")
+				$AnimationPlayer.play("falling")
 
 			elif !jumping:
-				$AnimatedSprite.play("idle")
+				$AnimationPlayer.play("idle")
 
 			elif !sliding:
-				$AnimatedSprite.play("jump")
+				$AnimationPlayer.play("jump")
 
 			# elif climbing:
 			# 	$AnimatedSprite.play("slide")
@@ -123,13 +123,13 @@ func direction():
 		else:
 			
 			if falling:
-				$AnimatedSprite.play("falling")
+				$AnimationPlayer.play("falling")
 
 			elif !jumping:
-				$AnimatedSprite.play("run")
+				$AnimationPlayer.play("run")
 
 			elif !sliding:
-				$AnimatedSprite.play("jump")
+				$AnimationPlayer.play("jump")
 
 			# elif climbing:
 			# 	$AnimatedSprite.play("slide")
@@ -217,8 +217,8 @@ func movement(friction):
 			var motion_change =  (6 * Vector2(256,-256))#$RayCast2D/Sprite.position)
 			print(dir)
 			motion_change.x *= which_wall
-			var new_jump_particle = jump_particle.instance()
-			get_parent().add_child(new_jump_particle)
+			# var new_jump_particle = jump_particle.instance()
+			# get_parent().add_child(new_jump_particle)
 			#match which_wall:
 			#	-1:
 			#		new_jump_particle.position = $right_wall_jump_position.get_global_position()
