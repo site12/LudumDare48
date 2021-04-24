@@ -3,7 +3,7 @@
 [ext_resource path="res://Tiles/Books.png" type="Texture" id=1]
 [ext_resource path="res://Tiles/Wood.png" type="Texture" id=2]
 [ext_resource path="res://Mina/Mina.tscn" type="PackedScene" id=3]
-[ext_resource path="res://enemies/library/book/book.tscn" type="PackedScene" id=4]
+[ext_resource path="res://enemies/library/ghost/ghost.tscn" type="PackedScene" id=4]
 
 [sub_resource type="ConvexPolygonShape2D" id=14]
 points = PoolVector2Array( 13.9107, 64, 13.5088, 15.1163, 64, 14.6642, 64, 0, 0, 0, 0, 64 )
@@ -821,7 +821,7 @@ format = 1
 [node name="FrontTileMapBook" type="TileMap" parent="tilemaps"]
 tile_set = SubResource( 33 )
 format = 1
-tile_data = PoolIntArray( 262153, 536870927, 0, 262154, 536870926, 0, 262155, 536870926, 0, 262156, 536870925, 0, 327686, 536870921, 0, 393222, 536870922, 0, 393227, 536870934, 0, 458758, 536870923, 0 )
+tile_data = PoolIntArray( 262153, 536870927, 0, 262154, 536870926, 0, 262155, 536870926, 0, 262156, 536870925, 0, 327686, 536870921, 0, 393222, 536870922, 0, 458758, 536870923, 0 )
 
 [node name="Mina" parent="." instance=ExtResource( 3 )]
 position = Vector2( 184, 72 )
@@ -837,8 +837,5 @@ drag_margin_top = 1.0
 drag_margin_bottom = 1.0
 editor_draw_drag_margin = true
 
-[node name="book" parent="." instance=ExtResource( 4 )]
-position = Vector2( 464, 8 )
-
-[node name="book2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1048, 88 )
+[node name="ghost3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 744, 144 )
