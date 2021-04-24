@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://menus/main_menu/img/settings.png" type="Texture" id=1]
+[ext_resource path="res://menus/main_menu/buttons/options.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "clicked"
+tracks/0/type = "value"
+tracks/0/path = NodePath("icon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.490196 ) ]
+}
+
+[node name="options" type="Control"]
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 64, 64 )
+mouse_filter = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.056
+anchor_right = 0.944
+anchor_bottom = 1.0
+margin_left = -0.0640001
+margin_right = 0.0639954
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 10.0
+anims/clicked = SubResource( 1 )
+
+[connection signal="toggled" from="Button" to="." method="_on_Button_toggled"]

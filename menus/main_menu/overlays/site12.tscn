@@ -1,0 +1,199 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://fonts/Louis George Cafe Bold.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 25
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 17
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 12
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="site12_credits" type="Control"]
+margin_left = -128.0
+margin_top = -192.0
+margin_right = 128.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 256, 384 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="backcolor" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+color = Color( 0.160784, 0.160784, 0.160784, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="list" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="credits" type="Label" parent="list"]
+margin_right = 256.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 1 )
+text = "CREDITS"
+align = 1
+valign = 1
+
+[node name="spacer" type="Control" parent="list"]
+margin_top = 33.0
+margin_right = 256.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 0, 25 )
+
+[node name="shane" type="VBoxContainer" parent="list"]
+margin_top = 62.0
+margin_right = 256.0
+margin_bottom = 123.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="name" type="Label" parent="list/shane"]
+margin_top = 11.0
+margin_right = 256.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 2 )
+text = "SHANE"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="role" type="Label" parent="list/shane"]
+margin_top = 35.0
+margin_right = 256.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 3 )
+text = "Programmer, Composer, Co-Founder"
+align = 1
+valign = 1
+
+[node name="Megan" type="VBoxContainer" parent="list"]
+margin_top = 127.0
+margin_right = 256.0
+margin_bottom = 188.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="name" type="Label" parent="list/Megan"]
+margin_top = 11.0
+margin_right = 256.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 2 )
+text = "Megan"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="role" type="Label" parent="list/Megan"]
+margin_top = 35.0
+margin_right = 256.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 3 )
+text = "Programmer, Level designer, Co-Founder"
+align = 1
+valign = 1
+
+[node name="jeff" type="VBoxContainer" parent="list"]
+margin_top = 192.0
+margin_right = 256.0
+margin_bottom = 253.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="name" type="Label" parent="list/jeff"]
+margin_top = 11.0
+margin_right = 256.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 2 )
+text = "Jeff"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="role" type="Label" parent="list/jeff"]
+margin_top = 35.0
+margin_right = 256.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 3 )
+text = "Game Designer, Programmer"
+align = 1
+valign = 1
+
+[node name="Tavee" type="VBoxContainer" parent="list"]
+margin_top = 257.0
+margin_right = 256.0
+margin_bottom = 318.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="name" type="Label" parent="list/Tavee"]
+margin_top = 11.0
+margin_right = 256.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 2 )
+text = "Tavee"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="role" type="Label" parent="list/Tavee"]
+margin_top = 35.0
+margin_right = 256.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 3 )
+text = "Environment Designer, Character Designer"
+align = 1
+valign = 1
+
+[node name="Nick" type="VBoxContainer" parent="list"]
+margin_top = 322.0
+margin_right = 256.0
+margin_bottom = 384.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="name" type="Label" parent="list/Nick"]
+margin_top = 12.0
+margin_right = 256.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 2 )
+text = "Nick"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="role" type="Label" parent="list/Nick"]
+margin_top = 36.0
+margin_right = 256.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 3 )
+text = "Environment Designer, Character Designer"
+align = 1
+valign = 1

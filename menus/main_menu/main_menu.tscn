@@ -1,0 +1,233 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://fonts/couture-bld.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://menus/main_menu/buttons/start.tscn" type="PackedScene" id=2]
+[ext_resource path="res://menus/main_menu/buttons/site12.tscn" type="PackedScene" id=3]
+[ext_resource path="res://menus/main_menu/buttons/options.tscn" type="PackedScene" id=4]
+[ext_resource path="res://menus/main_menu/overlays/site12.tscn" type="PackedScene" id=5]
+[ext_resource path="res://menus/main_menu/overlays/options.tscn" type="PackedScene" id=6]
+[ext_resource path="res://menus/main_menu/main_menu.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 85
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "options"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("overlay/screen/right:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("overlay/screen/right:rect_position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 828, -0.25, 0, 0.25, 0, 728, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("overlay/screen/right:rect_position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+
+[sub_resource type="Animation" id=3]
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("overlay/screen/left:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("overlay/screen/left:rect_position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -100, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("overlay/screen/left:rect_position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+
+[node name="main_menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="overlay" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="screen" type="HBoxContainer" parent="overlay"]
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="left" type="VBoxContainer" parent="overlay/screen"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 295.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="center" type="HBoxContainer" parent="overlay/screen/left"]
+margin_top = 108.0
+margin_right = 295.0
+margin_bottom = 492.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="site12_credits" parent="overlay/screen/left/center" instance=ExtResource( 5 )]
+margin_left = 19.0
+margin_top = 0.0
+margin_right = 275.0
+margin_bottom = 384.0
+mouse_filter = 1
+
+[node name="spacer" type="Control" parent="overlay/screen"]
+margin_left = 299.0
+margin_right = 724.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 425, 0 )
+mouse_filter = 1
+
+[node name="right" type="VBoxContainer" parent="overlay/screen"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 728.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="center" type="HBoxContainer" parent="overlay/screen/right"]
+margin_top = 108.0
+margin_right = 296.0
+margin_bottom = 492.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="options" parent="overlay/screen/right/center" instance=ExtResource( 6 )]
+margin_left = 20.0
+margin_top = 0.0
+margin_right = 276.0
+margin_bottom = 384.0
+
+[node name="screen" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="top" type="HBoxContainer" parent="screen"]
+margin_right = 1024.0
+margin_bottom = 298.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="title_of_game" type="Label" parent="screen/top"]
+margin_left = 389.0
+margin_top = 106.0
+margin_right = 634.0
+margin_bottom = 192.0
+custom_fonts/font = SubResource( 1 )
+text = "TItle"
+
+[node name="bottom" type="VBoxContainer" parent="screen"]
+margin_top = 302.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="btop" type="HBoxContainer" parent="screen/bottom"]
+margin_right = 1024.0
+margin_bottom = 147.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="start" parent="screen/bottom/btop" instance=ExtResource( 2 )]
+margin_left = 440.0
+margin_top = 0.0
+margin_right = 584.0
+margin_bottom = 147.0
+
+[node name="bbottom" type="HBoxContainer" parent="screen/bottom"]
+margin_top = 151.0
+margin_right = 1024.0
+margin_bottom = 298.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="site12" parent="screen/bottom/bbottom" instance=ExtResource( 3 )]
+margin_left = 19.0
+margin_top = 0.0
+margin_right = 83.0
+margin_bottom = 147.0
+
+[node name="Control" type="Control" parent="screen/bottom/bbottom"]
+margin_left = 87.0
+margin_right = 937.0
+margin_bottom = 147.0
+rect_min_size = Vector2( 850, 0 )
+mouse_filter = 1
+
+[node name="options" parent="screen/bottom/bbottom" instance=ExtResource( 4 )]
+margin_left = 941.0
+margin_top = 0.0
+margin_right = 1005.0
+margin_bottom = 147.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 5.0
+anims/options = SubResource( 2 )
+anims/site12 = SubResource( 3 )
