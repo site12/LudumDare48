@@ -1,12 +1,12 @@
 extends KinematicBody2D
 
 const UP = Vector2(0, -1)
-var GRAVITY = 9.8 *500
-var ACCELERATION = 75
+var GRAVITY = 9.8 *300
+var ACCELERATION = 50
 var FRICTION = 1
-const MAX_SPEED = 700
-const JUMP_HEIGHT = -1500
-const MIN_JUMP_HEIGHT = -500*2
+const MAX_SPEED = 500
+const JUMP_HEIGHT = -1250
+const MIN_JUMP_HEIGHT = -750
 
 
 var motion = Vector2()
