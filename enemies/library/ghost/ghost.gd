@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var run_speed = 65
+var run_speed = 100
 var velocity = Vector2.ZERO
 var health = 45
 var player = null
@@ -15,6 +15,8 @@ func _physics_process(_delta):
 		$AnimatedSprite.flip_h = true
 	elif velocity.x > 0:
 		$AnimatedSprite.flip_h = false
+		
+	$hud/ProgressBar.value = health
 
 func _on_line_of_sight_body_entered(body):
 	if body.name == "Mina":
