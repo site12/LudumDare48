@@ -840,7 +840,6 @@ editor_draw_drag_margin = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -856,7 +855,6 @@ __meta__ = {
 }
 
 [node name="ghost2" parent="." instance=ExtResource( 4 )]
-visible = false
 position = Vector2( 784, 160 )
 
 [node name="background" type="Node2D" parent="."]

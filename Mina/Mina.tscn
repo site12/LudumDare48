@@ -377,7 +377,7 @@ tracks/3/keys = {
 }
 
 [sub_resource type="Animation" id=7]
-length = 0.25
+length = 0.5
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -422,10 +422,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.0833333, 0.166667 ),
+"times": PoolRealArray( 0, 0.166667, 0.333333 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2 ]
+"update": 0,
+"values": [ 2, 0, 2 ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -614,7 +614,7 @@ graph_offset = Vector2( -133, -23 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=32]
 
 [sub_resource type="RectangleShape2D" id=33]
-extents = Vector2( 32, 48 )
+extents = Vector2( 24.7832, 48 )
 
 [node name="Mina" type="KinematicBody2D"]
 script = ExtResource( 29 )
@@ -625,10 +625,9 @@ frames = SubResource( 1 )
 animation = "idle"
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 52 )
+texture = ExtResource( 53 )
 hframes = 3
-vframes = 2
-frame = 5
+frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/dead = SubResource( 2 )
@@ -643,7 +642,6 @@ anims/run = SubResource( 9 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 31 )
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/playback = SubResource( 32 )
 
 [node name="feet_coll" type="CollisionShape2D" parent="."]
