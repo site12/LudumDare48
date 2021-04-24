@@ -1,18 +1,10 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Tiles/Books.png" type="Texture" id=1]
 [ext_resource path="res://Tiles/Wood.png" type="Texture" id=2]
 [ext_resource path="res://Mina/Mina.tscn" type="PackedScene" id=3]
 [ext_resource path="res://enemies/library/ghost/ghost.tscn" type="PackedScene" id=4]
 [ext_resource path="res://levels/library/library_background.png" type="Texture" id=5]
-[ext_resource path="res://icon.png" type="Texture" id=6]
-[ext_resource path="res://levels/library/fog.shader" type="Shader" id=7]
-
-[sub_resource type="ShaderMaterial" id=22]
-shader = ExtResource( 7 )
-shader_param/color = Vector3( 0.95, 0.95, 0.95 )
-shader_param/OCTAVES = 4
-shader_param/opacity = 0.25
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 13.9107, 64, 13.5088, 15.1163, 64, 14.6642, 64, 0, 0, 0, 0, 64 )
@@ -813,12 +805,6 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 15.375, 0, 15.375 )
 
 [node name="tilemaps" type="Node2D" parent="."]
 
-[node name="feg" type="Sprite" parent="tilemaps"]
-material = SubResource( 22 )
-position = Vector2( 500, 296 )
-scale = Vector2( 16.625, 10.25 )
-texture = ExtResource( 6 )
-
 [node name="BackTileMapWood" type="TileMap" parent="tilemaps"]
 tile_set = SubResource( 9 )
 format = 1
@@ -869,7 +855,6 @@ __meta__ = {
 }
 
 [node name="ghost2" parent="." instance=ExtResource( 4 )]
-visible = false
 position = Vector2( 784, 160 )
 
 [node name="background" type="Node2D" parent="."]
@@ -882,4 +867,5 @@ motion_offset = Vector2( 675, 314 )
 motion_mirroring = Vector2( 1350, 629 )
 
 [node name="Sprite" type="Sprite" parent="background/ParallaxBackground/ParallaxLayer"]
+position = Vector2( 0, -1 )
 texture = ExtResource( 5 )
