@@ -801,7 +801,7 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 15.375, 0, 15.375 )
 } ]
 22/z_index = 0
 
-[node name="root" type="Node2D"]
+[node name="root2" type="Node2D"]
 
 [node name="tilemaps" type="Node2D" parent="."]
 

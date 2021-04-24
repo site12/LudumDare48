@@ -70,21 +70,6 @@ animations = [ {
 "name": "falling",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 38 ) ],
-"loop": false,
-"name": "jump",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 43 ), ExtResource( 49 ), ExtResource( 48 ), ExtResource( 50 ), ExtResource( 39 ), ExtResource( 31 ) ],
-"loop": false,
-"name": "landing",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 15 ), ExtResource( 21 ), ExtResource( 13 ), ExtResource( 20 ), ExtResource( 25 ) ],
-"loop": true,
-"name": "roll",
-"speed": 12.0
-}, {
 "frames": [ ExtResource( 18 ), ExtResource( 28 ), ExtResource( 27 ) ],
 "loop": false,
 "name": "punch1",
@@ -93,6 +78,11 @@ animations = [ {
 "frames": [ ExtResource( 44 ), ExtResource( 42 ) ],
 "loop": true,
 "name": "hurt",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 43 ), ExtResource( 49 ), ExtResource( 48 ), ExtResource( 50 ), ExtResource( 39 ), ExtResource( 31 ) ],
+"loop": false,
+"name": "landing",
 "speed": 12.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 9 ), ExtResource( 1 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 7 ) ],
@@ -108,6 +98,16 @@ animations = [ {
 "frames": [ ExtResource( 26 ), ExtResource( 17 ), ExtResource( 14 ), ExtResource( 16 ), ExtResource( 24 ) ],
 "loop": true,
 "name": "punch2",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 38 ) ],
+"loop": false,
+"name": "jump",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 15 ), ExtResource( 21 ), ExtResource( 13 ), ExtResource( 20 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "roll",
 "speed": 12.0
 } ]
 
@@ -591,9 +591,9 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=30]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
 
-[sub_resource type="AnimationNodeStateMachine" id=31]
+[sub_resource type="AnimationNodeStateMachine" id=32]
 states/dead/node = SubResource( 10 )
 states/dead/position = Vector2( 176, 58 )
 states/falling/node = SubResource( 11 )
@@ -610,14 +610,14 @@ states/punch2/node = SubResource( 16 )
 states/punch2/position = Vector2( 540, 231 )
 states/run/node = SubResource( 17 )
 states/run/position = Vector2( 677, 58 )
-transitions = [ "idle", "run", SubResource( 18 ), "idle", "punch1", SubResource( 19 ), "punch1", "punch2", SubResource( 20 ), "run", "idle", SubResource( 21 ), "punch2", "kick", SubResource( 22 ), "punch1", "idle", SubResource( 23 ), "punch2", "idle", SubResource( 24 ), "kick", "idle", SubResource( 25 ), "idle", "jump", SubResource( 26 ), "run", "jump", SubResource( 27 ), "jump", "falling", SubResource( 28 ), "falling", "idle", SubResource( 29 ), "idle", "dead", SubResource( 30 ), "run", "punch1", SubResource( 34 ) ]
+transitions = [ "idle", "run", SubResource( 18 ), "idle", "punch1", SubResource( 19 ), "punch1", "punch2", SubResource( 20 ), "run", "idle", SubResource( 21 ), "punch2", "kick", SubResource( 22 ), "punch1", "idle", SubResource( 23 ), "punch2", "idle", SubResource( 24 ), "kick", "idle", SubResource( 25 ), "idle", "jump", SubResource( 26 ), "run", "jump", SubResource( 27 ), "jump", "falling", SubResource( 28 ), "falling", "idle", SubResource( 29 ), "idle", "dead", SubResource( 30 ), "run", "punch1", SubResource( 31 ) ]
 start_node = "idle"
 end_node = "dead"
 graph_offset = Vector2( -308, -79 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=32]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=33]
 
-[sub_resource type="RectangleShape2D" id=33]
+[sub_resource type="RectangleShape2D" id=34]
 extents = Vector2( 24.7832, 48 )
 
 [node name="Mina" type="KinematicBody2D"]
@@ -646,14 +646,14 @@ anims/punch2 = SubResource( 8 )
 anims/run = SubResource( 9 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 31 )
+tree_root = SubResource( 32 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 32 )
+parameters/playback = SubResource( 33 )
 
 [node name="feet_coll" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 3 )
-shape = SubResource( 33 )
+shape = SubResource( 34 )
 
 [node name="Left" type="RayCast2D" parent="."]
 position = Vector2( 0, 31 )
@@ -682,13 +682,13 @@ texture = ExtResource( 57 )
 energy = 0.6
 
 [node name="down" type="RayCast2D" parent="."]
-position = Vector2( -17, 50 )
+position = Vector2( -24, 50 )
 enabled = true
 cast_to = Vector2( 0, 10 )
 collision_mask = 3
 
 [node name="down2" type="RayCast2D" parent="."]
-position = Vector2( 17, 50 )
+position = Vector2( 24, 50 )
 enabled = true
 cast_to = Vector2( 0, 10 )
 collision_mask = 3

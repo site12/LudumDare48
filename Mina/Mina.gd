@@ -5,7 +5,7 @@ var GRAVITY = 9.8 *300
 var ACCELERATION = 50
 var FRICTION = 1
 const MAX_SPEED = 500
-const JUMP_HEIGHT = -1250
+const JUMP_HEIGHT = -1300
 const MIN_JUMP_HEIGHT = -750
 
 
@@ -109,7 +109,7 @@ func movement(friction):
 
 	if motion.y > 100 and not ray_on_floor():
 		state_machine.travel("falling")
-	elif motion.y < 48 and not ray_on_floor():
+	elif motion.y < 48:
 		state_machine.travel("jump")
 	elif motion.x != 0:
 		state_machine.travel("run")
