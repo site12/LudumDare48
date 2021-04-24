@@ -112,7 +112,7 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 38.6628
+radius = 17.8972
 
 [sub_resource type="Animation" id=3]
 length = 0.416667
@@ -427,7 +427,7 @@ tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 6.73477, -0.56123 ) ]
+"values": [ Vector2( 47.9852, 3.36739 ) ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("Sprite/smackbox:visible")
@@ -556,7 +556,7 @@ tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -11.5052 ) ]
+"values": [ Vector2( 39.2862, -11.2246 ) ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("Sprite/smackbox:visible")
@@ -685,7 +685,7 @@ tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -11.5052 ) ]
+"values": [ Vector2( 35.0769, -12.3471 ) ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("Sprite/smackbox:visible")
@@ -868,16 +868,16 @@ animation = "idle"
 texture = ExtResource( 52 )
 hframes = 3
 vframes = 2
-frame = 2
 
 [node name="smackbox" type="Area2D" parent="Sprite"]
+visible = false
 position = Vector2( 0.105141, -0.0037117 )
 monitoring = false
 collision_layer = 32
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/smackbox"]
-position = Vector2( 47.1434, -0.280613 )
+position = Vector2( 35.0769, -12.3471 )
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -893,6 +893,7 @@ anims/run = SubResource( 10 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 33 )
 anim_player = NodePath("../AnimationPlayer")
+active = true
 parameters/playback = SubResource( 34 )
 
 [node name="feet_coll" type="CollisionShape2D" parent="."]

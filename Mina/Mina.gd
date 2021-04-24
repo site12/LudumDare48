@@ -67,9 +67,11 @@ func direction():
 		1:
 			$Sprite.flip_h = true
 			$Position2D.scale.x = 1
+			$Sprite/smackbox.scale.x = -1
 		-1:
 			$Sprite.flip_h = false
 			$Position2D.scale.x = -1
+			$Sprite/smackbox.scale.x = 1
 		
 
 func movement(friction):
