@@ -944,7 +944,7 @@ tile_data = PoolIntArray( 131097, 12, 0, 196617, 1610612754, 0, 196618, 16106127
 position = Vector2( 192, 456 )
 
 [node name="Position2D" type="Position2D" parent="Mina"]
-position = Vector2( 250, 0 )
+position = Vector2( 150, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="Mina/Position2D"]
 current = true
