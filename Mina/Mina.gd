@@ -4,8 +4,8 @@ const UP = Vector2(0, -1)
 var GRAVITY = 9.8 *500
 var ACCELERATION = 75
 var FRICTION = 1
-const MAX_SPEED = 700*1.5
-const JUMP_HEIGHT = -1500 *1.4
+const MAX_SPEED = 700
+const JUMP_HEIGHT = -1500
 const MIN_JUMP_HEIGHT = -500*2
 
 
@@ -13,10 +13,11 @@ var motion = Vector2()
 var grabbing = false
 var jumping = false
 var sliding = false
-var vining = false
+var climbing = false
+var falling = false
 var canmove = true
 var on_ice = false
-var on_vines = false
+var on_ladder = false
 var dir = 1
 var on_wall = false
 var which_wall = 0
@@ -24,7 +25,7 @@ var jump_particle = load("res://land.tscn")
 var current_zone = 'village'
 var has_pick = false
 var has_machete = false
-onready var jt = $jump_timer
+onready var jt = $'jump Timer'
 onready var camerapos = $camerapos
 onready var camera = $camerapos/Camera2D
 onready var root = get_tree().get_root().get_node('root')
@@ -44,15 +45,15 @@ func _physics_process(delta):
 	slide(delta)
 	motion = move_and_slide(motion, UP)
 func slide(delta):
-	if on_vines and Input.is_action_pressed("grab"):
-		vining = true
+	if on_ladder and Input.is_action_pressed("grab"):
+		climbing = true
 		on_wall = true
-		if motion.y >0 and vining:
+		if motion.y >0 and climbing:
 			print("grabbed")
 			motion.y = 0 + Input.get_action_strength("down")*500 - Input.get_action_strength("up")*500
 			motion.x = 0 + Input.get_action_strength("right")*500 - Input.get_action_strength("left")*500
 	else:
-		vining = false
+		climbing = false
 	if on_wall and Input.is_action_pressed("grab"):
 		sliding = true
 		if motion.y >0:
@@ -61,80 +62,106 @@ func slide(delta):
 		sliding = false
 	
 func direction():
-	if dir == 1 and motion.x == 0:
+	if dir == 1:
 		$AnimatedSprite.flip_h = true
-		if !jumping:
-			$AnimatedSprite.play("idle")
+		if motion.x == 0:
 
-		elif !sliding:
-			$AnimatedSprite.play("jump")
+			if falling:
+				$AnimatedSprite.play("falling")
 
-		elif vining:
-			$AnimatedSprite.play("slide")
+			elif !jumping:
+				$AnimatedSprite.play("idle")
 
+			elif !sliding:
+				$AnimatedSprite.play("jump")
+
+			# elif climbing:
+			# 	$AnimatedSprite.play("slide")
+
+			# else:
+			# 	$AnimatedSprite.play("slide")
+			
 		else:
-			$AnimatedSprite.play("slide")
+			
+			if falling:
+				$AnimatedSprite.play("falling")
+
+			elif !jumping:
+				$AnimatedSprite.play("run")
+
+			elif !sliding:
+				$AnimatedSprite.play("jump")
+
+		# elif climbing:
+		# 	$AnimatedSprite.play("slide")
+
+		# else:
+		# 	$AnimatedSprite.play("slide")
 
 
-	elif dir == 1:
-		$AnimatedSprite.flip_h = true
-		if !jumping:
-			$AnimatedSprite.play("run")
-
-		elif !sliding:
-			$AnimatedSprite.play("jump")
-
-		elif vining:
-			$AnimatedSprite.play("slide")
-
-		else:
-			$AnimatedSprite.play("slide")
-
-
-	if dir == -1 and motion.x == 0:
+	if dir == -1:
+		$AnimatedSprite.flip_h = false
+		if motion.x == 0:
 		# $RayCast2D.scale.x = 1
-		$AnimatedSprite.flip_h = false
-		if !jumping:
-			$AnimatedSprite.play("idle")
+		
+			
+			if falling:
+				$AnimatedSprite.play("falling")
 
-		elif !sliding:
-			$AnimatedSprite.play("jump")
+			elif !jumping:
+				$AnimatedSprite.play("idle")
 
-		elif vining:
-			$AnimatedSprite.play("slide")
+			elif !sliding:
+				$AnimatedSprite.play("jump")
 
-		else:
-			$AnimatedSprite.play("slide")
+			# elif climbing:
+			# 	$AnimatedSprite.play("slide")
 
-
-	elif dir == -1:
-		$AnimatedSprite.flip_h = false
-		if !jumping:
-			$AnimatedSprite.play("run")
-
-		elif !sliding:
-			$AnimatedSprite.play("jump")
-
-		elif vining:
-			$AnimatedSprite.play("slide")
+			# else:
+			# 	$AnimatedSprite.play("slide")
 
 		else:
-			$AnimatedSprite.play("slide")
+			
+			if falling:
+				$AnimatedSprite.play("falling")
+
+			elif !jumping:
+				$AnimatedSprite.play("run")
+
+			elif !sliding:
+				$AnimatedSprite.play("jump")
+
+			# elif climbing:
+			# 	$AnimatedSprite.play("slide")
+
+			# else:
+			# 	$AnimatedSprite.play("slide")
 
 		
 func movement(friction):
 	if is_on_floor():
+		if falling:
+			if motion.y > 2000:
+				$AnimatedSprite.play("landing")
+				print("landed high")
+			falling = false
+
 		if jumping:
-			var new_jump_particle = jump_particle.instance()
-			get_parent().add_child(new_jump_particle)
-			new_jump_particle.position = $jump_position.get_global_position()
+			# var new_jump_particle = jump_particle.instance()
+			# get_parent().add_child(new_jump_particle)
+			# new_jump_particle.position = $jump_position.get_global_position()
+			pass
 		jumping = false
-		pass
+		
 	else:
 		jumping = true
 
+	if motion.y > 100:
+		print(motion.y)
+		falling = true
+
 	if Input.is_action_just_released("jump") and motion.y < 0:
-		motion.y = lerp(motion.y, 0, 0.5)
+		motion.y = lerp(motion.y, 0, 0.5)	
 	
 	if canmove:
 		### Left and right
@@ -163,7 +190,7 @@ func movement(friction):
 			friction = true
 	
 	#jump
-	if is_on_floor() and canmove or vining:
+	if is_on_floor() and canmove or climbing:
 		
 		
 		if Input.is_action_just_pressed("jump"):
@@ -171,9 +198,9 @@ func movement(friction):
 			# GRAVITY = 9.8 * 500
 			# $jump_timer.s tart()
 			motion.y += JUMP_HEIGHT
-			var new_jump_particle = jump_particle.instance()
-			get_parent().add_child(new_jump_particle)
-			new_jump_particle.position = $jump_position.get_global_position()
+			# var new_jump_particle = jump_particle.instance()
+			# get_parent().add_child(new_jump_particle)
+			# new_jump_particle.position = $jump_position.get_global_position()
 		if friction == true and not on_ice:
 			motion.x = lerp(motion.x, 0, FRICTION)
 	
@@ -192,11 +219,11 @@ func movement(friction):
 			motion_change.x *= which_wall
 			var new_jump_particle = jump_particle.instance()
 			get_parent().add_child(new_jump_particle)
-			match which_wall:
-				-1:
-					new_jump_particle.position = $right_wall_jump_position.get_global_position()
-				1:
-					new_jump_particle.position = $left_wall_jump_position.get_global_position()
+			#match which_wall:
+			#	-1:
+			#		new_jump_particle.position = $right_wall_jump_position.get_global_position()
+			#	1:
+			#		new_jump_particle.position = $left_wall_jump_position.get_global_position()
 
 			motion = motion_change
 			print(motion_change)

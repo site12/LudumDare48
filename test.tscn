@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://DEFAULT TILE.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Mina/Mina.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 46.3703, 137.874 )
+
+[node name="Mina" parent="." instance=ExtResource( 2 )]
+position = Vector2( 17.5232, -80.3608 )
+
+[node name="DEFAULT TILE" parent="." instance=ExtResource( 1 )]
+position = Vector2( 285.913, 16.3119 )
+scale = Vector2( 10, 1 )
+
+[node name="DEFAULT TILE2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 651.015, 417.924 )
+scale = Vector2( 10, 1 )

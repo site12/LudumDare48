@@ -10,7 +10,6 @@ config_version=4
 
 _global_script_classes=[  ]
 _global_script_class_icons={
-
 }
 
 [application]
@@ -18,6 +17,32 @@ _global_script_class_icons={
 config/name="LD48"
 run/main_scene="res://menus/main_menu/main_menu.tscn"
 config/icon="res://icon.png"
+
+[input]
+
+jump={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
+left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+ ]
+}
+right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+attack_1={
+"deadzone": 0.5,
+"events": [  ]
+}
+attack_2={
+"deadzone": 0.5,
+"events": [  ]
+}
 
 [physics]
 
