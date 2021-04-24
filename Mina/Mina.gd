@@ -109,7 +109,7 @@ func movement(friction):
 
 	if motion.y > 100 and not ray_on_floor():
 		state_machine.travel("falling")
-	elif motion.y < 48 and not ray_on_floor():
+	elif motion.y < 48:
 		state_machine.travel("jump")
 	elif motion.x != 0:
 		state_machine.travel("run")
