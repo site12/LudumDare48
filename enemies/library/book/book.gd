@@ -12,7 +12,7 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity)
 
 func _on_line_of_sight_body_entered(body):
-	if body.name == "Player":
+	if body.name == "Mina":
 		player = body
 
 func _on_line_of_sight_body_exited(body):
