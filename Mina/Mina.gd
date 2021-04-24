@@ -151,6 +151,8 @@ func direction():
 
 		
 func movement(friction):
+	if Input.is_action_just_pressed("attack_1"):
+		state_machine.travel("punch1")
 	if is_on_floor():
 		if falling:
 			if motion.y > 2000:
