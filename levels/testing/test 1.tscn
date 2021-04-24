@@ -827,16 +827,6 @@ tile_data = PoolIntArray( 262153, 536870927, 0, 262154, 536870926, 0, 262155, 53
 [node name="Mina" parent="." instance=ExtResource( 3 )]
 position = Vector2( 184, 456 )
 
-[node name="Camera2D" type="Camera2D" parent="Mina"]
-position = Vector2( 0, -128 )
-current = true
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-smoothing_enabled = true
-drag_margin_top = 0.85
-drag_margin_bottom = 0.1
-editor_draw_drag_margin = true
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]

@@ -80,16 +80,6 @@ animations = [ {
 "name": "hurt",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 43 ), ExtResource( 49 ), ExtResource( 48 ), ExtResource( 50 ), ExtResource( 39 ), ExtResource( 31 ) ],
-"loop": false,
-"name": "landing",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 9 ), ExtResource( 1 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "run",
-"speed": 12.0
-}, {
 "frames": [ ExtResource( 30 ), ExtResource( 47 ), ExtResource( 37 ), ExtResource( 32 ), ExtResource( 35 ) ],
 "loop": true,
 "name": "kick",
@@ -100,14 +90,24 @@ animations = [ {
 "name": "punch2",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 38 ) ],
-"loop": false,
-"name": "jump",
-"speed": 12.0
-}, {
 "frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 15 ), ExtResource( 21 ), ExtResource( 13 ), ExtResource( 20 ), ExtResource( 25 ) ],
 "loop": true,
 "name": "roll",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 43 ), ExtResource( 49 ), ExtResource( 48 ), ExtResource( 50 ), ExtResource( 39 ), ExtResource( 31 ) ],
+"loop": false,
+"name": "landing",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 9 ), ExtResource( 1 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "run",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 38 ) ],
+"loop": false,
+"name": "jump",
 "speed": 12.0
 } ]
 
@@ -633,7 +633,6 @@ animation = "idle"
 texture = ExtResource( 52 )
 hframes = 3
 vframes = 2
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/dead = SubResource( 2 )
@@ -679,7 +678,7 @@ cast_to = Vector2( 30, 0 )
 
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 57 )
-energy = 0.6
+energy = 1.1
 
 [node name="down" type="RayCast2D" parent="."]
 position = Vector2( -24, 50 )
@@ -692,3 +691,11 @@ position = Vector2( 24, 50 )
 enabled = true
 cast_to = Vector2( 0, 10 )
 collision_mask = 3
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 150, 0 )
+
+[node name="Camera2D" type="Camera2D" parent="Position2D"]
+current = true
+zoom = Vector2( 1.5, 1.5 )
+smoothing_enabled = true
