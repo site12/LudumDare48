@@ -112,7 +112,7 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=38]
-radius = 38.6628
+radius = 17.8972
 
 [sub_resource type="Animation" id=2]
 resource_name = "dead"
@@ -431,6 +431,18 @@ tracks/7/keys = {
 "update": 0,
 "values": [ Vector2( 6.73477, -0.56123 ) ]
 }
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprite/Area2D:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.0833333, 0.333333 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
 
 [sub_resource type="Animation" id=7]
 length = 0.5
@@ -536,6 +548,18 @@ tracks/7/keys = {
 "update": 0,
 "values": [ Vector2( 0, -11.5052 ) ]
 }
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprite/Area2D:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.0833333, 0.333333 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
 
 [sub_resource type="Animation" id=8]
 length = 0.416667
@@ -640,6 +664,18 @@ tracks/7/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, -11.5052 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprite/Area2D:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.333333 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -770,7 +806,7 @@ states/jump/position = Vector2( 566, -53 )
 states/kick/node = SubResource( 14 )
 states/kick/position = Vector2( 769, 204 )
 states/punch1/node = SubResource( 15 )
-states/punch1/position = Vector2( 285, 204 )
+states/punch1/position = Vector2( 284, 204 )
 states/punch2/node = SubResource( 16 )
 states/punch2/position = Vector2( 496, 204 )
 states/run/node = SubResource( 17 )
@@ -795,15 +831,14 @@ frames = SubResource( 1 )
 animation = "idle"
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 52 )
-hframes = 3
-vframes = 2
+texture = ExtResource( 54 )
+hframes = 5
 
 [node name="Area2D" type="Area2D" parent="Sprite"]
 position = Vector2( 38, -0.508152 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D"]
-position = Vector2( 6.73477, -0.56123 )
+position = Vector2( 0, -11.5052 )
 shape = SubResource( 38 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -819,7 +854,6 @@ anims/run = SubResource( 9 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 32 )
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/playback = SubResource( 33 )
 
 [node name="feet_coll" type="CollisionShape2D" parent="."]
