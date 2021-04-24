@@ -23,14 +23,14 @@ var on_wall = false
 var which_wall = 0
 var jump_particle = load("res://land.tscn")
 var current_zone = 'village'
-var has_pick = false
-var has_machete = false
+var state_machine :AnimationNodeStateMachinePlayback
 onready var jt = $'jump_timer'
 onready var camerapos = $camerapos
 onready var camera = $camerapos/Camera2D
 onready var root = get_tree().get_root().get_node('root')
 
-
+func _ready():
+	state_machine = $AnimationTree.get("parameters/playback")
 func _physics_process(delta):
 	on_wall = $Right.is_colliding() || $Left.is_colliding() || $TopRight.is_colliding() || $TopLeft.is_colliding()
 	if $Right.is_colliding() || $TopRight.is_colliding():
@@ -67,13 +67,16 @@ func direction():
 		if motion.x == 0:
 
 			if falling:
-				$AnimationPlayer.play("falling")
+				# $AnimationPlayer.play("falling")
+				state_machine.travel("falling")
 
 			elif !jumping:
-				$AnimationPlayer.play("idle")
+				# $AnimationPlayer.play("idle")
+				state_machine.travel("idle")
 
 			elif !sliding:
-				$AnimationPlayer.play("jump")
+				# $AnimationPlayer.play("jump")
+				state_machine.travel("jump")
 
 			# elif climbing:
 			# 	$AnimatedSprite.play("slide")
@@ -84,13 +87,16 @@ func direction():
 		else:
 			
 			if falling:
-				$AnimationPlayer.play("falling")
+				# $AnimationPlayer.play("falling")
+				state_machine.travel("falling")
 
 			elif !jumping:
-				$AnimationPlayer.play("run")
+				# $AnimationPlayer.play("run")
+				state_machine.travel("run")
 
 			elif !sliding:
-				$AnimationPlayer.play("jump")
+				# $AnimationPlayer.play("jump")
+				state_machine.travel("jump")
 
 		# elif climbing:
 		# 	$AnimatedSprite.play("slide")
@@ -106,13 +112,16 @@ func direction():
 		
 			
 			if falling:
-				$AnimationPlayer.play("falling")
+				# $AnimationPlayer.play("falling")
+				state_machine.travel("falling")
 
 			elif !jumping:
-				$AnimationPlayer.play("idle")
+				# $AnimationPlayer.play("idle")
+				state_machine.travel("idle")
 
 			elif !sliding:
-				$AnimationPlayer.play("jump")
+				# $AnimationPlayer.play("jump")
+				state_machine.travel("jump")
 
 			# elif climbing:
 			# 	$AnimatedSprite.play("slide")
@@ -123,13 +132,16 @@ func direction():
 		else:
 			
 			if falling:
-				$AnimationPlayer.play("falling")
+				# $AnimationPlayer.play("falling")
+				state_machine.travel("falling")
 
 			elif !jumping:
-				$AnimationPlayer.play("run")
+				# $AnimationPlayer.play("run")
+				state_machine.travel("run")
 
 			elif !sliding:
-				$AnimationPlayer.play("jump")
+				# $AnimationPlayer.play("jump")
+				state_machine.travel("jump")
 
 			# elif climbing:
 			# 	$AnimatedSprite.play("slide")
@@ -233,6 +245,8 @@ func movement(friction):
 
 func die():
 	canmove = false
+	state_machine.travel("dead")
+	set_physics_process(false)
 
 func _on_jump_timer_timeout():
 	if Input.is_action_pressed('jump'):
