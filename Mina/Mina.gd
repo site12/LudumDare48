@@ -21,12 +21,12 @@ var on_ladder = false
 var dir = 1
 var on_wall = false
 var which_wall = 0
-var jump_particle = load("res://land.tscn")
+#var jump_particle = load("res://land.tscn")
 var current_zone = 'village'
 var state_machine :AnimationNodeStateMachinePlayback
 onready var jt = $'jump_timer'
-onready var camerapos = $camerapos
-onready var camera = $camerapos/Camera2D
+#onready var camerapos = $camerapos
+#onready var camera = $camerapos/Camera2D
 onready var root = get_tree().get_root().get_node('root')
 
 func _ready():
@@ -254,7 +254,7 @@ func _on_jump_timer_timeout():
 	else:
 		GRAVITY = 9.8 * 1000
 
-func pass_camera_shake(amount):
-	camera.add_trauma(amount)
+#func pass_camera_shake(amount):
+#	camera.add_trauma(amount)
 
 
