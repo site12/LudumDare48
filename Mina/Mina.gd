@@ -13,10 +13,10 @@ var motion = Vector2()
 var grabbing = false
 var jumping = false
 var sliding = false
-var vining = false
+var climbing = false
 var canmove = true
 var on_ice = false
-var on_vines = false
+var on_ladder = false
 var dir = 1
 var on_wall = false
 var which_wall = 0
@@ -44,15 +44,15 @@ func _physics_process(delta):
 	slide(delta)
 	motion = move_and_slide(motion, UP)
 func slide(delta):
-	if on_vines and Input.is_action_pressed("grab"):
-		vining = true
+	if on_ladder and Input.is_action_pressed("grab"):
+		climbing = true
 		on_wall = true
-		if motion.y >0 and vining:
+		if motion.y >0 and climbing:
 			print("grabbed")
 			motion.y = 0 + Input.get_action_strength("down")*500 - Input.get_action_strength("up")*500
 			motion.x = 0 + Input.get_action_strength("right")*500 - Input.get_action_strength("left")*500
 	else:
-		vining = false
+		climbing = false
 	if on_wall and Input.is_action_pressed("grab"):
 		sliding = true
 		if motion.y >0:
@@ -69,7 +69,7 @@ func direction():
 		elif !sliding:
 			$AnimatedSprite.play("jump")
 
-		elif vining:
+		elif climbing:
 			$AnimatedSprite.play("slide")
 
 		else:
@@ -84,7 +84,7 @@ func direction():
 		elif !sliding:
 			$AnimatedSprite.play("jump")
 
-		elif vining:
+		elif climbing:
 			$AnimatedSprite.play("slide")
 
 		else:
@@ -100,7 +100,7 @@ func direction():
 		elif !sliding:
 			$AnimatedSprite.play("jump")
 
-		elif vining:
+		elif climbing:
 			$AnimatedSprite.play("slide")
 
 		else:
@@ -115,7 +115,7 @@ func direction():
 		elif !sliding:
 			$AnimatedSprite.play("jump")
 
-		elif vining:
+		elif climbing:
 			$AnimatedSprite.play("slide")
 
 		else:
@@ -163,7 +163,7 @@ func movement(friction):
 			friction = true
 	
 	#jump
-	if is_on_floor() and canmove or vining:
+	if is_on_floor() and canmove or climbing:
 		
 		
 		if Input.is_action_just_pressed("jump"):
@@ -203,7 +203,6 @@ func movement(friction):
 			
 	else:
 		pass
-
 func die():
 	canmove = false
 
@@ -215,5 +214,4 @@ func _on_jump_timer_timeout():
 
 func pass_camera_shake(amount):
 	camera.add_trauma(amount)
-
 
