@@ -157,6 +157,21 @@ func _on_jump_timer_timeout():
 func set_attack(attack):
 	current_attack = attack
 
+func _on_smackbox_area_entered(area):
+	if area.name == "damage_radius":
+		var enemy = area.get_parent()
+		if enemy.is_in_group("baddies"):
+			var damage_dealt
+			match current_attack:
+				"punch1":
+					damage_dealt = 20
+				"punch2":
+					damage_dealt = 25
+				"kick":
+					damage_dealt = 40
+			enemy.take_damage(damage_dealt)
+
+
 #func pass_camera_shake(amount):
 #	camera.add_trauma(amount)
 
