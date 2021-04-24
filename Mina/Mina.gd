@@ -158,9 +158,12 @@ func set_attack(attack):
 	current_attack = attack
 
 func _on_smackbox_area_entered(area):
+	print("area_entered")
 	if area.name == "damage_radius":
+		print("name checks out")
 		var enemy = area.get_parent()
 		if enemy.is_in_group("baddies"):
+			print("is baddie")
 			var damage_dealt
 			match current_attack:
 				"punch1":
@@ -169,6 +172,8 @@ func _on_smackbox_area_entered(area):
 					damage_dealt = 25
 				"kick":
 					damage_dealt = 40
+				_:
+					damage_dealt = 0
 			enemy.take_damage(damage_dealt)
 
 
