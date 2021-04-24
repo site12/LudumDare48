@@ -850,7 +850,7 @@ cast_to = Vector2( 30, 0 )
 
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 57 )
-energy = 0.6
+energy = 1.1
 
 [node name="down" type="RayCast2D" parent="."]
 position = Vector2( -24, 50 )
@@ -863,3 +863,11 @@ position = Vector2( 24, 50 )
 enabled = true
 cast_to = Vector2( 0, 10 )
 collision_mask = 3
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 150, 0 )
+
+[node name="Camera2D" type="Camera2D" parent="Position2D"]
+current = true
+zoom = Vector2( 1.5, 1.5 )
+smoothing_enabled = true
