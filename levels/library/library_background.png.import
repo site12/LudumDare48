@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/GhostFloat_0002.png-8630fee4368f0bc85e1cb05f1cfe9db8.stex"
+path="res://.import/library_background.png-99430ef63cd962ae33691fd5304d2bba.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/library/animations/Ghost/GhostFloat_0002.png"
-dest_files=[ "res://.import/GhostFloat_0002.png-8630fee4368f0bc85e1cb05f1cfe9db8.stex" ]
+source_file="res://levels/library/library_background.png"
+dest_files=[ "res://.import/library_background.png-99430ef63cd962ae33691fd5304d2bba.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
