@@ -48,6 +48,11 @@ config/name="LD48"
 run/main_scene="res://menus/main_menu/main_menu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Dialogic="*res://addons/dialogic/dialogic.gd"
+DialogicSingleton="*res://addons/dialogic/Other/DialogicSingleton.gd"
+
 [display]
 
 window/stretch/mode="2d"
