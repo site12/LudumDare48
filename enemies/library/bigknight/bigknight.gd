@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var run_speed = 65
 var velocity = Vector2.ZERO
-var health = 45
+var health = 200
 var player = null
 var knockback = 50
 
@@ -42,5 +42,5 @@ func die():
 
 func _on_damage_radius_body_entered(body):
 	if body == player:
-		body.take_damage(10)
+		pass
 		#make player take damage based on time spent in zone
