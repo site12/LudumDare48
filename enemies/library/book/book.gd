@@ -10,6 +10,7 @@ func _physics_process(delta):
 	if player:
 		velocity = position.direction_to(player.position) * run_speed
 	velocity = move_and_slide(velocity)
+	$hud/ProgressBar.value = health
 
 func _on_line_of_sight_body_entered(body):
 	if body.name == "Mina":

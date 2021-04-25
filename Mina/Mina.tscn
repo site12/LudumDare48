@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=2]
+[gd_scene load_steps=96 format=2]
 
 [ext_resource path="res://Mina/Animations/Mina/Run/MinaRun_0004.png" type="Texture" id=1]
 [ext_resource path="res://Mina/Animations/Mina/Run/MinaRun_0008.png" type="Texture" id=2]
@@ -918,14 +918,14 @@ states/run/position = Vector2( 657, -56 )
 transitions = [ "idle", "run", SubResource( 21 ), "idle", "punch1", SubResource( 22 ), "run", "idle", SubResource( 23 ), "punch2", "idle", SubResource( 24 ), "kick", "idle", SubResource( 25 ), "idle", "jump", SubResource( 26 ), "run", "jump", SubResource( 27 ), "jump", "falling", SubResource( 28 ), "falling", "idle", SubResource( 29 ), "idle", "dead", SubResource( 30 ), "run", "punch1", SubResource( 31 ), "punch1", "idle", SubResource( 32 ), "punch1", "punch2", SubResource( 33 ), "punch2", "kick", SubResource( 34 ), "idle", "roll", SubResource( 35 ), "roll", "idle", SubResource( 36 ), "run", "roll", SubResource( 37 ), "roll", "run", SubResource( 38 ) ]
 start_node = "idle"
 end_node = "dead"
-graph_offset = Vector2( -222, -171 )
+graph_offset = Vector2( -263, -95 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=40]
 
 [sub_resource type="RectangleShape2D" id=41]
 extents = Vector2( 24.7832, 48 )
 
-[sub_resource type="Animation" id=42]
+[sub_resource type="Animation" id=37]
 resource_name = "took_damage"
 length = 0.25
 step = 0.0833333
@@ -1048,6 +1048,6 @@ zoom = Vector2( 1.5, 1.5 )
 smoothing_enabled = true
 
 [node name="DamageAnimation" type="AnimationPlayer" parent="."]
-anims/took_damage = SubResource( 42 )
+anims/took_damage = SubResource( 37 )
 
 [connection signal="area_entered" from="Sprite/smackbox" to="." method="_on_smackbox_area_entered"]

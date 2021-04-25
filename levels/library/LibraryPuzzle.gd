@@ -2,7 +2,7 @@ extends Control
 
 var correct = [1, 2, 3, 4, 5, 6]
 var order = []
-
+var inRange = false
 onready var show = get_tree().get_root().get_node("root/UnderBookcaseDoor")
 func _ready():
 	pass # Replace with function body.
@@ -49,5 +49,23 @@ func _on_Button6_pressed():
 func check_order():
 	if correct == order:
 		show.queue_free()
+		self.visible = false
 	else:
 		order.clear()
+
+#exit button
+func _on_Button7_pressed():
+	self.visible = false
+
+func _input(event):
+	if Input.is_action_just_pressed("interact") and inRange:
+		self.visible = true
+
+func _on_Area2D_body_entered(body):
+	print(body.name)
+	if body.name == 'Mina':
+		inRange = true
+
+
+func _on_Area2D_body_exited(body):
+	inRange = false
