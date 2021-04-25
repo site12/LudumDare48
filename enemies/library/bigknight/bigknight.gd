@@ -23,7 +23,7 @@ func _ready():
 func _physics_process(delta):
 	var current = state_machine.get_current_node()
 	# velocity = Vector2.ZERO
-	if player and canmove:
+	if player:
 		if get_global_position().x < player.get_global_position().x:
 			dir_to_player = +1
 		else:
@@ -33,7 +33,7 @@ func _physics_process(delta):
 		# 	dir_to_player = -1
 		# else:
 		# 	dir_to_player = 1
-		if abs(get_global_position().x - player.get_global_position().x) > 100:
+		if canmove:
 
 			match dir_to_player:
 				1:
@@ -42,8 +42,8 @@ func _physics_process(delta):
 					velocity.x = max(velocity.x + (ACCELERATION*dir_to_player), MAX_SPEED*-1)
 		# velocity.x = (velocity.x + (200*dir_to_player))
 		# velocity += position.direction_to(player.position) * run_speed
-	else:
-		velocity.x = 0
+		else:
+			velocity.x = 0
 	velocity.y += GRAVITY*delta
 	if player:
 		if dir_to_player > 0:
@@ -62,10 +62,25 @@ func _physics_process(delta):
 		if current != "idle":
 			state_machine.travel("idle")
 	velocity = move_and_slide(velocity)
-	if velocity.x <=0:
+	if velocity.x <0:
 		$Sprite.flip_h = true
+		$target_zone.scale.x = -1
+		$smack_box.scale.x = -1
 	elif velocity.x > 0:
 		$Sprite.flip_h = false
+		$target_zone.scale.x = 1
+		$smack_box.scale.x = 1
+	elif velocity.x == 0:
+		match dir_to_player:
+			1:
+				$Sprite.flip_h = false
+				$target_zone.scale.x = 1
+				$smack_box.scale.x = 1
+			-1:
+				$Sprite.flip_h = true
+				$target_zone.scale.x = -1
+				$smack_box.scale.x = -1
+
 
 # func _on_line_of_sight_body_entered(body):
 # 	if body.name == "Mina":
