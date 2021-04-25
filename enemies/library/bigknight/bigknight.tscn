@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://enemies/library/bigknight/bigknight.gd" type="Script" id=1]
 [ext_resource path="res://enemies/library/animations/LivingArmor/ArmorIdle_0002.png" type="Texture" id=2]
@@ -14,7 +14,7 @@
 [ext_resource path="res://enemies/library/animations/LivingArmor/ArmorIdle_0003.png" type="Texture" id=12]
 [ext_resource path="res://enemies/library/animations/LivingArmor/ArmorIdle_0005.png" type="Texture" id=13]
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 11 ), ExtResource( 2 ), ExtResource( 12 ), ExtResource( 4 ), ExtResource( 13 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
@@ -22,14 +22,13 @@ animations = [ {
 "speed": 12.0
 } ]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=2]
 radius = 825.901
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 107.444
+[sub_resource type="CircleShape2D" id=3]
+radius = 116.03
 
-[sub_resource type="Animation" id=3]
-resource_name = "took_damage"
+[sub_resource type="Animation" id=4]
 length = 0.25
 step = 0.0833333
 tracks/0/type = "value"
@@ -99,6 +98,9 @@ tracks/3/keys = {
 "values": [ 0, 9 ]
 }
 
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 50.0897, 89.0832 )
+
 [node name="bigknight" type="KinematicBody2D" groups=[
 "baddies",
 ]]
@@ -112,26 +114,58 @@ frame = 6
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 visible = false
-frames = SubResource( 4 )
+modulate = Color( 1, 0, 0, 1 )
+frames = SubResource( 1 )
 frame = 6
 
 [node name="line_of_sight" type="Area2D" parent="."]
+visible = false
+monitoring = false
+monitorable = false
 
 [node name="circle" type="CollisionShape2D" parent="line_of_sight"]
-shape = SubResource( 1 )
+visible = false
+shape = SubResource( 2 )
 
 [node name="damage_radius" type="Area2D" parent="."]
 collision_layer = 32
 collision_mask = 32
 
 [node name="circle" type="CollisionShape2D" parent="damage_radius"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="DamageAnimation" type="AnimationPlayer" parent="."]
-anims/took_damage = SubResource( 3 )
+anims/took_damage = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Idle = SubResource( 5 )
+
+[node name="left" type="RayCast2D" parent="."]
+position = Vector2( -20, 70 )
+enabled = true
+cast_to = Vector2( -50, 0 )
+
+[node name="right" type="RayCast2D" parent="."]
+position = Vector2( 21, 70 )
+enabled = true
+cast_to = Vector2( 50, 0 )
+
+[node name="topleft" type="RayCast2D" parent="."]
+position = Vector2( -20, -30 )
+enabled = true
+cast_to = Vector2( -50, 0 )
+
+[node name="topright" type="RayCast2D" parent="."]
+position = Vector2( 21, -30 )
+enabled = true
+cast_to = Vector2( 50, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 6 )
+
+[node name="down" type="RayCast2D" parent="."]
+position = Vector2( 0, 56 )
+enabled = true
 
 [connection signal="body_entered" from="line_of_sight" to="." method="_on_line_of_sight_body_entered"]
 [connection signal="body_exited" from="line_of_sight" to="." method="_on_line_of_sight_body_exited"]
