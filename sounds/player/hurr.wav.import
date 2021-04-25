@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hurr.wav-462f94e1550b98f9e2d8b072f1c785f7.sample"
+
+[deps]
+
+source_file="res://sounds/player/hurr.wav"
+dest_files=[ "res://.import/hurr.wav-462f94e1550b98f9e2d8b072f1c785f7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

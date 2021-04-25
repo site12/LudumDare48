@@ -48,6 +48,7 @@ func _on_Button6_pressed():
 #if wrong, clears the array so it can be added to again.
 func check_order():
 	if correct == order:
+		get_parent().get_parent().get_node("Mina").canmove = true
 		show.queue_free()
 		self.visible = false
 	else:
