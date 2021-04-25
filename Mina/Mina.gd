@@ -31,13 +31,24 @@ onready var jt = $'jump_timer'
 #onready var camera = $camerapos/Camera2D
 onready var root = get_tree().get_root().get_node('root')
 
+export var camera = true
 
+func toggle_hud():
+	$CanvasLayer/Control.visible = !$CanvasLayer/Control.visible
 
 func _ready():
+	if camera:
+		$Position2D/Camera2D.current = true
+	else:
+		$Position2D/Camera2D.current = false
 	state_machine = $AnimationTree.get("parameters/playback")
 
 
 func _physics_process(delta):
+	$CanvasLayer/Control/ProgressBar.value = health
+	if health <=0:
+		yield(get_tree().create_timer(2), "timeout")
+		get_tree().change_scene("res://levels/library/library.tscn")
 	on_wall = $Right.is_colliding() || $Left.is_colliding() || $TopRight.is_colliding() || $TopLeft.is_colliding()
 	if $Right.is_colliding() || $TopRight.is_colliding():
 		which_wall = -1
@@ -177,10 +188,10 @@ func take_damage(damage, source):
 		print("yeaowch " + str(damage))
 		var knockback_vector= Vector2.ZERO
 		if get_global_position() < source.get_global_position():
-			knockback_vector.x = -1000
+			knockback_vector.x = -500
 		else:
-			knockback_vector.x = 1000
-		knockback_vector.y = -1000
+			knockback_vector.x = 500
+		knockback_vector.y = -500
 		# var angle_to_baddie = get_global_position().angle_to(source.get_global_position())
 		# print("angle to baddie: " + str(angle_to_baddie))
 		# var vector_angle = Vector2(cos(angle_to_baddie), sin(angle_to_baddie))

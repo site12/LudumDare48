@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/415209__inspectorj__cat-screaming-a.wav-cb55717f58c88d13c01f13362f2d2a11.sample"
+
+[deps]
+
+source_file="res://levels/intermediate/sounds/415209__inspectorj__cat-screaming-a.wav"
+dest_files=[ "res://.import/415209__inspectorj__cat-screaming-a.wav-cb55717f58c88d13c01f13362f2d2a11.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

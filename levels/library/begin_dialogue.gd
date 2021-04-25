@@ -19,6 +19,7 @@ func _on_dialogic_dialogue_body_entered(body):
 
 func after_dialog(timeline_name):
 	mina.canmove = true
+	mina.toggle_hud()
 	audio.get_node("AnimationPlayer").play("fade_in")
 	parentnode.get_parent().get_node("AnimatedSprite").queue_free()
 	parentnode.queue_free()

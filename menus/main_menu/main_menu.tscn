@@ -176,14 +176,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/main_menu"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 1, 0, 0.470588, 0.0470588 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="overlay" type="VBoxContainer" parent="CanvasLayer/main_menu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -439,13 +431,11 @@ texture = ExtResource( 15 )
 
 [node name="Wheel Spin" type="Sprite" parent="Node2D/Sprite"]
 position = Vector2( 8.78049, 27.9326 )
-rotation = 6.28319
 texture = ExtResource( 16 )
 offset = Vector2( 0.868, 0 )
 
 [node name="Wheel Spin2" type="Sprite" parent="Node2D/Sprite"]
 position = Vector2( -36.5854, 26.6629 )
-rotation = 6.28319
 texture = ExtResource( 16 )
 offset = Vector2( 1.159, 0 )
 
@@ -453,6 +443,7 @@ offset = Vector2( 1.159, 0 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 19 )
+volume_db = -20.0
 autoplay = true
 
 [node name="Timer" type="Timer" parent="."]

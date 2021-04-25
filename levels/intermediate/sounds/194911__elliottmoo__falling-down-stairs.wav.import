@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/194911__elliottmoo__falling-down-stairs.wav-15aa99749394ff550fd6b23be3635a76.sample"
+
+[deps]
+
+source_file="res://levels/intermediate/sounds/194911__elliottmoo__falling-down-stairs.wav"
+dest_files=[ "res://.import/194911__elliottmoo__falling-down-stairs.wav-15aa99749394ff550fd6b23be3635a76.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
