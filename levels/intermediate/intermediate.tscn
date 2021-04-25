@@ -1,0 +1,232 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://levels/library/fog.shader" type="Shader" id=1]
+[ext_resource path="res://menus/main_menu/img/Background Trees.png" type="Texture" id=2]
+[ext_resource path="res://menus/main_menu/img/Foreground Trees.png" type="Texture" id=3]
+[ext_resource path="res://menus/main_menu/img/Clouds.png" type="Texture" id=4]
+[ext_resource path="res://menus/main_menu/img/Road.png" type="Texture" id=5]
+[ext_resource path="res://menus/main_menu/img/Foreground Grass.png" type="Texture" id=6]
+[ext_resource path="res://menus/main_menu/img/Sky.png" type="Texture" id=7]
+[ext_resource path="res://menus/main_menu/img/Wheel Spin.png" type="Texture" id=8]
+[ext_resource path="res://icon.png" type="Texture" id=9]
+[ext_resource path="res://menus/main_menu/img/Car.png" type="Texture" id=10]
+[ext_resource path="res://levels/intermediate/intermediate.gd" type="Script" id=11]
+[ext_resource path="res://menus/main_menu/img/sprite_3.png" type="Texture" id=12]
+[ext_resource path="res://menus/main_menu/img/sprite_2.png" type="Texture" id=13]
+[ext_resource path="res://menus/main_menu/img/sprite_4.png" type="Texture" id=14]
+[ext_resource path="res://menus/main_menu/img/sprite_7.png" type="Texture" id=15]
+[ext_resource path="res://music/levels/On Da Road.mp3" type="AudioStream" id=16]
+[ext_resource path="res://menus/main_menu/img/sprite_6.png" type="Texture" id=17]
+[ext_resource path="res://menus/main_menu/img/sprite_5.png" type="Texture" id=18]
+[ext_resource path="res://levels/intermediate/img/House.png" type="Texture" id=19]
+[ext_resource path="res://levels/intermediate/img/House_Foreground.png" type="Texture" id=20]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/color = Vector3( 0.95, 0.95, 0.95 )
+shader_param/OCTAVES = 4
+shader_param/opacity = 0.25
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 13 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "default",
+"speed": 0.5
+} ]
+
+[sub_resource type="Animation" id=5]
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Node2D/Sprite/Wheel Spin:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Node2D/Sprite/Wheel Spin2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Node2D/Sprite:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 166, -0.25, 0, 0.25, 0, 168, -0.25, 0, 0.25, 0, 167, -0.25, 0, 0.25, 0, 165, -0.25, 0, 0.25, 0, 164, -0.25, 0, 0.25, 0, 166, -0.25, 0, 0.25, 0, 167, -0.25, 0, 0.25, 0, 166, -0.25, 0, 0.25, 0, 167, -0.25, 0, 0.25, 0, 165, -0.25, 0, 0.25, 0, 166, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.3, 0.45, 0.6, 0.75, 0.8, 0.91, 0.95, 1 )
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="menu" type="Node2D" parent="."]
+script = ExtResource( 11 )
+
+[node name="Camera2D" type="Camera2D" parent="menu"]
+position = Vector2( -254, 0 )
+current = true
+
+[node name="Sprite" type="Sprite" parent="menu/Camera2D"]
+material = SubResource( 1 )
+position = Vector2( 2.00003, 4.00002 )
+scale = Vector2( 16.875, 10.125 )
+texture = ExtResource( 9 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="menu"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="menu/ParallaxBackground"]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_mirroring = Vector2( 1536, 0 )
+
+[node name="Sky" type="TextureRect" parent="menu/ParallaxBackground/ParallaxLayer"]
+margin_left = -768.0
+margin_top = -216.0
+margin_right = 1584.0
+margin_bottom = 384.0
+texture = ExtResource( 7 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="menu/ParallaxBackground"]
+motion_scale = Vector2( 0.2, 0.2 )
+motion_mirroring = Vector2( 2560, 0 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="menu/ParallaxBackground/ParallaxLayer2"]
+visible = false
+position = Vector2( -256, 0.999982 )
+scale = Vector2( 0.111111, 0.111481 )
+z_index = -100
+frames = SubResource( 6 )
+frame = 1
+playing = true
+
+[node name="clouds" type="TextureRect" parent="menu/ParallaxBackground/ParallaxLayer2"]
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 2048.0
+margin_bottom = 268.0
+texture = ExtResource( 4 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="menu/ParallaxBackground"]
+motion_scale = Vector2( 0.4, 0.4 )
+motion_mirroring = Vector2( 2560, 0 )
+
+[node name="treesb" type="TextureRect" parent="menu/ParallaxBackground/ParallaxLayer3"]
+margin_top = -200.0
+margin_right = 2560.0
+margin_bottom = 384.0
+texture = ExtResource( 2 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="menu/ParallaxBackground"]
+motion_scale = Vector2( 0.6, 0.6 )
+motion_mirroring = Vector2( 5120, 0 )
+
+[node name="treesf" type="TextureRect" parent="menu/ParallaxBackground/ParallaxLayer4"]
+margin_top = -376.0
+margin_right = 2560.0
+margin_bottom = 260.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="menu/ParallaxBackground"]
+motion_scale = Vector2( 1.2, 1.2 )
+motion_mirroring = Vector2( 3840, 0 )
+
+[node name="road" type="TextureRect" parent="menu/ParallaxBackground/ParallaxLayer5"]
+margin_top = -272.0
+margin_right = 2560.0
+margin_bottom = 293.0
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="menu/ParallaxBackground"]
+motion_scale = Vector2( 1.5, 1.5 )
+motion_mirroring = Vector2( 2560, 0 )
+
+[node name="grass" type="TextureRect" parent="menu/ParallaxBackground/ParallaxLayer6"]
+margin_top = -80.0
+margin_right = 2560.0
+margin_bottom = 384.0
+texture = ExtResource( 6 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="menu"]
+playback_speed = 1.25
+anims/wheels = SubResource( 5 )
+
+[node name="Node2D" type="Node2D" parent="menu"]
+position = Vector2( 0, 32 )
+
+[node name="Sprite" type="Sprite" parent="menu/Node2D"]
+position = Vector2( -254, 166 )
+z_index = -101
+texture = ExtResource( 10 )
+
+[node name="Wheel Spin" type="Sprite" parent="menu/Node2D/Sprite"]
+position = Vector2( 8.78049, 27.9326 )
+texture = ExtResource( 8 )
+offset = Vector2( 0.868, 0 )
+
+[node name="Wheel Spin2" type="Sprite" parent="menu/Node2D/Sprite"]
+position = Vector2( -36.5854, 26.6629 )
+texture = ExtResource( 8 )
+offset = Vector2( 1.159, 0 )
+
+[node name="Audio" type="Node" parent="menu"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="menu/Audio"]
+stream = ExtResource( 16 )
+autoplay = true
+
+[node name="Timer" type="Timer" parent="menu"]
+wait_time = 3.0
+autostart = true
+
+[node name="house" type="Node2D" parent="."]
+position = Vector2( 272, 40 )
+scale = Vector2( 1.2, 1.2 )
+
+[node name="Sprite" type="Sprite" parent="house"]
+texture = ExtResource( 19 )
+
+[node name="House_Foreground" type="Sprite" parent="house"]
+texture = ExtResource( 20 )
+
+[connection signal="timeout" from="menu/Timer" to="menu" method="_on_Timer_timeout"]
