@@ -78,7 +78,7 @@ shape = SubResource( 2 )
 
 [node name="damage_radius" type="Area2D" parent="."]
 collision_layer = 32
-collision_mask = 32
+collision_mask = 48
 
 [node name="circle" type="CollisionShape2D" parent="damage_radius"]
 shape = SubResource( 3 )

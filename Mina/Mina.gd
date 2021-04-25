@@ -2,11 +2,11 @@ extends KinematicBody2D
 
 const UP = Vector2(0, -1)
 var GRAVITY = 9.8 *300
-var ACCELERATION = 50
+var ACCELERATION = 25
 var FRICTION = 1
 const MAX_SPEED = 500
 const JUMP_HEIGHT = -1300
-const MIN_JUMP_HEIGHT = -750
+const MIN_JUMP_HEIGHT = -350
 
 
 var motion = Vector2()
@@ -19,6 +19,7 @@ var canmove = true
 var on_ice = false
 var on_ladder = false
 var dir = 1
+var health = 200
 var on_wall = false
 var which_wall = 0
 var current_attack = "none"
@@ -88,8 +89,9 @@ func movement(friction):
 		elif current == "punch2":
 			state_machine.travel("kick")
 
-
-
+	if current == "roll":
+		motion.x = 500 * -dir
+	
 	
 
 	if Input.is_action_just_pressed("down"):
@@ -99,11 +101,16 @@ func movement(friction):
 	
 	if Input.is_action_just_released("jump") and motion.y < 0:
 		motion.y = lerp(motion.y, 0, 0.5)	
-	if current != "punch1" and current != "punch2" and current != "kick":
+
+
+	if Input.is_action_just_pressed("roll"):
+		state_machine.travel("roll")
+
+	if current != "punch1" and current != "punch2" and current != "kick" and current != "roll":
 		if Input.is_action_pressed("right"):
 			if not on_ice and motion.x < 0 and is_on_floor():
 					
-				motion.x = lerp(motion.x, 0, 0.5)
+				motion.x = lerp(motion.x, 0, 0.2)
 				
 			motion.x = min(motion.x+ACCELERATION, MAX_SPEED)
 			
@@ -111,17 +118,17 @@ func movement(friction):
 		elif Input.is_action_pressed("left"):
 				if not on_ice and motion.x > 0 and is_on_floor():
 					
-					motion.x = lerp(motion.x, 0, 0.5)
+					motion.x = lerp(motion.x, 0, 0.2)
 					
 				motion.x = max(motion.x-ACCELERATION, -MAX_SPEED)
 				
 				dir = 1
 		else:
 			friction = true
-	else:
+	elif current != "roll":
 		motion.x = lerp(motion.x, 0, FRICTION)
 
-	if is_on_floor() and canmove or climbing: 
+	if is_on_floor() and (canmove or climbing) and current != "roll": 
 
 		if Input.is_action_just_pressed("jump"):
 			state_machine.travel("jump")
@@ -130,7 +137,7 @@ func movement(friction):
 		if friction == true and not on_ice:
 			motion.x = lerp(motion.x, 0, FRICTION)
 
-	if current != "punch1" and current != "punch2" and current != "kick":
+	if current != "punch1" and current != "punch2" and current != "kick" and current != "roll":
 		if motion.y > 100 and not ray_on_floor():
 			state_machine.travel("falling")
 		elif motion.y < 48:
@@ -144,6 +151,14 @@ func movement(friction):
 
 func ray_on_floor():
 	return $down.is_colliding() or $down2.is_colliding()
+
+func take_damage(damage):
+	if state_machine.get_current_node() != "roll":
+		print("yeaowch " + str(damage))
+		health -= damage
+		$DamageAnimation.play("took_damage")
+		if health < 0:
+			die()
 
 func die():
 	canmove = false

@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-var run_speed = 100
+var run_speed = 65
 var velocity = Vector2.ZERO
-var health = 45
+var health = 200
 var player = null
 var knockback = 50
 
@@ -15,8 +15,6 @@ func _physics_process(_delta):
 		$AnimatedSprite.flip_h = true
 	elif velocity.x > 0:
 		$AnimatedSprite.flip_h = false
-		
-	$hud/ProgressBar.value = health
 
 func _on_line_of_sight_body_entered(body):
 	if body.name == "Mina":
@@ -44,5 +42,5 @@ func die():
 
 func _on_damage_radius_body_entered(body):
 	if body == player:
-		body.take_damage(10)
+		pass
 		#make player take damage based on time spent in zone
