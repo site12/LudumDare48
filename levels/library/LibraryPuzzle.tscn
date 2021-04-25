@@ -71,7 +71,7 @@ margin_left = 320.0
 margin_top = 220.0
 margin_right = 384.0
 margin_bottom = 348.0
-text = "6"
+text = "4"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -88,7 +88,7 @@ margin_left = 64.0
 margin_top = 220.0
 margin_right = 128.0
 margin_bottom = 348.0
-text = "4"
+text = "6"
 __meta__ = {
 "_edit_use_anchors_": false
 }
