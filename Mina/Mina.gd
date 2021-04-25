@@ -198,7 +198,7 @@ func set_attack(attack):
 
 func _on_smackbox_area_entered(area):
 	print("area_entered")
-	if area.name == "damage_radius":
+	if area.name == "hit_box":
 		print("name checks out")
 		var enemy = area.get_parent()
 		if enemy.is_in_group("baddies"):

@@ -10,13 +10,17 @@ var dir_to_player
 var health = 500
 var player = null
 var knockback = 50
+var state_machine :AnimationNodeStateMachinePlayback
+
 
 func _ready():
+	state_machine = $AnimationTree.get("parameters/playback")
 	var boss_entrance = get_parent().get_node("BossEntrance")
 	if boss_entrance:
 		boss_entrance.connect("player_entered", self, "_on_player_entered")
 
 func _physics_process(delta):
+	var current = state_machine.get_current_node()
 	# velocity = Vector2.ZERO
 	if player:
 		if get_global_position().x < player.get_global_position().x:
@@ -28,7 +32,7 @@ func _physics_process(delta):
 		# 	dir_to_player = -1
 		# else:
 		# 	dir_to_player = 1
-		if abs(get_global_position().x - player.get_global_position().x) > 50:
+		if abs(get_global_position().x - player.get_global_position().x) > 100:
 
 			match dir_to_player:
 				1:
@@ -48,7 +52,12 @@ func _physics_process(delta):
 				velocity.x = 0
 				velocity.y += JUMP_HEIGHT
 
-
+	if velocity.x != 0:
+		if current != "walking":
+			state_machine.travel("walking")
+	else:
+		if current != "idle":
+			state_machine.travel("idle")
 	velocity = move_and_slide(velocity)
 	if velocity.x <=0:
 		$Sprite.flip_h = true
