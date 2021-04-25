@@ -22,7 +22,7 @@
 [ext_resource path="res://menus/loading/loading.tscn" type="PackedScene" id=20]
 [ext_resource path="res://music/levels/mansion probly idk.mp3" type="AudioStream" id=21]
 [ext_resource path="res://levels/library/dead.gd" type="Script" id=22]
-[ext_resource path="res://Tiles/Bookshelf.png" type="Texture" id=23]
+[ext_resource path="res://images/Bookshelf.png" type="Texture" id=23]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 13.9107, 64, 13.5088, 15.1163, 64, 14.6642, 64, 0, 0, 0, 0, 64 )
