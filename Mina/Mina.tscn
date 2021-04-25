@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=2]
+[gd_scene load_steps=96 format=2]
 
 [ext_resource path="res://Mina/Animations/Mina/Run/MinaRun_0004.png" type="Texture" id=1]
 [ext_resource path="res://Mina/Animations/Mina/Run/MinaRun_0008.png" type="Texture" id=2]
@@ -841,9 +841,6 @@ animation = "punch1"
 [sub_resource type="AnimationNodeAnimation" id=17]
 animation = "punch2"
 
-[sub_resource type="AnimationNodeAnimation" id=37]
-animation = "roll"
-
 [sub_resource type="AnimationNodeAnimation" id=18]
 animation = "run"
 
@@ -886,46 +883,34 @@ switch_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id=32]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=38]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=39]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=40]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=41]
-
 [sub_resource type="AnimationNodeStateMachine" id=33]
 states/dead/node = SubResource( 11 )
 states/dead/position = Vector2( 176, 58 )
 states/falling/node = SubResource( 12 )
-states/falling/position = Vector2( 327, -195 )
+states/falling/position = Vector2( 460, -156 )
 states/idle/node = SubResource( 13 )
 states/idle/position = Vector2( 385, 58 )
 states/jump/node = SubResource( 14 )
-states/jump/position = Vector2( 474, -164 )
+states/jump/position = Vector2( 566, -53 )
 states/kick/node = SubResource( 15 )
 states/kick/position = Vector2( 769, 204 )
 states/punch1/node = SubResource( 16 )
 states/punch1/position = Vector2( 284, 204 )
 states/punch2/node = SubResource( 17 )
 states/punch2/position = Vector2( 496, 204 )
-states/roll/node = SubResource( 37 )
-states/roll/position = Vector2( 724, 58 )
 states/run/node = SubResource( 18 )
-states/run/position = Vector2( 657, -56 )
-transitions = [ "idle", "run", SubResource( 19 ), "idle", "punch1", SubResource( 20 ), "run", "idle", SubResource( 21 ), "punch2", "idle", SubResource( 22 ), "kick", "idle", SubResource( 23 ), "idle", "jump", SubResource( 24 ), "run", "jump", SubResource( 25 ), "jump", "falling", SubResource( 26 ), "falling", "idle", SubResource( 27 ), "idle", "dead", SubResource( 28 ), "run", "punch1", SubResource( 29 ), "punch1", "idle", SubResource( 30 ), "punch1", "punch2", SubResource( 31 ), "punch2", "kick", SubResource( 32 ), "idle", "roll", SubResource( 38 ), "roll", "idle", SubResource( 39 ), "run", "roll", SubResource( 40 ), "roll", "run", SubResource( 41 ) ]
+states/run/position = Vector2( 677, 58 )
+transitions = [ "idle", "run", SubResource( 19 ), "idle", "punch1", SubResource( 20 ), "run", "idle", SubResource( 21 ), "punch2", "idle", SubResource( 22 ), "kick", "idle", SubResource( 23 ), "idle", "jump", SubResource( 24 ), "run", "jump", SubResource( 25 ), "jump", "falling", SubResource( 26 ), "falling", "idle", SubResource( 27 ), "idle", "dead", SubResource( 28 ), "run", "punch1", SubResource( 29 ), "punch1", "idle", SubResource( 30 ), "punch1", "punch2", SubResource( 31 ), "punch2", "kick", SubResource( 32 ) ]
 start_node = "idle"
 end_node = "dead"
-graph_offset = Vector2( -222, -171 )
+graph_offset = Vector2( -263, -95 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=34]
 
 [sub_resource type="RectangleShape2D" id=35]
 extents = Vector2( 24.7832, 48 )
 
-[sub_resource type="Animation" id=42]
+[sub_resource type="Animation" id=37]
 resource_name = "took_damage"
 length = 0.25
 step = 0.0833333
@@ -1048,6 +1033,6 @@ zoom = Vector2( 1.5, 1.5 )
 smoothing_enabled = true
 
 [node name="DamageAnimation" type="AnimationPlayer" parent="."]
-anims/took_damage = SubResource( 42 )
+anims/took_damage = SubResource( 37 )
 
 [connection signal="area_entered" from="Sprite/smackbox" to="." method="_on_smackbox_area_entered"]
