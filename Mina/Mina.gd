@@ -31,9 +31,13 @@ onready var jt = $'jump_timer'
 #onready var camera = $camerapos/Camera2D
 onready var root = get_tree().get_root().get_node('root')
 
-
+export var camera = true
 
 func _ready():
+	if camera:
+		$Position2D/Camera2D.current = true
+	else:
+		$Position2D/Camera2D.current = false
 	state_machine = $AnimationTree.get("parameters/playback")
 
 
