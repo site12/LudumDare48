@@ -345,6 +345,7 @@ position = Vector2( -256, 0.999982 )
 scale = Vector2( 0.111111, 0.111481 )
 z_index = -100
 frames = SubResource( 5 )
+frame = 2
 playing = true
 
 [node name="clouds" type="TextureRect" parent="ParallaxBackground/ParallaxLayer2"]
