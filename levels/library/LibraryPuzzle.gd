@@ -1,9 +1,9 @@
 extends Control
 
-var finished = false
 var correct = [1, 2, 3, 4, 5, 6]
 var order = []
 
+onready var show = get_tree().get_root().get_node("root/UnderBookcaseDoor")
 func _ready():
 	pass # Replace with function body.
 
@@ -48,6 +48,6 @@ func _on_Button6_pressed():
 #if wrong, clears the array so it can be added to again.
 func check_order():
 	if correct == order:
-		finished = true
+		show.queue_free()
 	else:
 		order.clear()
