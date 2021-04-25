@@ -117,30 +117,37 @@ func movement(friction):
 	if Input.is_action_just_pressed("roll"):
 		set_collision_mask_bit(2, false)
 		state_machine.travel("roll")
+		current = "roll"
 
-	if current != "punch1" and current != "punch2" and current != "kick" and current != "roll":
-		if Input.is_action_pressed("right"):
-			if not on_ice and motion.x < 0 and is_on_floor():
-					
-				motion.x = lerp(motion.x, 0, 0.2)
-				
-			motion.x = min(motion.x+ACCELERATION, MAX_SPEED)
-			
-			dir = -1
-		elif Input.is_action_pressed("left"):
-				if not on_ice and motion.x > 0 and is_on_floor():
-					
-					motion.x = lerp(motion.x, 0, 0.2)
-					
-				motion.x = max(motion.x-ACCELERATION, -MAX_SPEED)
-				
-				dir = 1
-		else:
-			friction = true
+	if current != "punch1" and current != "punch2" and current != "kick":
+		if canmove:
+			if Input.is_action_pressed("right"):
+				if current != "roll" or dir == 1:
+					if not on_ice and motion.x < 0 and is_on_floor():
+							
+						motion.x = lerp(motion.x, 0, 0.2)
+						
+					motion.x = min(motion.x+ACCELERATION, MAX_SPEED)
+					# if current == "roll":
+					# 	state_machine.travel("run")
+					dir = -1
+			elif Input.is_action_pressed("left"):
+				if current != "roll" or dir == -1:
+					if not on_ice and motion.x > 0 and is_on_floor():
+						
+						motion.x = lerp(motion.x, 0, 0.2)
+						
+					motion.x = max(motion.x-ACCELERATION, -MAX_SPEED)
+					# if current == "roll":
+					# 	state_machine.travel("run")
+					dir = 1
+			else:
+				if current != "roll":
+					friction = true
 	elif current != "roll":
 		motion.x = lerp(motion.x, 0, FRICTION)
 
-	if is_on_floor() and (canmove or climbing) and current != "roll": 
+	if is_on_floor() and (canmove or climbing): 
 
 		if Input.is_action_just_pressed("jump"):
 			$Audio/jump.play()
@@ -188,7 +195,7 @@ func take_damage(damage, source):
 			die()
 
 func die():
-	canmove = false
+	# canmove = false
 	state_machine.travel("dead")
 	set_physics_process(false)
 
