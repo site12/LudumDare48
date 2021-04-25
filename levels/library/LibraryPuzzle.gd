@@ -65,21 +65,10 @@ func _input(event):
 		self.visible = true
 		get_parent().get_parent().get_node("Mina").canmove = false
 
-func _on_Area2D_body_entered(body):
-	print(body.name)
-	if body.name == 'Mina':
-		inRange = true
-
-
-func _on_Area2D_body_exited(body):
-	inRange = false
-
-
 func _on_puzzle_body_entered(body):
-	print(body.name)
 	if body.name == 'Mina':
 		inRange = true
 
 
 func _on_puzzle_body_exited(body):
-	inRange = false
+		inRange = false

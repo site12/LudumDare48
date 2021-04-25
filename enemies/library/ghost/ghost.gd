@@ -22,8 +22,9 @@ func _on_line_of_sight_body_entered(body):
 	if body.name == "Mina":
 		player = body
 
-func _on_line_of_sight_body_exited(_body):
-	player = null
+func _on_line_of_sight_body_exited(body):
+	if body.name == "Mina":
+		player = null
 
 func take_damage(dmg):
 	print("took damage")
@@ -44,5 +45,5 @@ func die():
 
 func _on_damage_radius_body_entered(body):
 	if body == player:
-		body.take_damage(10, self)
+		body.take_damage(50, self)
 		#make player take damage based on time spent in zone

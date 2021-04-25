@@ -71,22 +71,7 @@ animations = [ {
 "name": "hurt",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 43 ), ExtResource( 49 ), ExtResource( 48 ), ExtResource( 50 ), ExtResource( 39 ), ExtResource( 31 ) ],
-"loop": false,
-"name": "landing",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 26 ), ExtResource( 17 ), ExtResource( 14 ), ExtResource( 16 ), ExtResource( 24 ) ],
-"loop": true,
-"name": "punch2",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 9 ), ExtResource( 1 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "run",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 30 ), ExtResource( 47 ), ExtResource( 37 ), ExtResource( 32 ), ExtResource( 35 ) ],
+"frames": [ ExtResource( 44 ), ExtResource( 42 ) ],
 "loop": true,
 "name": "kick",
 "speed": 12.0
@@ -111,14 +96,29 @@ animations = [ {
 "name": "falling",
 "speed": 12.0
 }, {
+"frames": [ ExtResource( 43 ), ExtResource( 49 ), ExtResource( 48 ), ExtResource( 50 ), ExtResource( 39 ), ExtResource( 31 ) ],
+"loop": false,
+"name": "falling",
+"speed": 12.0
+}, {
 "frames": [ ExtResource( 38 ) ],
 "loop": false,
 "name": "jump",
 "speed": 12.0
+}, {
+"frames": [ ExtResource( 38 ) ],
+"loop": false,
+"name": "jump",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 9 ), ExtResource( 1 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "run",
+"speed": 12.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 38.6628
+radius = 17.8972
 
 [sub_resource type="Animation" id=3]
 length = 0.416667
@@ -343,6 +343,18 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 0, 3, 5 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite/smackbox:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -842,7 +854,7 @@ tracks/10/keys = {
 }
 
 [sub_resource type="Animation" id=11]
-length = 0.833333
+length = 0.75
 loop = true
 step = 0.0833333
 tracks/0/type = "value"
@@ -888,10 +900,34 @@ tracks/3/loop_wrap = false
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.75 ),
+"times": PoolRealArray( 0, 0.666667 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0, 9 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite/smackbox:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite/smackbox:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -946,6 +982,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [ 0, 9 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite/smackbox:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="AnimationNodeAnimation" id=13]
 animation = "dead"
@@ -998,6 +1046,7 @@ priority = 10
 [sub_resource type="AnimationNodeStateMachineTransition" id=29]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=30]
+priority = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=31]
 
@@ -1044,7 +1093,8 @@ auto_advance = true
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=49]
+[sub_resource type="AnimationNodeStateMachineTransition" id=54]
+priority = 3
 
 [sub_resource type="AnimationNodeStateMachine" id=50]
 states/dead/node = SubResource( 13 )
@@ -1067,10 +1117,10 @@ states/roll/node = SubResource( 21 )
 states/roll/position = Vector2( 724, 58 )
 states/run/node = SubResource( 22 )
 states/run/position = Vector2( 724, -106 )
-transitions = [ "idle", "run", SubResource( 23 ), "idle", "punch1", SubResource( 24 ), "run", "idle", SubResource( 25 ), "punch2", "idle", SubResource( 26 ), "kick", "idle", SubResource( 27 ), "idle", "jump", SubResource( 28 ), "run", "jump", SubResource( 29 ), "jump", "falling", SubResource( 30 ), "falling", "idle", SubResource( 31 ), "idle", "dead", SubResource( 32 ), "run", "punch1", SubResource( 33 ), "punch1", "idle", SubResource( 34 ), "punch1", "punch2", SubResource( 35 ), "punch2", "kick", SubResource( 36 ), "idle", "roll", SubResource( 37 ), "roll", "idle", SubResource( 38 ), "run", "roll", SubResource( 39 ), "roll", "run", SubResource( 40 ), "idle", "hurt", SubResource( 41 ), "run", "hurt", SubResource( 42 ), "jump", "hurt", SubResource( 43 ), "falling", "hurt", SubResource( 44 ), "punch1", "hurt", SubResource( 45 ), "punch2", "hurt", SubResource( 46 ), "kick", "hurt", SubResource( 47 ), "hurt", "idle", SubResource( 48 ), "jump", "roll", SubResource( 49 ) ]
+transitions = [ "idle", "run", SubResource( 23 ), "idle", "punch1", SubResource( 24 ), "run", "idle", SubResource( 25 ), "punch2", "idle", SubResource( 26 ), "kick", "idle", SubResource( 27 ), "idle", "jump", SubResource( 28 ), "run", "jump", SubResource( 29 ), "jump", "falling", SubResource( 30 ), "falling", "idle", SubResource( 31 ), "idle", "dead", SubResource( 32 ), "run", "punch1", SubResource( 33 ), "punch1", "idle", SubResource( 34 ), "punch1", "punch2", SubResource( 35 ), "punch2", "kick", SubResource( 36 ), "idle", "roll", SubResource( 37 ), "roll", "idle", SubResource( 38 ), "run", "roll", SubResource( 39 ), "roll", "run", SubResource( 40 ), "idle", "hurt", SubResource( 41 ), "run", "hurt", SubResource( 42 ), "jump", "hurt", SubResource( 43 ), "falling", "hurt", SubResource( 44 ), "punch1", "hurt", SubResource( 45 ), "punch2", "hurt", SubResource( 46 ), "kick", "hurt", SubResource( 47 ), "hurt", "idle", SubResource( 48 ), "jump", "roll", SubResource( 54 ) ]
 start_node = "idle"
 end_node = "dead"
-graph_offset = Vector2( -241, -235 )
+graph_offset = Vector2( -130, -179 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=51]
 
@@ -1121,7 +1171,7 @@ animation = "idle"
 texture = ExtResource( 52 )
 hframes = 3
 vframes = 2
-frame = 4
+frame = 1
 
 [node name="smackbox" type="Area2D" parent="Sprite"]
 visible = false
@@ -1131,10 +1181,11 @@ collision_layer = 32
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/smackbox"]
-position = Vector2( 47.9852, 3.36739 )
+position = Vector2( 35.0769, -12.3471 )
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.27
 anims/dead = SubResource( 3 )
 anims/falling = SubResource( 4 )
 anims/hurt = SubResource( 5 )
