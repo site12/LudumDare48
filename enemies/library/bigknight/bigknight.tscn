@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://enemies/library/bigknight/bigknight.gd" type="Script" id=1]
 [ext_resource path="res://enemies/library/animations/LivingArmor/ArmorIdle_0002.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://enemies/library/animations/LivingArmor/ArmorIdle_0001.png" type="Texture" id=11]
 [ext_resource path="res://enemies/library/animations/LivingArmor/ArmorIdle_0003.png" type="Texture" id=12]
 [ext_resource path="res://enemies/library/animations/LivingArmor/ArmorIdle_0005.png" type="Texture" id=13]
+[ext_resource path="res://enemies/library/bigknight/LivingArmorWalk.png" type="Texture" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -25,8 +26,12 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=2]
 radius = 825.901
 
-[sub_resource type="CircleShape2D" id=3]
-radius = 116.03
+[sub_resource type="CapsuleShape2D" id=17]
+radius = 53.1997
+height = 92.9756
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 80.1402, 96.1058 )
 
 [sub_resource type="Animation" id=4]
 length = 0.25
@@ -44,8 +49,28 @@ tracks/0/keys = {
 "values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "walking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachine" id=12]
+states/idle/node = SubResource( 14 )
+states/idle/position = Vector2( 423, 83 )
+states/walking/node = SubResource( 9 )
+states/walking/position = Vector2( 591, 83 )
+transitions = [ "idle", "walking", SubResource( 15 ), "walking", "idle", SubResource( 16 ) ]
+start_node = "idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=13]
+
 [sub_resource type="Animation" id=5]
-resource_name = "Idle"
+resource_name = "idle"
 length = 0.833333
 loop = true
 step = 0.0833333
@@ -97,9 +122,86 @@ tracks/3/keys = {
 "update": 0,
 "values": [ 0, 9 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "walking"
+loop = true
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 14 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.916667 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 11 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -16.4217, -8.20993 ) ]
+}
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 50.0897, 89.0832 )
+extents = Vector2( 41.886, 89.0832 )
 
 [node name="bigknight" type="KinematicBody2D" groups=[
 "baddies",
@@ -112,7 +214,7 @@ script = ExtResource( 1 )
 texture = ExtResource( 9 )
 hframes = 5
 vframes = 2
-frame = 6
+frame = 4
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 visible = false
@@ -134,13 +236,27 @@ collision_layer = 32
 collision_mask = 48
 
 [node name="circle" type="CollisionShape2D" parent="damage_radius"]
-shape = SubResource( 3 )
+shape = SubResource( 17 )
+
+[node name="hit_box" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box"]
+shape = SubResource( 18 )
 
 [node name="DamageAnimation" type="AnimationPlayer" parent="."]
 anims/took_damage = SubResource( 4 )
 
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 12 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 13 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Idle = SubResource( 5 )
+anims/idle = SubResource( 5 )
+anims/walking = SubResource( 7 )
 
 [node name="left" type="RayCast2D" parent="."]
 position = Vector2( -20, 70 )
