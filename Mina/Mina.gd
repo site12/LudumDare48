@@ -94,7 +94,6 @@ func movement(friction):
 		motion.x = 500 * -dir
 	else:
 		if get_collision_mask_bit(2) == false:
-			print('here')
 			set_collision_mask_bit(2, true)
 
 	if Input.is_action_just_pressed("down"):
@@ -156,11 +155,12 @@ func movement(friction):
 func ray_on_floor():
 	return $down.is_colliding() or $down2.is_colliding()
 
-func take_damage(damage):
+func take_damage(damage, source):
 	if state_machine.get_current_node() != "roll":
 		print("yeaowch " + str(damage))
 		health -= damage
 		$EffectAnimations.play("took_damage")
+		state_machine.travel("hurt")
 		if health < 0:
 			die()
 

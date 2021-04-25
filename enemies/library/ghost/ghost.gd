@@ -44,5 +44,5 @@ func die():
 
 func _on_damage_radius_body_entered(body):
 	if body == player:
-		body.take_damage(10)
+		body.take_damage(10, self)
 		#make player take damage based on time spent in zone

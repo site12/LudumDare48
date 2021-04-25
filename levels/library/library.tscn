@@ -944,8 +944,15 @@ margin_top = -136.0
 margin_right = 4160.0
 margin_bottom = 282.0
 rect_scale = Vector2( 2, 2 )
-texture = ExtResource( 9 )
 stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 419.059, 122.559 )
+scale = Vector2( 2.63695, 1.63833 )
+texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -953,15 +960,6 @@ __meta__ = {
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.3, 0.3 )
 motion_mirroring = Vector2( 8320, 836 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 419.059, 122.559 )
-scale = Vector2( 2.63695, 1.63833 )
-texture = ExtResource( 4 )
-stretch_mode = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="DecoBookcase" type="TileMap" parent="."]
 tile_set = SubResource( 32 )
