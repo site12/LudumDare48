@@ -1292,5 +1292,5 @@ position = Vector2( 4352.28, 1308.54 )
 scale = Vector2( 10, 10 )
 shape = SubResource( 33 )
 
-[connection signal="area_entered" from="Area2D" to="minigame/LibraryPuzzle" method="_on_Area2D_area_entered"]
-[connection signal="area_exited" from="Area2D" to="minigame/LibraryPuzzle" method="_on_Area2D_area_exited"]
+[connection signal="body_entered" from="Area2D" to="minigame/LibraryPuzzle" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="minigame/LibraryPuzzle" method="_on_Area2D_body_exited"]

@@ -57,17 +57,15 @@ func check_order():
 func _on_Button7_pressed():
 	self.visible = false
 
-
-
-func _on_Area2D_area_entered(body):
-	print(body.name)
-	if body.name == 'Mina':
-		inRange = true
-
 func _input(event):
 	if Input.is_action_just_pressed("interact") and inRange:
 		self.visible = true
 
+func _on_Area2D_body_entered(body):
+	print(body.name)
+	if body.name == 'Mina':
+		inRange = true
 
-func _on_Area2D_area_exited(area):
+
+func _on_Area2D_body_exited(body):
 	inRange = false
