@@ -69,7 +69,6 @@ script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="line_of_sight" type="Area2D" parent="."]

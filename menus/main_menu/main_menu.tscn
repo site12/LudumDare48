@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://fonts/couture-bld.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://menus/main_menu/buttons/start.tscn" type="PackedScene" id=2]
@@ -7,6 +7,15 @@
 [ext_resource path="res://menus/main_menu/overlays/site12.tscn" type="PackedScene" id=5]
 [ext_resource path="res://menus/main_menu/overlays/options.tscn" type="PackedScene" id=6]
 [ext_resource path="res://menus/main_menu/main_menu.gd" type="Script" id=7]
+[ext_resource path="res://menus/main_menu/img/Background Trees.png" type="Texture" id=8]
+[ext_resource path="res://menus/main_menu/img/Foreground Trees.png" type="Texture" id=9]
+[ext_resource path="res://menus/main_menu/img/Sky.png" type="Texture" id=10]
+[ext_resource path="res://menus/main_menu/img/Clouds.png" type="Texture" id=11]
+[ext_resource path="res://menus/main_menu/img/Road.png" type="Texture" id=12]
+[ext_resource path="res://menus/main_menu/img/Foreground Grass.png" type="Texture" id=13]
+[ext_resource path="res://menus/main_menu/menu.gd" type="Script" id=14]
+[ext_resource path="res://menus/main_menu/img/Car.png" type="Texture" id=15]
+[ext_resource path="res://menus/main_menu/img/Wheel Spin.png" type="Texture" id=16]
 
 [sub_resource type="DynamicFont" id=1]
 size = 85
@@ -83,7 +92,55 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 
-[node name="main_menu" type="Control"]
+[sub_resource type="Animation" id=4]
+resource_name = "wheels"
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Node2D/Sprite/Wheel Spin:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Node2D/Sprite/Wheel Spin2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Node2D/Sprite:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 166, -0.25, 0, 0.25, 0, 168, -0.25, 0, 0.25, 0, 167, -0.25, 0, 0.25, 0, 165, -0.25, 0, 0.25, 0, 164, -0.25, 0, 0.25, 0, 166, -0.25, 0, 0.25, 0, 167, -0.25, 0, 0.25, 0, 166, -0.25, 0, 0.25, 0, 167, -0.25, 0, 0.25, 0, 165, -0.25, 0, 0.25, 0, 166, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.3, 0.45, 0.6, 0.75, 0.8, 0.91, 0.95, 1 )
+}
+
+[node name="menu" type="Node2D"]
+script = ExtResource( 14 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -254, 0 )
+current = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="main_menu" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
@@ -92,21 +149,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="overlay" type="VBoxContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/main_menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 0, 0.470588, 0.0470588 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="overlay" type="VBoxContainer" parent="CanvasLayer/main_menu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="screen" type="HBoxContainer" parent="overlay"]
+[node name="screen" type="HBoxContainer" parent="CanvasLayer/main_menu/overlay"]
 margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="left" type="VBoxContainer" parent="overlay/screen"]
+[node name="left" type="VBoxContainer" parent="CanvasLayer/main_menu/overlay/screen"]
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 295.0
 margin_bottom = 600.0
@@ -114,28 +179,28 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="center" type="HBoxContainer" parent="overlay/screen/left"]
+[node name="center" type="HBoxContainer" parent="CanvasLayer/main_menu/overlay/screen/left"]
 margin_top = 108.0
 margin_right = 295.0
 margin_bottom = 492.0
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="site12_credits" parent="overlay/screen/left/center" instance=ExtResource( 5 )]
+[node name="site12_credits" parent="CanvasLayer/main_menu/overlay/screen/left/center" instance=ExtResource( 5 )]
 margin_left = 19.0
 margin_top = 0.0
 margin_right = 275.0
 margin_bottom = 384.0
 mouse_filter = 1
 
-[node name="spacer" type="Control" parent="overlay/screen"]
+[node name="spacer" type="Control" parent="CanvasLayer/main_menu/overlay/screen"]
 margin_left = 299.0
 margin_right = 724.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 425, 0 )
 mouse_filter = 1
 
-[node name="right" type="VBoxContainer" parent="overlay/screen"]
+[node name="right" type="VBoxContainer" parent="CanvasLayer/main_menu/overlay/screen"]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 728.0
 margin_right = 1024.0
@@ -144,34 +209,34 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="center" type="HBoxContainer" parent="overlay/screen/right"]
+[node name="center" type="HBoxContainer" parent="CanvasLayer/main_menu/overlay/screen/right"]
 margin_top = 108.0
 margin_right = 296.0
 margin_bottom = 492.0
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="options" parent="overlay/screen/right/center" instance=ExtResource( 6 )]
+[node name="options" parent="CanvasLayer/main_menu/overlay/screen/right/center" instance=ExtResource( 6 )]
 margin_left = 20.0
 margin_top = 0.0
 margin_right = 276.0
 margin_bottom = 384.0
 
-[node name="screen" type="VBoxContainer" parent="."]
+[node name="screen" type="VBoxContainer" parent="CanvasLayer/main_menu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="top" type="HBoxContainer" parent="screen"]
+[node name="top" type="HBoxContainer" parent="CanvasLayer/main_menu/screen"]
 margin_right = 1024.0
 margin_bottom = 298.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="title_of_game" type="Label" parent="screen/top"]
+[node name="title_of_game" type="Label" parent="CanvasLayer/main_menu/screen/top"]
 margin_left = 389.0
 margin_top = 106.0
 margin_right = 634.0
@@ -179,7 +244,7 @@ margin_bottom = 192.0
 custom_fonts/font = SubResource( 1 )
 text = "TItle"
 
-[node name="bottom" type="VBoxContainer" parent="screen"]
+[node name="bottom" type="VBoxContainer" parent="CanvasLayer/main_menu/screen"]
 margin_top = 302.0
 margin_right = 1024.0
 margin_bottom = 600.0
@@ -187,20 +252,20 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="btop" type="HBoxContainer" parent="screen/bottom"]
+[node name="btop" type="HBoxContainer" parent="CanvasLayer/main_menu/screen/bottom"]
 margin_right = 1024.0
 margin_bottom = 147.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="start" parent="screen/bottom/btop" instance=ExtResource( 2 )]
+[node name="start" parent="CanvasLayer/main_menu/screen/bottom/btop" instance=ExtResource( 2 )]
 margin_left = 440.0
 margin_top = 0.0
 margin_right = 584.0
 margin_bottom = 147.0
 
-[node name="bbottom" type="HBoxContainer" parent="screen/bottom"]
+[node name="bbottom" type="HBoxContainer" parent="CanvasLayer/main_menu/screen/bottom"]
 margin_top = 151.0
 margin_right = 1024.0
 margin_bottom = 298.0
@@ -208,26 +273,140 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="site12" parent="screen/bottom/bbottom" instance=ExtResource( 3 )]
+[node name="site12" parent="CanvasLayer/main_menu/screen/bottom/bbottom" instance=ExtResource( 3 )]
 margin_left = 19.0
 margin_top = 0.0
 margin_right = 83.0
 margin_bottom = 147.0
 
-[node name="Control" type="Control" parent="screen/bottom/bbottom"]
+[node name="Control" type="Control" parent="CanvasLayer/main_menu/screen/bottom/bbottom"]
 margin_left = 87.0
 margin_right = 937.0
 margin_bottom = 147.0
 rect_min_size = Vector2( 850, 0 )
 mouse_filter = 1
 
-[node name="options" parent="screen/bottom/bbottom" instance=ExtResource( 4 )]
+[node name="options" parent="CanvasLayer/main_menu/screen/bottom/bbottom" instance=ExtResource( 4 )]
 margin_left = 941.0
 margin_top = 0.0
 margin_right = 1005.0
 margin_bottom = 147.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/main_menu"]
 playback_speed = 5.0
 anims/options = SubResource( 2 )
 anims/site12 = SubResource( 3 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_mirroring = Vector2( 1536, 0 )
+
+[node name="Sky" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+margin_left = -768.0
+margin_top = -216.0
+margin_right = 1584.0
+margin_bottom = 384.0
+texture = ExtResource( 10 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.2, 0.2 )
+motion_mirroring = Vector2( 2560, 0 )
+
+[node name="clouds" type="TextureRect" parent="ParallaxBackground/ParallaxLayer2"]
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 2048.0
+margin_bottom = 268.0
+texture = ExtResource( 11 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.4, 0.4 )
+motion_mirroring = Vector2( 2560, 0 )
+
+[node name="treesb" type="TextureRect" parent="ParallaxBackground/ParallaxLayer3"]
+margin_top = -200.0
+margin_right = 2560.0
+margin_bottom = 384.0
+texture = ExtResource( 8 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.6, 0.6 )
+motion_mirroring = Vector2( 5120, 0 )
+
+[node name="treesf" type="TextureRect" parent="ParallaxBackground/ParallaxLayer4"]
+margin_top = -376.0
+margin_right = 2560.0
+margin_bottom = 260.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 9 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 1.2, 1.2 )
+motion_mirroring = Vector2( 3840, 0 )
+
+[node name="road" type="TextureRect" parent="ParallaxBackground/ParallaxLayer5"]
+margin_top = -272.0
+margin_right = 2560.0
+margin_bottom = 293.0
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 12 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 1.5, 1.5 )
+motion_mirroring = Vector2( 2560, 0 )
+
+[node name="grass" type="TextureRect" parent="ParallaxBackground/ParallaxLayer6"]
+margin_top = -80.0
+margin_right = 2560.0
+margin_bottom = 384.0
+texture = ExtResource( 13 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 1.25
+anims/wheels = SubResource( 4 )
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 0, 32 )
+
+[node name="Sprite" type="Sprite" parent="Node2D"]
+position = Vector2( -254, 166 )
+z_index = -101
+texture = ExtResource( 15 )
+
+[node name="Wheel Spin" type="Sprite" parent="Node2D/Sprite"]
+position = Vector2( 8.78049, 27.9326 )
+rotation = 6.28319
+texture = ExtResource( 16 )
+offset = Vector2( 0.868, 0 )
+
+[node name="Wheel Spin2" type="Sprite" parent="Node2D/Sprite"]
+position = Vector2( -36.5854, 26.6629 )
+rotation = 6.28319
+texture = ExtResource( 16 )
+offset = Vector2( 1.159, 0 )

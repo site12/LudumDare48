@@ -868,7 +868,7 @@ animation = "idle"
 texture = ExtResource( 52 )
 hframes = 3
 vframes = 2
-frame = 1
+frame = 4
 
 [node name="smackbox" type="Area2D" parent="Sprite"]
 visible = false
