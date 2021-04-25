@@ -31,13 +31,24 @@ onready var jt = $'jump_timer'
 #onready var camera = $camerapos/Camera2D
 onready var root = get_tree().get_root().get_node('root')
 
+export var camera = true
 
+func toggle_hud():
+	$CanvasLayer/Control.visible = !$CanvasLayer/Control.visible
 
 func _ready():
+	if camera:
+		$Position2D/Camera2D.current = true
+	else:
+		$Position2D/Camera2D.current = false
 	state_machine = $AnimationTree.get("parameters/playback")
 
 
 func _physics_process(delta):
+	$CanvasLayer/Control/ProgressBar.value = health
+	if health <=0:
+		yield(get_tree().create_timer(2), "timeout")
+		get_tree().change_scene("res://levels/library/library.tscn")
 	on_wall = $Right.is_colliding() || $Left.is_colliding() || $TopRight.is_colliding() || $TopLeft.is_colliding()
 	if $Right.is_colliding() || $TopRight.is_colliding():
 		which_wall = -1
@@ -84,6 +95,10 @@ func direction():
 func movement(friction):
 	var current = state_machine.get_current_node()
 
+	if current == 'falling' and ray_on_floor():
+		if ($down.is_colliding() and $down.get_collider().name == "Floor") or ($down2.is_colliding() and $down2.get_collider().name == "Floor"):
+			$Audio/land.play()
+
 	if Input.is_action_just_pressed("attack_1"):
 
 		if current != "punch1" and current != "punch2" and current != "kick":
@@ -113,32 +128,40 @@ func movement(friction):
 	if Input.is_action_just_pressed("roll"):
 		set_collision_mask_bit(2, false)
 		state_machine.travel("roll")
+		current = "roll"
 
-	if current != "punch1" and current != "punch2" and current != "kick" and current != "roll":
-		if Input.is_action_pressed("right"):
-			if not on_ice and motion.x < 0 and is_on_floor():
-					
-				motion.x = lerp(motion.x, 0, 0.2)
-				
-			motion.x = min(motion.x+ACCELERATION, MAX_SPEED)
-			
-			dir = -1
-		elif Input.is_action_pressed("left"):
-				if not on_ice and motion.x > 0 and is_on_floor():
-					
-					motion.x = lerp(motion.x, 0, 0.2)
-					
-				motion.x = max(motion.x-ACCELERATION, -MAX_SPEED)
-				
-				dir = 1
-		else:
-			friction = true
+	if current != "punch1" and current != "punch2" and current != "kick":
+		if canmove:
+			if Input.is_action_pressed("right"):
+				if current != "roll" or dir == 1:
+					if not on_ice and motion.x < 0 and is_on_floor():
+							
+						motion.x = lerp(motion.x, 0, 0.2)
+						
+					motion.x = min(motion.x+ACCELERATION, MAX_SPEED)
+					# if current == "roll":
+					# 	state_machine.travel("run")
+					dir = -1
+			elif Input.is_action_pressed("left"):
+				if current != "roll" or dir == -1:
+					if not on_ice and motion.x > 0 and is_on_floor():
+						
+						motion.x = lerp(motion.x, 0, 0.2)
+						
+					motion.x = max(motion.x-ACCELERATION, -MAX_SPEED)
+					# if current == "roll":
+					# 	state_machine.travel("run")
+					dir = 1
+			else:
+				if current != "roll":
+					friction = true
 	elif current != "roll":
 		motion.x = lerp(motion.x, 0, FRICTION)
 
-	if is_on_floor() and (canmove or climbing) and current != "roll": 
+	if is_on_floor() and (canmove or climbing): 
 
 		if Input.is_action_just_pressed("jump"):
+			$Audio/jump.play()
 			state_machine.travel("jump")
 			motion.y += JUMP_HEIGHT
 
@@ -183,7 +206,7 @@ func take_damage(damage, source):
 			die()
 
 func die():
-	canmove = false
+	# canmove = false
 	state_machine.travel("dead")
 	set_physics_process(false)
 
