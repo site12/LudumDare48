@@ -56,10 +56,12 @@ func check_order():
 #exit button
 func _on_Button7_pressed():
 	self.visible = false
+	get_parent().get_parent().get_node("Mina").canmove = true
 
 func _input(event):
 	if Input.is_action_just_pressed("interact") and inRange:
 		self.visible = true
+		get_parent().get_parent().get_node("Mina").canmove = false
 
 func _on_Area2D_body_entered(body):
 	print(body.name)
@@ -68,4 +70,14 @@ func _on_Area2D_body_entered(body):
 
 
 func _on_Area2D_body_exited(body):
+	inRange = false
+
+
+func _on_puzzle_body_entered(body):
+	print(body.name)
+	if body.name == 'Mina':
+		inRange = true
+
+
+func _on_puzzle_body_exited(body):
 	inRange = false

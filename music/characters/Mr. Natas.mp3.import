@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Mr. Natas.mp3-8ac7b5abf55f01da5c53aaeae62d7ae0.mp3str"
+
+[deps]
+
+source_file="res://music/characters/Mr. Natas.mp3"
+dest_files=[ "res://.import/Mr. Natas.mp3-8ac7b5abf55f01da5c53aaeae62d7ae0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
