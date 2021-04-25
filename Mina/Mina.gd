@@ -33,6 +33,9 @@ onready var root = get_tree().get_root().get_node('root')
 
 export var camera = true
 
+func toggle_hud():
+	$CanvasLayer/Control.visible = !$CanvasLayer/Control.visible
+
 func _ready():
 	if camera:
 		$Position2D/Camera2D.current = true
@@ -42,6 +45,10 @@ func _ready():
 
 
 func _physics_process(delta):
+	$CanvasLayer/Control/ProgressBar.value = health
+	if health <=0:
+		yield(get_tree().create_timer(2), "timeout")
+		get_tree().change_scene("res://levels/library/library.tscn")
 	on_wall = $Right.is_colliding() || $Left.is_colliding() || $TopRight.is_colliding() || $TopLeft.is_colliding()
 	if $Right.is_colliding() || $TopRight.is_colliding():
 		which_wall = -1

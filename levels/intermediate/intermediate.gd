@@ -8,12 +8,13 @@ func _ready():
 	$AnimationPlayer.play("wheels")
 	yield(get_tree().create_timer(5), "timeout")
 	$AnimationPlayer.stop()
+	stop = true
 	get_parent().get_node("AnimatedSprite").visible = true
 	get_parent().get_node("AnimationPlayer").play("run in")
 	yield(get_tree().create_timer(3), "timeout")
 	var l = loading.instance()
 	add_child(l)
-	yield(get_tree().create_timer(3), "timeout")
+	yield(get_tree().create_timer(5), "timeout")
 	get_tree().change_scene("res://levels/library/library.tscn")
 	stop = true
 	

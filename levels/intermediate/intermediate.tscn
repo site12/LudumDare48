@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://levels/library/fog.shader" type="Shader" id=1]
 [ext_resource path="res://menus/main_menu/img/Background Trees.png" type="Texture" id=2]
@@ -36,6 +36,9 @@
 [ext_resource path="res://Mina/Animations/Mina/Run/MinaRun_0003.png" type="Texture" id=34]
 [ext_resource path="res://Mina/Animations/Mina/Run/MinaRun_0006.png" type="Texture" id=35]
 [ext_resource path="res://Mina/Animations/Mina/Run/MinaRun_0004.png" type="Texture" id=36]
+[ext_resource path="res://levels/intermediate/sounds/194911__elliottmoo__falling-down-stairs.wav" type="AudioStream" id=37]
+[ext_resource path="res://levels/intermediate/sounds/415209__inspectorj__cat-screaming-a.wav" type="AudioStream" id=38]
+[ext_resource path="res://levels/intermediate/sounds/459123__20011884__yell.mp3" type="AudioStream" id=39]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
@@ -99,7 +102,7 @@ animations = [ {
 
 [sub_resource type="Animation" id=5]
 resource_name = "run in"
-length = 2.0
+length = 10.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:position")
 tracks/0/interp = 1
@@ -148,6 +151,60 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("menu/Audio/AudioStreamPlayer:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 2, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -20.0, -80.0 ]
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("menu/Audio/sfx")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 38 )
+} ],
+"times": PoolRealArray( 3.1 )
+}
+tracks/6/type = "audio"
+tracks/6/path = NodePath("menu/Audio/sfx2")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 37 )
+} ],
+"times": PoolRealArray( 5.6 )
+}
+tracks/7/type = "audio"
+tracks/7/path = NodePath("menu/Audio/sfx3")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 39 )
+} ],
+"times": PoolRealArray( 4.1 )
+}
 
 [node name="Node2D" type="Node2D"]
 
@@ -191,7 +248,7 @@ position = Vector2( -256, 0.999982 )
 scale = Vector2( 0.111111, 0.111481 )
 z_index = -100
 frames = SubResource( 2 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="clouds" type="TextureRect" parent="menu/ParallaxBackground/ParallaxLayer2"]
@@ -277,11 +334,13 @@ texture = ExtResource( 10 )
 
 [node name="Wheel Spin" type="Sprite" parent="menu/Node2D/Sprite"]
 position = Vector2( 8.78049, 27.9326 )
+rotation = 6.28319
 texture = ExtResource( 8 )
 offset = Vector2( 0.868, 0 )
 
 [node name="Wheel Spin2" type="Sprite" parent="menu/Node2D/Sprite"]
 position = Vector2( -36.5854, 26.6629 )
+rotation = 6.28319
 texture = ExtResource( 8 )
 offset = Vector2( 1.159, 0 )
 
@@ -289,7 +348,20 @@ offset = Vector2( 1.159, 0 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="menu/Audio"]
 stream = ExtResource( 16 )
+volume_db = -20.0
 autoplay = true
+
+[node name="sfx" type="AudioStreamPlayer" parent="menu/Audio"]
+stream = ExtResource( 38 )
+volume_db = -20.0
+
+[node name="sfx2" type="AudioStreamPlayer" parent="menu/Audio"]
+stream = ExtResource( 37 )
+volume_db = -20.0
+
+[node name="sfx3" type="AudioStreamPlayer" parent="menu/Audio"]
+stream = ExtResource( 39 )
+volume_db = -20.0
 
 [node name="Timer" type="Timer" parent="menu"]
 wait_time = 3.0
@@ -315,7 +387,7 @@ polygon = PoolVector2Array( -544, 232, 256, 232, 360, 160, 752, 160, 752, -64, 7
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 visible = false
-position = Vector2( 0.000473282, 192 )
+position = Vector2( 0.000500679, 192 )
 z_index = -2
 frames = SubResource( 4 )
 
