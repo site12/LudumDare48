@@ -84,6 +84,10 @@ func direction():
 func movement(friction):
 	var current = state_machine.get_current_node()
 
+	if current == 'falling' and ray_on_floor():
+		if ($down.is_colliding() and $down.get_collider().name == "Floor") or ($down2.is_colliding() and $down2.get_collider().name == "Floor"):
+			$Audio/land.play()
+
 	if Input.is_action_just_pressed("attack_1"):
 
 		if current != "punch1" and current != "punch2" and current != "kick":
@@ -139,6 +143,7 @@ func movement(friction):
 	if is_on_floor() and (canmove or climbing) and current != "roll": 
 
 		if Input.is_action_just_pressed("jump"):
+			$Audio/jump.play()
 			state_machine.travel("jump")
 			motion.y += JUMP_HEIGHT
 
