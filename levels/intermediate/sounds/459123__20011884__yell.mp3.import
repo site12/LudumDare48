@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/459123__20011884__yell.mp3-96cf785fc2d7f1ee3d59896751546e14.mp3str"
+
+[deps]
+
+source_file="res://levels/intermediate/sounds/459123__20011884__yell.mp3"
+dest_files=[ "res://.import/459123__20011884__yell.mp3-96cf785fc2d7f1ee3d59896751546e14.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
