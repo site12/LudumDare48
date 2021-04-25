@@ -9,6 +9,7 @@ var velocity = Vector2.ZERO
 var dir_to_player
 var health = 500
 var player = null
+export var canmove = true
 var knockback = 50
 var state_machine :AnimationNodeStateMachinePlayback
 
@@ -22,7 +23,7 @@ func _ready():
 func _physics_process(delta):
 	var current = state_machine.get_current_node()
 	# velocity = Vector2.ZERO
-	if player:
+	if player and canmove:
 		if get_global_position().x < player.get_global_position().x:
 			dir_to_player = +1
 		else:
@@ -41,6 +42,8 @@ func _physics_process(delta):
 					velocity.x = max(velocity.x + (ACCELERATION*dir_to_player), MAX_SPEED*-1)
 		# velocity.x = (velocity.x + (200*dir_to_player))
 		# velocity += position.direction_to(player.position) * run_speed
+	else:
+		velocity.x = 0
 	velocity.y += GRAVITY*delta
 	if player:
 		if dir_to_player > 0:
@@ -94,7 +97,20 @@ func _on_player_entered(playerwhoentered):
 	player = playerwhoentered
 
 
+func attack():
+	print("this man swinging")
+	state_machine.travel('swing')
+
+
 func _on_damage_radius_body_entered(body):
 	if body.name == "Mina":
 		body.take_damage(10, self)
 		#make player take damage based on time spent in zone
+
+func _on_target_zone_body_entered(body):
+	if body.name == "Mina":
+		attack()
+
+func _on_smack_box_body_entered(body):
+	if body.name == "Mina":
+		body.take_damage(70, self)
