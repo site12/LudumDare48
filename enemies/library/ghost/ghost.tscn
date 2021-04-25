@@ -9,6 +9,7 @@
 [ext_resource path="res://enemies/library/animations/Ghost/GhostFloat_0000.png" type="Texture" id=7]
 [ext_resource path="res://enemies/library/animations/Ghost/GhostFloat_0003.png" type="Texture" id=8]
 [ext_resource path="res://enemies/library/ghost/a1843961409a40687a09056418bf6132d0d87ca8.png" type="Texture" id=9]
+[ext_resource path="res://sounds/player/hit.wav" type="AudioStream" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -53,6 +54,20 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("audio/AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 10 )
+} ],
+"times": PoolRealArray( 0.083 )
 }
 
 [sub_resource type="CanvasItemMaterial" id=6]
@@ -126,6 +141,11 @@ percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="audio" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource( 10 )
 
 [connection signal="body_entered" from="line_of_sight" to="." method="_on_line_of_sight_body_entered"]
 [connection signal="body_exited" from="line_of_sight" to="." method="_on_line_of_sight_body_exited"]
