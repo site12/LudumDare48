@@ -15,7 +15,7 @@ var jumping = false
 var sliding = false
 var climbing = false
 var falling = false
-var canmove = true
+export var canmove = true
 var on_ice = false
 var on_ladder = false
 var invincible = false
@@ -31,8 +31,12 @@ onready var jt = $'jump_timer'
 #onready var camera = $camerapos/Camera2D
 onready var root = get_tree().get_root().get_node('root')
 
+
+
 func _ready():
 	state_machine = $AnimationTree.get("parameters/playback")
+
+
 func _physics_process(delta):
 	on_wall = $Right.is_colliding() || $Left.is_colliding() || $TopRight.is_colliding() || $TopLeft.is_colliding()
 	if $Right.is_colliding() || $TopRight.is_colliding():
@@ -42,7 +46,8 @@ func _physics_process(delta):
 	# print(str(on_wall))
 	motion.y += GRAVITY*delta
 	var friction = false
-	movement(friction)
+	if canmove:
+		movement(friction)
 	direction()
 	slide(delta)
 	motion = move_and_slide(motion, UP)
@@ -202,7 +207,6 @@ func _on_i_frame_timer_timeout():
 
 func i_frame_over():
 	invincible = false
-
 
 
 #func pass_camera_shake(amount):
