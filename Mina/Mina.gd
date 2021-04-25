@@ -188,10 +188,10 @@ func take_damage(damage, source):
 		print("yeaowch " + str(damage))
 		var knockback_vector= Vector2.ZERO
 		if get_global_position() < source.get_global_position():
-			knockback_vector.x = -1000
+			knockback_vector.x = -500
 		else:
-			knockback_vector.x = 1000
-		knockback_vector.y = -1000
+			knockback_vector.x = 500
+		knockback_vector.y = -500
 		# var angle_to_baddie = get_global_position().angle_to(source.get_global_position())
 		# print("angle to baddie: " + str(angle_to_baddie))
 		# var vector_angle = Vector2(cos(angle_to_baddie), sin(angle_to_baddie))
