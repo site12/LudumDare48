@@ -57,6 +57,7 @@ func check_order():
 #exit button
 func _on_Button7_pressed():
 	self.visible = false
+	order.clear()
 	get_parent().get_parent().get_node("Mina").canmove = true
 
 func _input(event):
