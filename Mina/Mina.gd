@@ -18,6 +18,7 @@ var falling = false
 var canmove = true
 var on_ice = false
 var on_ladder = false
+var invincible = false
 var dir = 1
 var health = 200
 var on_wall = false
@@ -91,8 +92,10 @@ func movement(friction):
 
 	if current == "roll":
 		motion.x = 500 * -dir
-	
-	
+	else:
+		if get_collision_mask_bit(2) == false:
+			print('here')
+			set_collision_mask_bit(2, true)
 
 	if Input.is_action_just_pressed("down"):
 		set_collision_mask_bit(1, false)
@@ -104,6 +107,7 @@ func movement(friction):
 
 
 	if Input.is_action_just_pressed("roll"):
+		set_collision_mask_bit(2, false)
 		state_machine.travel("roll")
 
 	if current != "punch1" and current != "punch2" and current != "kick" and current != "roll":
@@ -156,7 +160,7 @@ func take_damage(damage):
 	if state_machine.get_current_node() != "roll":
 		print("yeaowch " + str(damage))
 		health -= damage
-		$DamageAnimation.play("took_damage")
+		$EffectAnimations.play("took_damage")
 		if health < 0:
 			die()
 
@@ -192,6 +196,13 @@ func _on_smackbox_area_entered(area):
 				_:
 					damage_dealt = 0
 			enemy.take_damage(damage_dealt)
+
+func _on_i_frame_timer_timeout():
+	invincible = true
+
+func i_frame_over():
+	invincible = false
+
 
 
 #func pass_camera_shake(amount):

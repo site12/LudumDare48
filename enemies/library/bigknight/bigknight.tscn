@@ -32,7 +32,7 @@ radius = 116.03
 length = 0.25
 step = 0.0833333
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/path = NodePath("../bigknight/Sprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -50,7 +50,7 @@ length = 0.833333
 loop = true
 step = 0.0833333
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:texture")
+tracks/0/path = NodePath("../bigknight/Sprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -62,7 +62,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 9 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/path = NodePath("../bigknight/Sprite:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -74,7 +74,7 @@ tracks/1/keys = {
 "values": [ 5 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:vframes")
+tracks/2/path = NodePath("../bigknight/Sprite:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -86,7 +86,7 @@ tracks/2/keys = {
 "values": [ 2 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite:frame")
+tracks/3/path = NodePath("../bigknight/Sprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/imported = false
@@ -104,6 +104,8 @@ extents = Vector2( 50.0897, 89.0832 )
 [node name="bigknight" type="KinematicBody2D" groups=[
 "baddies",
 ]]
+collision_layer = 4
+collision_mask = 5
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -129,7 +131,7 @@ shape = SubResource( 2 )
 
 [node name="damage_radius" type="Area2D" parent="."]
 collision_layer = 32
-collision_mask = 32
+collision_mask = 48
 
 [node name="circle" type="CollisionShape2D" parent="damage_radius"]
 shape = SubResource( 3 )

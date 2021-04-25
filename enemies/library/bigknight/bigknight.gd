@@ -86,6 +86,6 @@ func _on_player_entered(playerwhoentered):
 
 
 func _on_damage_radius_body_entered(body):
-	if body == player:
+	if body.name == "Mina":
 		body.take_damage(10)
 		#make player take damage based on time spent in zone
