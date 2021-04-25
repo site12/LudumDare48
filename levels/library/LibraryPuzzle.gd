@@ -49,10 +49,16 @@ func _on_Button6_pressed():
 func check_order():
 	if correct == order:
 		get_parent().get_parent().get_node("Mina").canmove = true
+		$Control/Light_Green.visible = true
+		yield(get_tree().create_timer(2), "timeout")
+		$Control/Light_Green.visible = false
 		show.queue_free()
 		self.visible = false
 	else:
 		order.clear()
+		$Control/Light_Red.visible = true
+		yield(get_tree().create_timer(2), "timeout")
+		$Control/Light_Red.visible = false
 
 #exit button
 func _on_Button7_pressed():
@@ -72,3 +78,4 @@ func _on_puzzle_body_entered(body):
 
 func _on_puzzle_body_exited(body):
 		inRange = false
+

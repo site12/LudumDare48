@@ -1,6 +1,72 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://levels/library/LibraryPuzzle.gd" type="Script" id=1]
+[ext_resource path="res://images/Book2.png" type="Texture" id=2]
+[ext_resource path="res://images/Book4.png" type="Texture" id=3]
+[ext_resource path="res://images/Book3.png" type="Texture" id=4]
+[ext_resource path="res://images/Book1.png" type="Texture" id=5]
+[ext_resource path="res://images/Book2Out.png" type="Texture" id=6]
+[ext_resource path="res://images/Book1Out.png" type="Texture" id=7]
+[ext_resource path="res://images/Book5.png" type="Texture" id=8]
+[ext_resource path="res://images/Book6.png" type="Texture" id=9]
+[ext_resource path="res://images/Book3Out.png" type="Texture" id=10]
+[ext_resource path="res://images/Book4Out.png" type="Texture" id=11]
+[ext_resource path="res://images/Book5Out.png" type="Texture" id=12]
+[ext_resource path="res://images/Book6Out.png" type="Texture" id=13]
+[ext_resource path="res://images/Puzzle_Shelf.png" type="Texture" id=14]
+[ext_resource path="res://images/Light_Red.png" type="Texture" id=15]
+[ext_resource path="res://images/Light_Green.png" type="Texture" id=16]
+[ext_resource path="res://images/Light_Off.png" type="Texture" id=17]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 5 )
+region_rect = Rect2( 143.806, 41.2449, 53.4144, 130.489 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 7 )
+region_rect = Rect2( 135.173, 33.3299, 58.7877, 139.025 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 2 )
+region_rect = Rect2( 143.629, 41.6724, 56.8643, 132.967 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 6 )
+region_rect = Rect2( 130.358, 33.3249, 66.0008, 140.09 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 4 )
+region_rect = Rect2( 144.883, 40.8994, 53.9375, 133.38 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 10 )
+region_rect = Rect2( 137.284, 30.6329, 56.6459, 139.571 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 3 )
+region_rect = Rect2( 144.298, 42.2006, 53.1276, 131.672 )
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 11 )
+region_rect = Rect2( 134.9, 30.8852, 58.1125, 141.885 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 8 )
+region_rect = Rect2( 144.298, 40.4471, 53.1276, 133.623 )
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 12 )
+region_rect = Rect2( 134.598, 28.9235, 59.9992, 145.281 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 9 )
+region_rect = Rect2( 143.616, 41.1266, 53.1276, 133.891 )
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 13 )
+region_rect = Rect2( 135.443, 30.6583, 58.9172, 140.993 )
+
+[sub_resource type="StyleBoxTexture" id=13]
 
 [node name="LibraryPuzzle" type="Control"]
 anchor_right = 1.0
@@ -31,77 +97,111 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="bookshelf" type="ColorRect" parent="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.294118, 0.203922, 0.12549, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Light_Off" type="Sprite" parent="Control"]
+position = Vector2( 492.44, 212.648 )
+z_index = 1
+texture = ExtResource( 17 )
+
+[node name="Light_Green" type="Sprite" parent="Control"]
+visible = false
+position = Vector2( 492.383, 213.489 )
+z_index = 2
+texture = ExtResource( 16 )
+
+[node name="Light_Red" type="Sprite" parent="Control"]
+visible = false
+position = Vector2( 493.122, 212.546 )
+z_index = 2
+texture = ExtResource( 15 )
+
+[node name="Puzzle_Shelf" type="Sprite" parent="Control"]
+position = Vector2( 318.328, 199.989 )
+scale = Vector2( 1.856, 1.84907 )
+texture = ExtResource( 14 )
 
 [node name="Button" type="Button" parent="Control"]
-margin_left = 64.0
-margin_top = 28.0
-margin_right = 128.0
-margin_bottom = 156.0
-text = "1"
+margin_left = 61.2694
+margin_top = 61.9843
+margin_right = 125.269
+margin_bottom = 189.984
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 1 )
+toggle_mode = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button2" type="Button" parent="Control"]
-margin_left = 192.0
-margin_top = 28.0
-margin_right = 256.0
-margin_bottom = 156.0
-text = "2"
+margin_left = 191.206
+margin_top = 63.0
+margin_right = 255.206
+margin_bottom = 191.0
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 2 )
+toggle_mode = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button3" type="Button" parent="Control"]
-margin_left = 320.0
-margin_top = 28.0
-margin_right = 384.0
-margin_bottom = 156.0
-text = "3"
+margin_left = 325.159
+margin_top = 60.9843
+margin_right = 389.159
+margin_bottom = 188.984
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 3 )
+toggle_mode = true
 
 [node name="Button4" type="Button" parent="Control"]
-margin_left = 320.0
-margin_top = 220.0
-margin_right = 384.0
-margin_bottom = 348.0
-text = "4"
+margin_left = 319.603
+margin_top = 236.0
+margin_right = 383.603
+margin_bottom = 364.0
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/normal = SubResource( 4 )
+toggle_mode = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button5" type="Button" parent="Control"]
 margin_left = 192.0
-margin_top = 220.0
+margin_top = 236.0
 margin_right = 256.0
-margin_bottom = 348.0
-text = "5"
+margin_bottom = 364.0
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/normal = SubResource( 8 )
+toggle_mode = true
 
 [node name="Button6" type="Button" parent="Control"]
 margin_left = 64.0
-margin_top = 220.0
+margin_top = 236.0
 margin_right = 128.0
-margin_bottom = 348.0
-text = "6"
+margin_bottom = 364.0
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/normal = SubResource( 9 )
+toggle_mode = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button7" type="Button" parent="Control"]
-margin_left = 567.0
-margin_top = 15.0
-margin_right = 622.0
-margin_bottom = 61.0
-text = "X"
+margin_left = 422.0
+margin_top = 2.0
+margin_right = 575.0
+margin_bottom = 89.0
+custom_styles/normal = SubResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Node" type="Node" parent="."]
 
 [connection signal="pressed" from="Control/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Control/Button2" to="." method="_on_Button2_pressed"]
