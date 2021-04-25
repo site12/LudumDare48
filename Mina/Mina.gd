@@ -163,6 +163,19 @@ func ray_on_floor():
 func take_damage(damage, source):
 	if state_machine.get_current_node() != "roll":
 		print("yeaowch " + str(damage))
+		var knockback_vector= Vector2.ZERO
+		if get_global_position() < source.get_global_position():
+			knockback_vector.x = -1000
+		else:
+			knockback_vector.x = 1000
+		knockback_vector.y = -1000
+		# var angle_to_baddie = get_global_position().angle_to(source.get_global_position())
+		# print("angle to baddie: " + str(angle_to_baddie))
+		# var vector_angle = Vector2(cos(angle_to_baddie), sin(angle_to_baddie))
+		# vector_angle.x *= 1
+		# vector_angle.y = -abs(vector_angle.y)
+		motion = knockback_vector
+		print("motion: " + str(motion))
 		health -= damage
 		$EffectAnimations.play("took_damage")
 		state_machine.travel("hurt")
@@ -185,7 +198,7 @@ func set_attack(attack):
 
 func _on_smackbox_area_entered(area):
 	print("area_entered")
-	if area.name == "damage_radius":
+	if area.name == "hit_box":
 		print("name checks out")
 		var enemy = area.get_parent()
 		if enemy.is_in_group("baddies"):
