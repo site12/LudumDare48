@@ -24,7 +24,7 @@ animations = [ {
 "speed": 12.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=22]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 96.0
 height = 704.0
 
@@ -40,7 +40,7 @@ radius = 49.8552
 height = 25.2269
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 65.8504, 62.2874 )
+extents = Vector2( 37.3012, 62.2874 )
 
 [sub_resource type="Animation" id=7]
 length = 0.25
@@ -88,7 +88,7 @@ states/walking/node = SubResource( 10 )
 states/walking/position = Vector2( 591, 83 )
 transitions = [ "idle", "walking", SubResource( 11 ), "walking", "idle", SubResource( 12 ), "idle", "swing", SubResource( 13 ), "walking", "swing", SubResource( 14 ), "swing", "idle", SubResource( 15 ) ]
 start_node = "idle"
-graph_offset = Vector2( 111, -128 )
+graph_offset = Vector2( 58, -87 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=17]
 
@@ -203,7 +203,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.916667 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -354,13 +354,11 @@ extents = Vector2( 41.886, 41.5376 )
 collision_layer = 4
 collision_mask = 5
 script = ExtResource( 1 )
-canmove = false
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 9 )
 hframes = 4
 vframes = 3
-frame = 6
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 visible = false
@@ -369,10 +367,11 @@ frames = SubResource( 1 )
 frame = 6
 
 [node name="line_of_sight" type="Area2D" parent="."]
+visible = false
 
 [node name="circle" type="CollisionShape2D" parent="line_of_sight"]
 rotation = 1.5708
-shape = SubResource( 22 )
+shape = SubResource( 2 )
 
 [node name="damage_radius" type="Area2D" parent="."]
 visible = false
@@ -391,6 +390,7 @@ collision_mask = 32
 shape = SubResource( 4 )
 
 [node name="smack_box" type="Area2D" parent="."]
+visible = false
 monitoring = false
 collision_mask = 17
 
@@ -403,7 +403,7 @@ position = Vector2( 0, 40.97 )
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="target_zone"]
-position = Vector2( 62.1496, -41.6006 )
+position = Vector2( 57.6547, -37.4803 )
 shape = SubResource( 6 )
 
 [node name="DamageAnimation" type="AnimationPlayer" parent="."]
