@@ -8,7 +8,7 @@ onready var parentnode = get_tree().get_root().get_node("root/speaker_pos/Contro
 func _on_dialogic_dialogue_body_entered(body):
 	if not begun and body.name == "Mina":
 		
-		var gd = Dialogic.start("hellcave")
+		var gd = Dialogic.start("hell_beginning")
 		parentnode.add_child(gd)
 		parentnode.get_parent().get_node("AnimatedSprite").visible = true
 		begun = true
