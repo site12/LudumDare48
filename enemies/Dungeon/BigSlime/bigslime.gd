@@ -50,11 +50,13 @@ func _physics_process(delta):
 	if player:
 		if dir_to_player > 0:
 			if $right.is_colliding() and is_on_down() and $right.get_collider().name != "Mina" and not $topright.is_colliding():
-				velocity.x = 0
+				state_machine.travel('jump')
+				velocity.x = 100
 				velocity.y += JUMP_HEIGHT
 		if dir_to_player < 0:
 			if $left.is_colliding()  and is_on_down() and $left.get_collider().name != "Mina" and not $topleft.is_colliding():
-				velocity.x = 0
+				state_machine.travel('jump')
+				velocity.x = -100
 				velocity.y += JUMP_HEIGHT
 
 	# if velocity.x != 0:
@@ -105,11 +107,13 @@ func take_damage(dmg):
 		die()
 
 func die():
+	player.slimey = null
 	emit_signal("im_dead")
 	self.queue_free()
 
 func _on_player_entered(playerwhoentered):
 	player = playerwhoentered
+	player.slimey = self
 
 
 func attack():
@@ -121,8 +125,9 @@ func attack():
 
 
 func _on_damage_radius_body_entered(body):
-	if body.name == "Mina":
-		body.take_damage(10, self)
+	pass
+	# if body.name == "Mina":
+	# 	body.take_damage(10, self)
 		#make player take damage based on time spent in zone
 
 func _on_target_zone_body_entered(body):
@@ -140,7 +145,7 @@ func _on_right_target_zone_body_entered(body):
 	if body.name == "Mina" and is_on_down():
 		canmove = false
 		state_machine.travel("jump")
-		velocity.x = 10000
+		velocity.x = 500
 		velocity.y = -1000
 
 
@@ -148,5 +153,12 @@ func _on_left_target_zone_body_entered(body):
 	if body.name == "Mina" and is_on_down():
 		canmove = false
 		state_machine.travel("jump")
-		velocity.x = -10000
+		velocity.x = -500
 		velocity.y = -1000
+
+func _on_dam_timer_timeout():
+	var bodies = $damage_radius.get_overlapping_bodies()
+	if bodies.size()>0:
+		for body in bodies:
+			if body.name == "Mina":
+				body.take_damage(5, self)

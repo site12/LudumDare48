@@ -60,14 +60,19 @@ animations = [ {
 "name": "roll",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 18 ), ExtResource( 28 ), ExtResource( 27 ) ],
+"frames": [ ExtResource( 46 ) ],
 "loop": false,
-"name": "punch1",
+"name": "falling",
 "speed": 12.0
 }, {
 "frames": [ ExtResource( 38 ) ],
 "loop": false,
 "name": "jump",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 28 ), ExtResource( 27 ) ],
+"loop": false,
+"name": "punch1",
 "speed": 12.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 9 ), ExtResource( 1 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 7 ) ],
@@ -78,11 +83,6 @@ animations = [ {
 "frames": [ ExtResource( 44 ), ExtResource( 42 ) ],
 "loop": true,
 "name": "hurt",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 46 ) ],
-"loop": false,
-"name": "falling",
 "speed": 12.0
 } ]
 
@@ -1131,7 +1131,6 @@ animation = "idle"
 texture = ExtResource( 52 )
 hframes = 3
 vframes = 2
-frame = 4
 
 [node name="smackbox" type="Area2D" parent="Sprite"]
 visible = false

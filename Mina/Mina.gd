@@ -24,6 +24,8 @@ var health = 200
 var on_wall = false
 var which_wall = 0
 var current_attack = "none"
+var speed_mod = 1
+var slimey
 #var jump_particle = load("res://land.tscn")
 var state_machine :AnimationNodeStateMachinePlayback
 onready var jt = $'jump_timer'
@@ -94,10 +96,17 @@ func direction():
 
 func movement(friction):
 	var current = state_machine.get_current_node()
+	speed_mod = 1
 
 	if current == 'falling' and ray_on_floor():
 		if ($down.is_colliding() and $down.get_collider().name == "Floor") or ($down2.is_colliding() and $down2.get_collider().name == "Floor"):
 			$Audio/land.play()
+
+	if slimey:
+		var bodies = slimey.get_node("damage_radius").get_overlapping_bodies()
+		for body in bodies:
+			if body == self:
+				speed_mod = 0.5
 
 	if Input.is_action_just_pressed("attack_1"):
 
@@ -130,7 +139,7 @@ func movement(friction):
 		state_machine.travel("roll")
 		current = "roll"
 
-	if current != "punch1" and current != "punch2" and current != "kick":
+	if current != "punch1" and current != "punch2" and current != "kick" and current != 'roll':
 		if canmove:
 			if Input.is_action_pressed("right"):
 				if current != "roll" or dir == 1:
@@ -138,7 +147,7 @@ func movement(friction):
 							
 						motion.x = lerp(motion.x, 0, 0.2)
 						
-					motion.x = min(motion.x+ACCELERATION, MAX_SPEED)
+					motion.x = min(motion.x+ACCELERATION, MAX_SPEED*speed_mod)
 					# if current == "roll":
 					# 	state_machine.travel("run")
 					dir = -1
@@ -148,7 +157,7 @@ func movement(friction):
 						
 						motion.x = lerp(motion.x, 0, 0.2)
 						
-					motion.x = max(motion.x-ACCELERATION, -MAX_SPEED)
+					motion.x = max(motion.x-ACCELERATION, -MAX_SPEED*speed_mod)
 					# if current == "roll":
 					# 	state_machine.travel("run")
 					dir = 1
