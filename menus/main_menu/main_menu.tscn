@@ -38,7 +38,7 @@ shader_param/color = Vector3( 0.95, 0.95, 0.95 )
 shader_param/OCTAVES = 4
 shader_param/opacity = 0.25
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 25 ), ExtResource( 22 ), ExtResource( 20 ), ExtResource( 23 ), ExtResource( 24 ) ],
 "loop": true,
@@ -46,7 +46,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=3]
 resource_name = "lightning0"
 step = 0.01
 tracks/0/type = "value"
@@ -110,7 +110,7 @@ tracks/4/keys = {
 "values": [ false, true, false, true, false ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=4]
 resource_name = "lightning1"
 step = 0.01
 tracks/0/type = "value"
@@ -162,7 +162,7 @@ tracks/3/keys = {
 "values": [ false, true, false ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=5]
 resource_name = "lightning2"
 step = 0.01
 tracks/0/type = "value"
@@ -214,7 +214,7 @@ tracks/3/keys = {
 "values": [ false, true, false ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=6]
 resource_name = "lightning3"
 step = 0.01
 tracks/0/type = "value"
@@ -266,7 +266,7 @@ tracks/3/keys = {
 "values": [ false, true, false ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=7]
 resource_name = "lightning4"
 step = 0.01
 tracks/0/type = "value"
@@ -318,11 +318,11 @@ tracks/3/keys = {
 "values": [ false, true, false ]
 }
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=8]
 size = 45
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=9]
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("overlay/screen/right:modulate")
@@ -357,7 +357,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=10]
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("overlay/screen/left:modulate")
@@ -392,7 +392,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=11]
 loop = true
 step = 0.05
 tracks/0/type = "value"
@@ -457,14 +457,14 @@ range_layer_max = -100
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Camera2D/lightning"]
 visible = false
 z_index = -100
-frames = SubResource( 7 )
+frames = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D/lightning"]
-anims/lightning0 = SubResource( 8 )
-anims/lightning1 = SubResource( 9 )
-anims/lightning2 = SubResource( 10 )
-anims/lightning3 = SubResource( 11 )
-anims/lightning4 = SubResource( 12 )
+anims/lightning0 = SubResource( 3 )
+anims/lightning1 = SubResource( 4 )
+anims/lightning2 = SubResource( 5 )
+anims/lightning3 = SubResource( 6 )
+anims/lightning4 = SubResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="Camera2D/lightning"]
 texture = ExtResource( 21 )
@@ -564,7 +564,7 @@ margin_left = 272.0
 margin_top = 126.0
 margin_right = 752.0
 margin_bottom = 172.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 8 )
 text = "Deep Dish Delivery"
 align = 1
 valign = 1
@@ -619,8 +619,8 @@ margin_bottom = 147.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/main_menu"]
 playback_speed = 5.0
-anims/options = SubResource( 3 )
-anims/site12 = SubResource( 4 )
+anims/options = SubResource( 9 )
+anims/site12 = SubResource( 10 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -101
@@ -733,7 +733,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 1.25
-anims/wheels = SubResource( 6 )
+anims/wheels = SubResource( 11 )
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2( 0, 32 )
