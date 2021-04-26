@@ -135,9 +135,9 @@ __meta__ = {
 }
 
 [node name="Button2" type="Button" parent="Control"]
-margin_left = 191.206
+margin_left = 195.206
 margin_top = 63.0
-margin_right = 255.206
+margin_right = 259.206
 margin_bottom = 191.0
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 6 )
@@ -158,9 +158,9 @@ custom_styles/normal = SubResource( 3 )
 toggle_mode = true
 
 [node name="Button4" type="Button" parent="Control"]
-margin_left = 319.603
+margin_left = 324.603
 margin_top = 236.0
-margin_right = 383.603
+margin_right = 388.603
 margin_bottom = 364.0
 custom_styles/hover = SubResource( 4 )
 custom_styles/pressed = SubResource( 10 )
@@ -171,9 +171,9 @@ __meta__ = {
 }
 
 [node name="Button5" type="Button" parent="Control"]
-margin_left = 192.0
+margin_left = 193.0
 margin_top = 236.0
-margin_right = 256.0
+margin_right = 257.0
 margin_bottom = 364.0
 custom_styles/hover = SubResource( 8 )
 custom_styles/pressed = SubResource( 11 )
@@ -181,9 +181,9 @@ custom_styles/normal = SubResource( 8 )
 toggle_mode = true
 
 [node name="Button6" type="Button" parent="Control"]
-margin_left = 64.0
+margin_left = 60.0
 margin_top = 236.0
-margin_right = 128.0
+margin_right = 124.0
 margin_bottom = 364.0
 custom_styles/hover = SubResource( 9 )
 custom_styles/pressed = SubResource( 12 )
@@ -203,8 +203,6 @@ custom_styles/normal = SubResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Node" type="Node" parent="."]
 
 [connection signal="pressed" from="Control/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Control/Button2" to="." method="_on_Button2_pressed"]
