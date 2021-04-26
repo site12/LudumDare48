@@ -51,7 +51,6 @@ func check_order():
 		get_parent().get_parent().get_node("Mina").canmove = true
 		$Control/Light_Green.visible = true
 		yield(get_tree().create_timer(2), "timeout")
-		$Control/Light_Green.visible = false
 		show.queue_free()
 		self.visible = false
 	else:
@@ -59,6 +58,12 @@ func check_order():
 		$Control/Light_Red.visible = true
 		yield(get_tree().create_timer(2), "timeout")
 		$Control/Light_Red.visible = false
+		$Control/Button.pressed = false
+		$Control/Button2.pressed = false
+		$Control/Button3.pressed = false
+		$Control/Button4.pressed = false
+		$Control/Button5.pressed = false
+		$Control/Button6.pressed = false
 
 #exit button
 func _on_Button7_pressed():

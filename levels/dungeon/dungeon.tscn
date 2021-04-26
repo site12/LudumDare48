@@ -680,7 +680,7 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 [sub_resource type="RectangleShape2D" id=34]
 extents = Vector2( 198.189, 143.874 )
 
-[node name="Node2D" type="Node2D"]
+[node name="root" type="Node2D"]
 
 [node name="Mina" parent="." instance=ExtResource( 2 )]
 position = Vector2( 80.866, 435.25 )
