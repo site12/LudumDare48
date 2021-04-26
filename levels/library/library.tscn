@@ -25,7 +25,7 @@
 [ext_resource path="res://images/Bookshelf.png" type="Texture" id=23]
 [ext_resource path="res://fonts/Louis George Cafe Bold.ttf" type="DynamicFontData" id=24]
 [ext_resource path="res://levels/library/bosshealth.gd" type="Script" id=25]
-[ext_resource path="res://images/Door.png" type="Texture" id=26]
+[ext_resource path="res://Door.tscn" type="PackedScene" id=26]
 [ext_resource path="res://collectibles/tip.tscn" type="PackedScene" id=27]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -1019,12 +1019,6 @@ position = Vector2( 1036, 516 )
 scale = Vector2( 2.375, 2.375 )
 texture = ExtResource( 5 )
 
-[node name="Door" type="Sprite" parent="level"]
-position = Vector2( 6849.62, 2265 )
-scale = Vector2( 1.5, 1.5 )
-z_index = -5
-texture = ExtResource( 26 )
-
 [node name="UnderBookcaseDoor" type="TileMap" parent="."]
 tile_set = SubResource( 19 )
 format = 1
@@ -1576,6 +1570,10 @@ position = Vector2( 6520, 1952 )
 
 [node name="tip9" parent="tips" instance=ExtResource( 27 )]
 position = Vector2( 5848, 2024 )
+
+[node name="Door" parent="." instance=ExtResource( 26 )]
+position = Vector2( 6820.91, 2263.72 )
+next_scene = "res://levels/dungeon/dungeon.tscn"
 
 [connection signal="body_entered" from="BossEntrance" to="BossEntrance" method="_on_BossEntrance_body_entered"]
 [connection signal="body_entered" from="puzzle" to="minigame/LibraryPuzzle" method="_on_puzzle_body_entered"]
