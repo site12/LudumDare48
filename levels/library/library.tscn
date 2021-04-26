@@ -25,7 +25,7 @@
 [ext_resource path="res://images/Bookshelf.png" type="Texture" id=23]
 [ext_resource path="res://fonts/Louis George Cafe Bold.ttf" type="DynamicFontData" id=24]
 [ext_resource path="res://levels/library/bosshealth.gd" type="Script" id=25]
-[ext_resource path="res://images/Door.png" type="Texture" id=26]
+[ext_resource path="res://Door.tscn" type="PackedScene" id=26]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 13.9107, 64, 13.5088, 15.1163, 64, 14.6642, 64, 0, 0, 0, 0, 64 )
@@ -1018,11 +1018,7 @@ position = Vector2( 1036, 516 )
 scale = Vector2( 2.375, 2.375 )
 texture = ExtResource( 5 )
 
-[node name="Door" type="Sprite" parent="level"]
-position = Vector2( 6849.62, 2265 )
-scale = Vector2( 1.5, 1.5 )
-z_index = -5
-texture = ExtResource( 26 )
+[node name="Door" parent="level" instance=ExtResource( 26 )]
 
 [node name="UnderBookcaseDoor" type="TileMap" parent="."]
 tile_set = SubResource( 19 )
