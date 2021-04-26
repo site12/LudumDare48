@@ -1070,11 +1070,13 @@ anims/fade_in = SubResource( 31 )
 visible = false
 position = Vector2( 1392.04, 561.75 )
 frames = SubResource( 32 )
+frame = 4
 
 [node name="torch2" parent="Node" instance=ExtResource( 23 )]
 visible = false
 position = Vector2( 1999.75, 341.048 )
 frames = SubResource( 32 )
+frame = 4
 flip_h = true
 
 [node name="chandelier" parent="Node" instance=ExtResource( 22 )]
@@ -1100,7 +1102,7 @@ frames = SubResource( 33 )
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
+color = Color( 0, 0, 0, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -14,8 +14,10 @@ func after_dialog(timeline_name):
 
 func _on_dialogic_dialogue2_body_entered(body):
 	if not begun and body.name == "Mina":
-		
-		var g2d = Dialogic.start("hell_end_good")
+		var g2d = Dialogic.start("hell_end_bad")
+		if Pizza.pieces() == 0:
+			g2d = Dialogic.start("hell_end_good")
+			
 		parentnode.add_child(g2d)
 		mina.toggle_hud()
 		begun = true

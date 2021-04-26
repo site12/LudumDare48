@@ -583,7 +583,7 @@ tracks/6/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=9]
 size = 45
 font_data = ExtResource( 28 )
 
@@ -838,7 +838,7 @@ margin_left = 316.0
 margin_top = 123.0
 margin_right = 708.0
 margin_bottom = 174.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 9 )
 text = "Thanks for playing!"
 align = 1
 valign = 1
@@ -900,8 +900,9 @@ anims/site12 = SubResource( 11 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -101
-scale = Vector2( -1, 1 )
-transform = Transform2D( -1, 0, 0, 1, 0, 0 )
+rotation = 3.14159
+scale = Vector2( -1, -1 )
+transform = Transform2D( 1, 8.74228e-08, -8.74228e-08, 1, 0, 0 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.1, 0.1 )
@@ -951,8 +952,9 @@ __meta__ = {
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 layer = -99
-scale = Vector2( -1, 1 )
-transform = Transform2D( -1, 0, 0, 1, 0, 0 )
+rotation = 3.14159
+scale = Vector2( -1, -1 )
+transform = Transform2D( 1, 8.74228e-08, -8.74228e-08, 1, 0, 0 )
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground2"]
 motion_scale = Vector2( 0.4, 0.4 )
@@ -1049,10 +1051,10 @@ anims/wheels = SubResource( 12 )
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2( 0, 32 )
-scale = Vector2( -1, 1 )
 
 [node name="Sprite" type="Sprite" parent="Node2D"]
 position = Vector2( -254, 166 )
+scale = Vector2( -1, 1 )
 z_index = -101
 texture = ExtResource( 24 )
 

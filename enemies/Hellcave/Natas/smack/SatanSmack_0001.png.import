@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SatanSmack_0001.png-e47e5123a55e49c458eda4847bd68fd2.stex"
+path="res://.import/SatanSmack_0001.png-ab4f10af208049f07373d1e205575a1c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/Hellcave/Natas/SatanSmack_0001.png"
-dest_files=[ "res://.import/SatanSmack_0001.png-e47e5123a55e49c458eda4847bd68fd2.stex" ]
+source_file="res://enemies/Hellcave/Natas/smack/SatanSmack_0001.png"
+dest_files=[ "res://.import/SatanSmack_0001.png-ab4f10af208049f07373d1e205575a1c.stex" ]
 
 [params]
 

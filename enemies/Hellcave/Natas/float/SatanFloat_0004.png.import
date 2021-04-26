@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SatanFloat_0004.png-f740cd7778f170c3ddb1f39752188039.stex"
+path="res://.import/SatanFloat_0004.png-ec20fb8e2a6c609db7634756e8a2cad4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/Hellcave/Natas/SatanFloat_0004.png"
-dest_files=[ "res://.import/SatanFloat_0004.png-f740cd7778f170c3ddb1f39752188039.stex" ]
+source_file="res://enemies/Hellcave/Natas/float/SatanFloat_0004.png"
+dest_files=[ "res://.import/SatanFloat_0004.png-ec20fb8e2a6c609db7634756e8a2cad4.stex" ]
 
 [params]
 

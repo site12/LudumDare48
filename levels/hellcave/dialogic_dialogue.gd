@@ -7,7 +7,7 @@ onready var audio = get_tree().get_root().get_node("root/audio")
 onready var parentnode = get_tree().get_root().get_node("root/speaker_pos/Control")
 func _on_dialogic_dialogue_body_entered(body):
 	if not begun and body.name == "Mina":
-		
+		mina.toggle_hud()
 		var gd = Dialogic.start("hell_beginning")
 		parentnode.add_child(gd)
 		parentnode.get_parent().get_node("AnimatedSprite").visible = true

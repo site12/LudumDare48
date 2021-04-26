@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SatanFire_0004.png-dd51cc14eb75efd62694f3e0bb69cadb.stex"
+path="res://.import/SatanFire_0004.png-1024b94ba4c973405e42e06970d44c52.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/Hellcave/Natas/SatanFire_0004.png"
-dest_files=[ "res://.import/SatanFire_0004.png-dd51cc14eb75efd62694f3e0bb69cadb.stex" ]
+source_file="res://enemies/Hellcave/Natas/Fire/SatanFire_0004.png"
+dest_files=[ "res://.import/SatanFire_0004.png-1024b94ba4c973405e42e06970d44c52.stex" ]
 
 [params]
 

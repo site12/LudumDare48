@@ -1124,11 +1124,11 @@ bg_color = Color( 0.611765, 0.0588235, 0.0588235, 1 )
 
 [sub_resource type="StyleBoxFlat" id=55]
 
-[sub_resource type="DynamicFont" id=57]
+[sub_resource type="DynamicFont" id=56]
 size = 20
 font_data = ExtResource( 31 )
 
-[sub_resource type="SpriteFrames" id=56]
+[sub_resource type="SpriteFrames" id=57]
 animations = [ {
 "frames": [ ExtResource( 24 ), ExtResource( 14 ), ExtResource( 17 ), ExtResource( 16 ), ExtResource( 26 ), ExtResource( 30 ) ],
 "loop": true,
@@ -1161,7 +1161,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 536, 550 ), Vector2( 536, 520 ) ]
+"values": [ Vector2( 450, 550 ), Vector2( 450, 520 ) ]
 }
 
 [node name="Mina" type="KinematicBody2D"]
@@ -1178,7 +1178,6 @@ animation = "idle"
 texture = ExtResource( 52 )
 hframes = 3
 vframes = 2
-frame = 2
 
 [node name="smackbox" type="Area2D" parent="Sprite"]
 visible = false
@@ -1292,7 +1291,6 @@ volume_db = -16.0
 layer = 103
 
 [node name="Control" type="Control" parent="CanvasLayer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -1330,19 +1328,19 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="CanvasLayer/Control"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 536.0
+margin_left = 450.0
 margin_top = 550.0
-margin_right = 948.0
+margin_right = 875.0
 margin_bottom = 579.0
-custom_fonts/font = SubResource( 57 )
-text = "Eat some pizza to gain some health!"
+custom_fonts/font = SubResource( 56 )
+text = "Press T to eat some pizza to gain some health!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer/Control"]
 position = Vector2( 904, 528 )
-frames = SubResource( 56 )
+frames = SubResource( 57 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 anims/show = SubResource( 58 )

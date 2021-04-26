@@ -20,7 +20,7 @@ var on_ice = false
 var on_ladder = false
 var invincible = false
 var dir = 1
-var health = 200
+var health = Pizza.healthy()
 var on_wall = false
 var which_wall = 0
 var current_attack = "none"
@@ -47,6 +47,7 @@ func _ready():
 
 
 func _physics_process(delta):
+	pizza()
 	$CanvasLayer/Control/ProgressBar.value = health
 	if health < 200:
 		if not shown:
@@ -214,10 +215,11 @@ func take_damage(damage, source):
 		# vector_angle.y = -abs(vector_angle.y)
 		motion = knockback_vector
 		print("motion: " + str(motion))
-		health -= damage
+		Pizza.adjust_health(damage)
+		health = Pizza.healthy()
 		$EffectAnimations.play("took_damage")
 		state_machine.travel("hurt")
-		if health < 0:
+		if health <= 0:
 			die()
 
 func die():
@@ -259,6 +261,13 @@ func _on_i_frame_timer_timeout():
 func i_frame_over():
 	invincible = false
 
+func pizza():
+	$CanvasLayer/Control/AnimatedSprite.frame = Pizza.pieces()
+	if Input.is_action_just_pressed("pizza"):
+		Pizza.eat()
+		health = Pizza.healthy()
+	if Pizza.pieces() == 6:
+		$CanvasLayer/Control/AnimatedSprite.visible = false
 
 #func pass_camera_shake(amount):
 #	camera.add_trauma(amount)
