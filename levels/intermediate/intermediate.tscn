@@ -248,7 +248,7 @@ position = Vector2( -256, 0.999982 )
 scale = Vector2( 0.111111, 0.111481 )
 z_index = -100
 frames = SubResource( 2 )
-frame = 5
+frame = 3
 playing = true
 
 [node name="clouds" type="TextureRect" parent="menu/ParallaxBackground/ParallaxLayer2"]
@@ -363,10 +363,6 @@ volume_db = -20.0
 stream = ExtResource( 39 )
 volume_db = -20.0
 
-[node name="Timer" type="Timer" parent="menu"]
-wait_time = 3.0
-autostart = true
-
 [node name="house" type="Node2D" parent="."]
 position = Vector2( 272, 40 )
 scale = Vector2( 1.2, 1.2 )
@@ -404,5 +400,3 @@ color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[connection signal="timeout" from="menu/Timer" to="menu" method="_on_Timer_timeout"]

@@ -15,7 +15,7 @@ func _ready():
 	var l = loading.instance()
 	add_child(l)
 	yield(get_tree().create_timer(5), "timeout")
-	get_tree().change_scene("res://levels/library/library.tscn")
+	var err = get_tree().change_scene("res://levels/library/library.tscn")
 	stop = true
 	
 
@@ -27,9 +27,4 @@ func _physics_process(delta):
 	
 
 
-func _on_Timer_timeout():
-	randomize()
-	$ParallaxBackground/ParallaxLayer2/AnimatedSprite.visible = true
-	yield(get_tree().create_timer(.1), "timeout")
-	$ParallaxBackground/ParallaxLayer2/AnimatedSprite.visible = false
-	$Timer.wait_time = rand_range(3,5)
+

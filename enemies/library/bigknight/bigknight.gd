@@ -7,12 +7,14 @@ const GRAVITY = 9.8 *300
 var run_speed = 65
 var velocity = Vector2.ZERO
 var dir_to_player
-var health = 500
+var health = 200
 var player = null
 export var canmove = true
 var knockback = 50
 var state_machine :AnimationNodeStateMachinePlayback
 
+signal im_dead
+signal im_injured
 
 func _ready():
 	state_machine = $AnimationTree.get("parameters/playback")
@@ -95,6 +97,7 @@ func is_on_down():
 func take_damage(dmg):
 	print("took damage")
 	health = health - dmg
+	emit_signal("im_injured", health)
 	$DamageAnimation.play("took_damage")
 	if $Sprite.flip_h == true:
 		position.x += knockback
@@ -106,6 +109,7 @@ func take_damage(dmg):
 		die()
 
 func die():
+	emit_signal("im_dead")
 	self.queue_free()
 
 func _on_player_entered(playerwhoentered):

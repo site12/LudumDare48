@@ -36,7 +36,7 @@ extents = Vector2( 80.1402, 96.1058 )
 
 [sub_resource type="CapsuleShape2D" id=5]
 radius = 73.2946
-height = 121.089
+height = 13.2489
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 81.3241, 58.1491 )
@@ -82,7 +82,7 @@ auto_advance = true
 states/idle/node = SubResource( 8 )
 states/idle/position = Vector2( 423, 83 )
 states/swing/node = SubResource( 9 )
-states/swing/position = Vector2( 563, -66 )
+states/swing/position = Vector2( 563, -61 )
 states/walking/node = SubResource( 10 )
 states/walking/position = Vector2( 591, 83 )
 transitions = [ "idle", "walking", SubResource( 11 ), "walking", "idle", SubResource( 12 ), "idle", "swing", SubResource( 13 ), "walking", "swing", SubResource( 14 ), "swing", "idle", SubResource( 15 ) ]
@@ -154,6 +154,18 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("smack_box:monitoring")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=19]
@@ -319,6 +331,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector2( -16.4217, -8.20993 ) ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("smack_box:monitoring")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="RectangleShape2D" id=21]
 extents = Vector2( 41.886, 89.0832 )
@@ -334,7 +358,7 @@ script = ExtResource( 1 )
 texture = ExtResource( 9 )
 hframes = 5
 vframes = 2
-frame = 7
+frame = 6
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 visible = false
@@ -352,6 +376,8 @@ visible = false
 shape = SubResource( 2 )
 
 [node name="damage_radius" type="Area2D" parent="."]
+visible = false
+monitoring = false
 collision_layer = 32
 collision_mask = 48
 
@@ -371,7 +397,7 @@ monitoring = false
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="smack_box"]
-position = Vector2( 216.548, 35.3613 )
+position = Vector2( 248.64, 35.3613 )
 rotation = 1.5708
 shape = SubResource( 5 )
 
