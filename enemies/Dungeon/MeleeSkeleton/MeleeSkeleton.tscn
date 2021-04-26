@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://enemies/Dungeon/MeleeSkeleton/skelesM.gd" type="Script" id=1]
 [ext_resource path="res://enemies/library/animations/LivingArmor/ArmorIdle_0002.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://enemies/library/animations/LivingArmor/ArmorIdle_0005.png" type="Texture" id=13]
 [ext_resource path="res://enemies/Dungeon/MeleeSkeleton/MeleeSkeletonWalk.png" type="Texture" id=14]
 [ext_resource path="res://enemies/Dungeon/MeleeSkeleton/MeleeSkeletonAttack.png" type="Texture" id=15]
+[ext_resource path="res://sounds/player/hit.wav" type="AudioStream" id=16]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -348,6 +349,15 @@ tracks/5/keys = {
 [sub_resource type="RectangleShape2D" id=21]
 extents = Vector2( 41.886, 41.5376 )
 
+[sub_resource type="CanvasItemMaterial" id=22]
+light_mode = 1
+
+[sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=24]
+bg_color = Color( 0.85098, 0.85098, 0.85098, 1 )
+
 [node name="melee_skeleton" type="KinematicBody2D" groups=[
 "baddies",
 ]]
@@ -359,6 +369,7 @@ script = ExtResource( 1 )
 texture = ExtResource( 9 )
 hframes = 4
 vframes = 3
+frame = 10
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 visible = false
@@ -447,6 +458,39 @@ shape = SubResource( 21 )
 [node name="down" type="RayCast2D" parent="."]
 position = Vector2( 0, 24 )
 enabled = true
+
+[node name="hud" type="Control" parent="."]
+margin_left = -64.0
+margin_top = -128.0
+margin_right = 64.0
+margin_bottom = 64.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="hud"]
+material = SubResource( 22 )
+anchor_left = 0.5
+anchor_top = 0.417
+anchor_right = 0.5
+anchor_bottom = 0.417
+margin_left = -40.0
+margin_top = -24.064
+margin_right = 40.0
+margin_bottom = -10.064
+custom_styles/fg = SubResource( 23 )
+custom_styles/bg = SubResource( 24 )
+max_value = 45.0
+value = 45.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="audio" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource( 16 )
 
 [connection signal="body_entered" from="line_of_sight" to="." method="_on_line_of_sight_body_entered"]
 [connection signal="body_exited" from="line_of_sight" to="." method="_on_line_of_sight_body_exited"]

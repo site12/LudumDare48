@@ -16,6 +16,8 @@ var state_machine :AnimationNodeStateMachinePlayback
 signal im_dead
 signal im_injured
 
+var dead = false
+
 func _ready():
 	state_machine = $AnimationTree.get("parameters/playback")
 
@@ -93,6 +95,8 @@ func _on_line_of_sight_body_exited(body):
 		player = null
 
 func take_damage(dmg):
+	if not dead:
+		$audio/AudioStreamPlayer.play()
 	print("took damage")
 	health = health - dmg
 	emit_signal("im_injured", health)
@@ -108,7 +112,9 @@ func take_damage(dmg):
 
 func die():
 	emit_signal("im_dead")
-	self.queue_free()
+	$CollisionShape2D.queue_free()
+	self.visible = false
+	dead = true
 
 func _on_player_entered(playerwhoentered):
 	player = playerwhoentered
@@ -123,14 +129,14 @@ func attack():
 
 
 func _on_damage_radius_body_entered(body):
-	if body.name == "Mina":
+	if body.name == "Mina" and not dead:
 		body.take_damage(10, self)
 		#make player take damage based on time spent in zone
 
 func _on_target_zone_body_entered(body):
-	if body.name == "Mina":
+	if body.name == "Mina" and not dead:
 		attack()
 
 func _on_smack_box_body_entered(body):
-	if body.name == "Mina":
+	if body.name == "Mina" and not dead:
 		body.take_damage(70, self)
