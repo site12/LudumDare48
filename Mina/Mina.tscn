@@ -55,9 +55,19 @@ animations = [ {
 "name": "idle",
 "speed": 12.0
 }, {
+"frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 15 ), ExtResource( 21 ), ExtResource( 13 ), ExtResource( 20 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "roll",
+"speed": 12.0
+}, {
 "frames": [ ExtResource( 18 ), ExtResource( 28 ), ExtResource( 27 ) ],
 "loop": false,
 "name": "punch1",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 38 ) ],
+"loop": false,
+"name": "jump",
 "speed": 12.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 9 ), ExtResource( 1 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 7 ) ],
@@ -68,16 +78,6 @@ animations = [ {
 "frames": [ ExtResource( 44 ), ExtResource( 42 ) ],
 "loop": true,
 "name": "hurt",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 15 ), ExtResource( 21 ), ExtResource( 13 ), ExtResource( 20 ), ExtResource( 25 ) ],
-"loop": true,
-"name": "roll",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 38 ) ],
-"loop": false,
-"name": "jump",
 "speed": 12.0
 }, {
 "frames": [ ExtResource( 46 ) ],
@@ -377,20 +377,6 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 0 ]
-}
-tracks/4/type = "audio"
-tracks/4/path = NodePath("Audio/hurt")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 62 )
-} ],
-"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=8]
@@ -1145,6 +1131,7 @@ animation = "idle"
 texture = ExtResource( 52 )
 hframes = 3
 vframes = 2
+frame = 4
 
 [node name="smackbox" type="Area2D" parent="Sprite"]
 visible = false
