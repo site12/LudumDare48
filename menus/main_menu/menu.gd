@@ -3,7 +3,7 @@ extends Node2D
 func _ready():
 	$AnimationPlayer.play("wheels")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	$Camera2D.position.x +=1
 	$Node2D/Sprite.position.x +=1
 	# $ParallaxBackground/ParallaxLayer2/AnimatedSprite.position.x+=0.3

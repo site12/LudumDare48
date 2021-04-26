@@ -11,4 +11,4 @@ func start():
 		add_child(l)
 		loaded = true
 		yield(get_tree().create_timer(3), "timeout")
-		get_tree().change_scene("res://levels/intermediate/intermediate.tscn")
+		var _err = get_tree().change_scene("res://levels/intermediate/intermediate.tscn")
