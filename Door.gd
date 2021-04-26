@@ -16,3 +16,7 @@ func _process(_delta):
 	if player_in_area:
 		if Input.is_action_just_pressed("interact"):
 			get_tree().change_scene(next_scene)
+
+func reveal_door():
+	visible = true
+	$Area2D.monitoring = true

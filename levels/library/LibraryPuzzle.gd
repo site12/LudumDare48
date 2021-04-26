@@ -3,6 +3,7 @@ extends Control
 var correct = [1, 2, 3, 4, 5, 6]
 var order = []
 var inRange = false
+onready var highlight = get_tree().get_root().get_node("root/level/Bookshelf/Bookshelf_highlight")
 onready var show = get_tree().get_root().get_node("root/UnderBookcaseDoor")
 func _ready():
 	pass # Replace with function body.
@@ -78,9 +79,12 @@ func _input(event):
 
 func _on_puzzle_body_entered(body):
 	if body.name == 'Mina':
+		highlight.visible = true
 		inRange = true
 
 
 func _on_puzzle_body_exited(body):
+	if body.name == 'Mina':
+		highlight.visible = false
 		inRange = false
 

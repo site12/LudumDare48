@@ -1,10 +1,6 @@
 extends Control
 
-
-#onready var boss = get_tree().get_root().get_node("root/bigknight")
-
-func _physics_process(delta):
-	#$ProgressBar.value = boss.health
-	#if boss.health <=0:
-	#	self.queue_free()
-	pass
+func update_health(total_health):
+	$ProgressBar.value = total_health
+	if total_health <= 0:
+		queue_free()
