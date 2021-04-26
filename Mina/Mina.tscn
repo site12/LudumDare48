@@ -55,11 +55,6 @@ animations = [ {
 "name": "idle",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 38 ) ],
-"loop": false,
-"name": "jump",
-"speed": 12.0
-}, {
 "frames": [ ExtResource( 46 ) ],
 "loop": false,
 "name": "falling",
@@ -68,6 +63,11 @@ animations = [ {
 "frames": [ ExtResource( 18 ), ExtResource( 28 ), ExtResource( 27 ) ],
 "loop": false,
 "name": "punch1",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 38 ) ],
+"loop": false,
+"name": "jump",
 "speed": 12.0
 }, {
 "frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 15 ), ExtResource( 21 ), ExtResource( 13 ), ExtResource( 20 ), ExtResource( 25 ) ],
@@ -1145,7 +1145,7 @@ animation = "idle"
 texture = ExtResource( 52 )
 hframes = 3
 vframes = 2
-frame = 5
+frame = 1
 
 [node name="smackbox" type="Area2D" parent="Sprite"]
 visible = false
@@ -1210,6 +1210,7 @@ cast_to = Vector2( 30, 0 )
 [node name="Light2D" type="Light2D" parent="."]
 visible = false
 texture = ExtResource( 57 )
+range_layer_min = -100
 
 [node name="down" type="RayCast2D" parent="."]
 position = Vector2( -24, 50 )
