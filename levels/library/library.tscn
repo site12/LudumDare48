@@ -1019,7 +1019,11 @@ position = Vector2( 1036, 516 )
 scale = Vector2( 2.375, 2.375 )
 texture = ExtResource( 5 )
 
-[node name="Door" parent="level" instance=ExtResource( 26 )]
+[node name="Door" type="Sprite" parent="level"]
+position = Vector2( 6849.62, 2265 )
+scale = Vector2( 1.5, 1.5 )
+z_index = -5
+texture = ExtResource( 26 )
 
 [node name="UnderBookcaseDoor" type="TileMap" parent="."]
 tile_set = SubResource( 19 )
