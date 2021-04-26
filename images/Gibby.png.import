@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Puzzle_Shelf.png-e2a45a0fee8865066b0df9fc687c8b64.stex"
+path="res://.import/Gibby.png-e6c5530b2685f0aef6a041a7bcb68ba8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/Puzzle_Shelf.png"
-dest_files=[ "res://.import/Puzzle_Shelf.png-e2a45a0fee8865066b0df9fc687c8b64.stex" ]
+source_file="res://images/Gibby.png"
+dest_files=[ "res://.import/Gibby.png-e6c5530b2685f0aef6a041a7bcb68ba8.stex" ]
 
 [params]
 
