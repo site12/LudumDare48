@@ -24,6 +24,9 @@ func _on_Button3_pressed():
 		check_order()
 
 func check_order():
+	$Control/Button.disabled = true
+	$Control/Button2.disabled = true
+	$Control/Button3.disabled = true
 	if order == correct:
 		$Control/Light_Green.visible = true
 		yield(get_tree().create_timer(2), "timeout")
@@ -39,6 +42,9 @@ func check_order():
 		$Control/Button2.pressed = false
 		$Control/Button3.pressed = false
 
+		$Control/Button.disabled = false
+		$Control/Button2.disabled = false
+		$Control/Button3.disabled = false
 
 func _on_Button4_pressed():
 	self.visible = false

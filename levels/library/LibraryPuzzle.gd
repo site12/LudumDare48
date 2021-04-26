@@ -48,6 +48,12 @@ func _on_Button6_pressed():
 #checks if the order is correct and then finishes the minigame if so.
 #if wrong, clears the array so it can be added to again.
 func check_order():
+	$Control/Button.disabled = true
+	$Control/Button2.disabled = true
+	$Control/Button3.disabled = true
+	$Control/Button4.disabled = true
+	$Control/Button5.disabled = true
+	$Control/Button6.disabled = true
 	if correct == order:
 		get_parent().get_parent().get_node("Mina").canmove = true
 		$Control/Light_Green.visible = true
@@ -65,6 +71,13 @@ func check_order():
 		$Control/Button4.pressed = false
 		$Control/Button5.pressed = false
 		$Control/Button6.pressed = false
+		
+		$Control/Button.disabled = false
+		$Control/Button2.disabled = false
+		$Control/Button3.disabled = false
+		$Control/Button4.disabled = false
+		$Control/Button5.disabled = false
+		$Control/Button6.disabled = false
 
 #exit button
 func _on_Button7_pressed():

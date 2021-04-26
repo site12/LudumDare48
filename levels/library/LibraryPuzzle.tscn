@@ -22,43 +22,43 @@
 texture = ExtResource( 5 )
 region_rect = Rect2( 143.806, 41.2449, 53.4144, 130.489 )
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 7 )
 region_rect = Rect2( 135.173, 33.3299, 58.7877, 139.025 )
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 2 )
 region_rect = Rect2( 143.629, 41.6724, 56.8643, 132.967 )
 
-[sub_resource type="StyleBoxTexture" id=6]
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 6 )
 region_rect = Rect2( 130.358, 33.3249, 66.0008, 140.09 )
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 4 )
 region_rect = Rect2( 144.883, 40.8994, 53.9375, 133.38 )
 
-[sub_resource type="StyleBoxTexture" id=7]
+[sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 10 )
 region_rect = Rect2( 137.284, 30.6329, 56.6459, 139.571 )
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 3 )
 region_rect = Rect2( 144.298, 42.2006, 53.1276, 131.672 )
 
-[sub_resource type="StyleBoxTexture" id=10]
+[sub_resource type="StyleBoxTexture" id=8]
 texture = ExtResource( 11 )
 region_rect = Rect2( 134.9, 30.8852, 58.1125, 141.885 )
 
-[sub_resource type="StyleBoxTexture" id=8]
+[sub_resource type="StyleBoxTexture" id=9]
 texture = ExtResource( 8 )
 region_rect = Rect2( 144.298, 40.4471, 53.1276, 133.623 )
 
-[sub_resource type="StyleBoxTexture" id=11]
+[sub_resource type="StyleBoxTexture" id=10]
 texture = ExtResource( 12 )
 region_rect = Rect2( 134.598, 28.9235, 59.9992, 145.281 )
 
-[sub_resource type="StyleBoxTexture" id=9]
+[sub_resource type="StyleBoxTexture" id=11]
 texture = ExtResource( 9 )
 region_rect = Rect2( 143.616, 41.1266, 53.1276, 133.891 )
 
@@ -66,9 +66,9 @@ region_rect = Rect2( 143.616, 41.1266, 53.1276, 133.891 )
 texture = ExtResource( 13 )
 region_rect = Rect2( 135.443, 30.6583, 58.9172, 140.993 )
 
-[sub_resource type="StyleBoxTexture" id=14]
-
 [sub_resource type="StyleBoxTexture" id=13]
+
+[sub_resource type="StyleBoxTexture" id=14]
 
 [node name="LibraryPuzzle" type="Control"]
 anchor_right = 1.0
@@ -128,7 +128,8 @@ margin_right = 124.0
 margin_bottom = 188.0
 focus_mode = 0
 custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 5 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 1 )
 toggle_mode = true
 __meta__ = {
@@ -141,9 +142,10 @@ margin_top = 236.0
 margin_right = 364.0
 margin_bottom = 364.0
 focus_mode = 0
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/normal = SubResource( 2 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 3 )
 toggle_mode = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -155,9 +157,10 @@ margin_top = 236.0
 margin_right = 124.0
 margin_bottom = 364.0
 focus_mode = 0
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 7 )
-custom_styles/normal = SubResource( 3 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 5 )
 toggle_mode = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -169,9 +172,10 @@ margin_top = 60.0
 margin_right = 364.0
 margin_bottom = 188.0
 focus_mode = 0
-custom_styles/hover = SubResource( 4 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/normal = SubResource( 4 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 7 )
 toggle_mode = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -183,9 +187,10 @@ margin_top = 60.0
 margin_right = 244.0
 margin_bottom = 188.0
 focus_mode = 0
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 11 )
-custom_styles/normal = SubResource( 8 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 9 )
 toggle_mode = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -197,9 +202,10 @@ margin_top = 236.0
 margin_right = 244.0
 margin_bottom = 364.0
 focus_mode = 0
-custom_styles/hover = SubResource( 9 )
+custom_styles/hover = SubResource( 11 )
 custom_styles/pressed = SubResource( 12 )
-custom_styles/normal = SubResource( 9 )
+custom_styles/disabled = SubResource( 12 )
+custom_styles/normal = SubResource( 11 )
 toggle_mode = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -210,8 +216,8 @@ margin_left = 422.0
 margin_top = 2.0
 margin_right = 575.0
 margin_bottom = 89.0
-custom_styles/hover = SubResource( 14 )
-custom_styles/normal = SubResource( 13 )
+custom_styles/hover = SubResource( 13 )
+custom_styles/normal = SubResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
