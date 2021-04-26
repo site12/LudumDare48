@@ -122,10 +122,10 @@ scale = Vector2( 1.856, 1.84907 )
 texture = ExtResource( 14 )
 
 [node name="Button" type="Button" parent="Control"]
-margin_left = 61.2694
-margin_top = 61.9843
-margin_right = 125.269
-margin_bottom = 189.984
+margin_left = 60.0
+margin_top = 60.0
+margin_right = 124.0
+margin_bottom = 188.0
 focus_mode = 0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 5 )
@@ -136,10 +136,10 @@ __meta__ = {
 }
 
 [node name="Button2" type="Button" parent="Control"]
-margin_left = 322.132
-margin_top = 237.241
-margin_right = 386.132
-margin_bottom = 365.241
+margin_left = 300.0
+margin_top = 236.0
+margin_right = 364.0
+margin_bottom = 364.0
 focus_mode = 0
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 6 )
@@ -150,10 +150,10 @@ __meta__ = {
 }
 
 [node name="Button3" type="Button" parent="Control"]
-margin_left = 60.6544
-margin_top = 236.347
-margin_right = 124.654
-margin_bottom = 364.347
+margin_left = 60.0
+margin_top = 236.0
+margin_right = 124.0
+margin_bottom = 364.0
 focus_mode = 0
 custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 7 )
@@ -164,10 +164,10 @@ __meta__ = {
 }
 
 [node name="Button4" type="Button" parent="Control"]
-margin_left = 321.068
-margin_top = 62.0517
-margin_right = 385.068
-margin_bottom = 190.052
+margin_left = 300.0
+margin_top = 60.0
+margin_right = 364.0
+margin_bottom = 188.0
 focus_mode = 0
 custom_styles/hover = SubResource( 4 )
 custom_styles/pressed = SubResource( 10 )
@@ -178,10 +178,10 @@ __meta__ = {
 }
 
 [node name="Button5" type="Button" parent="Control"]
-margin_left = 190.851
-margin_top = 61.187
-margin_right = 254.851
-margin_bottom = 189.187
+margin_left = 180.0
+margin_top = 60.0
+margin_right = 244.0
+margin_bottom = 188.0
 focus_mode = 0
 custom_styles/hover = SubResource( 8 )
 custom_styles/pressed = SubResource( 11 )
@@ -192,9 +192,9 @@ __meta__ = {
 }
 
 [node name="Button6" type="Button" parent="Control"]
-margin_left = 190.158
+margin_left = 180.0
 margin_top = 236.0
-margin_right = 254.158
+margin_right = 244.0
 margin_bottom = 364.0
 focus_mode = 0
 custom_styles/hover = SubResource( 9 )

@@ -50,7 +50,6 @@ func check_order():
 	if correct == order:
 		get_parent().get_parent().get_node("Mina").canmove = true
 		$Control/Light_Green.visible = true
-		#$level/Light_Green.visible = true
 		yield(get_tree().create_timer(2), "timeout")
 		$Control/Light_Green.visible = false
 		show.queue_free()
