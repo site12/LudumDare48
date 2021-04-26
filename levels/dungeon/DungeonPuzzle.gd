@@ -5,8 +5,8 @@ func _ready():
 
 var correct = ["snake", "bat", "bird"]
 var order = []
-onready var show = get_parent().get_parent().get_node("level/BricksRevealBoss")
-var inRange = false
+onready var show = get_tree().get_root().get_node("root/BricksRevealBoss")
+
 
 func _on_Button_pressed():
 	order.append("bat")
@@ -29,7 +29,6 @@ func check_order():
 		yield(get_tree().create_timer(2), "timeout")
 		show.queue_free()
 		self.visible = false
-		get_parent().get_parent().get_node("Mina").canmove = true
 	else:
 		order.clear()
 		$Control/Light_Red.visible = true
@@ -43,16 +42,3 @@ func check_order():
 func _on_Button4_pressed():
 	self.visible = false
 	order.clear()
-	get_parent().get_parent().get_node("Mina").canmove = true
-
-func _input(event):
-	if Input.is_action_just_pressed("interact") and inRange:
-		self.visible = true
-		get_parent().get_parent().get_node("Mina").canmove = false
-
-func _on_puzzle_body_entered(body):
-	if body.name == 'Mina':
-		inRange = true
-
-func _on_puzzle_body_exited(body):
-	inRange = false

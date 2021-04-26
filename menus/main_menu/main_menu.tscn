@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://fonts/couture-bld.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://menus/main_menu/buttons/start.tscn" type="PackedScene" id=2]
@@ -31,9 +31,6 @@
 [ext_resource path="res://menus/main_menu/img/sprite_5_glow.png" type="Texture" id=29]
 [ext_resource path="res://menus/main_menu/img/sprite_6_glow.png" type="Texture" id=30]
 [ext_resource path="res://menus/main_menu/img/LightingClouds.png" type="Texture" id=31]
-[ext_resource path="res://menus/main_menu/img/sprite_7_glow.png" type="Texture" id=32]
-[ext_resource path="res://menus/main_menu/img/Background Trees Lightning.png" type="Texture" id=33]
-[ext_resource path="res://menus/main_menu/img/Foreground Trees Lightning.png" type="Texture" id=34]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 17 )
@@ -51,22 +48,21 @@ animations = [ {
 
 [sub_resource type="Animation" id=3]
 resource_name = "lightning0"
-length = 0.8
-step = 0.05
+step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("Node2D/Light2D:energy")
+tracks/0/path = NodePath("Light2D:energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.07, 0.12, 0.7 ),
+"times": PoolRealArray( 0, 0.07, 0.12, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, 5.0, 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Node2D/Light2D:texture")
+tracks/1/path = NodePath("Light2D:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -78,7 +74,7 @@ tracks/1/keys = {
 "values": [ ExtResource( 27 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Node2D/Sprite:texture")
+tracks/2/path = NodePath("Sprite:texture")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -90,72 +86,47 @@ tracks/2/keys = {
 "values": [ ExtResource( 21 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Node2D/Sprite:visible")
+tracks/3/path = NodePath("Sprite:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.02, 0.65 ),
+"times": PoolRealArray( 0, 0.02, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("../../ParallaxBackground2/ParallaxLayer4L:modulate")
+tracks/4/path = NodePath("../../ParallaxBackground/ParallaxLayer3:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.02, 0.07, 0.12, 0.7 ),
+"times": PoolRealArray( 0, 0.02, 0.07, 0.16, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("../../ParallaxBackground2/ParallaxLayer3L:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.02, 0.07, 0.12, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("../../ParallaxBackground/ParallaxLayer3:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0, 0.02, 0.07, 0.12, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"update": 1,
+"values": [ false, true, false, true, false ]
 }
 
 [sub_resource type="Animation" id=4]
 resource_name = "lightning1"
-length = 0.8
-step = 0.05
+step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("Node2D/Light2D:energy")
+tracks/0/path = NodePath("Light2D:energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.07, 0.12, 0.7 ),
+"times": PoolRealArray( 0, 0.07, 0.12, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, 5.0, 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Node2D/Light2D:texture")
+tracks/1/path = NodePath("Light2D:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -167,7 +138,7 @@ tracks/1/keys = {
 "values": [ ExtResource( 28 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Node2D/Sprite:texture")
+tracks/2/path = NodePath("Sprite:texture")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -179,72 +150,35 @@ tracks/2/keys = {
 "values": [ ExtResource( 25 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Node2D/Sprite:visible")
+tracks/3/path = NodePath("Sprite:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.02, 0.65 ),
+"times": PoolRealArray( 0, 0.02, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("../../ParallaxBackground2/ParallaxLayer4L:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.02, 0.07, 0.12, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("../../ParallaxBackground2/ParallaxLayer3L:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.02, 0.07, 0.12, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("../../ParallaxBackground/ParallaxLayer3:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0, 0.02, 0.07, 0.12, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
 
 [sub_resource type="Animation" id=5]
 resource_name = "lightning2"
-length = 0.8
-step = 0.05
+step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("Node2D/Light2D:energy")
+tracks/0/path = NodePath("Light2D:energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.07, 0.12, 0.7 ),
+"times": PoolRealArray( 0, 0.07, 0.12, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, 5.0, 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Node2D/Light2D:texture")
+tracks/1/path = NodePath("Light2D:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -256,7 +190,7 @@ tracks/1/keys = {
 "values": [ ExtResource( 26 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Node2D/Sprite:texture")
+tracks/2/path = NodePath("Sprite:texture")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -268,72 +202,35 @@ tracks/2/keys = {
 "values": [ ExtResource( 22 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Node2D/Sprite:visible")
+tracks/3/path = NodePath("Sprite:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.02, 0.65 ),
+"times": PoolRealArray( 0, 0.02, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("../../ParallaxBackground2/ParallaxLayer4L:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.02, 0.07, 0.12, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("../../ParallaxBackground2/ParallaxLayer3L:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.02, 0.07, 0.12, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("../../ParallaxBackground/ParallaxLayer3:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0, 0.02, 0.07, 0.12, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
 
 [sub_resource type="Animation" id=6]
 resource_name = "lightning3"
-length = 0.8
-step = 0.05
+step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("Node2D/Light2D:energy")
+tracks/0/path = NodePath("Light2D:energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.07, 0.12, 0.7 ),
+"times": PoolRealArray( 0, 0.07, 0.12, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, 5.0, 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Node2D/Light2D:texture")
+tracks/1/path = NodePath("Light2D:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -345,7 +242,7 @@ tracks/1/keys = {
 "values": [ ExtResource( 29 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Node2D/Sprite:texture")
+tracks/2/path = NodePath("Sprite:texture")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -357,72 +254,35 @@ tracks/2/keys = {
 "values": [ ExtResource( 20 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Node2D/Sprite:visible")
+tracks/3/path = NodePath("Sprite:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.02, 0.65 ),
+"times": PoolRealArray( 0, 0.02, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("../../ParallaxBackground2/ParallaxLayer4L:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.02, 0.07, 0.12, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("../../ParallaxBackground2/ParallaxLayer3L:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.02, 0.07, 0.12, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("../../ParallaxBackground/ParallaxLayer3:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0, 0.02, 0.07, 0.12, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
 
 [sub_resource type="Animation" id=7]
 resource_name = "lightning4"
-length = 0.8
-step = 0.05
+step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("Node2D/Light2D:energy")
+tracks/0/path = NodePath("Light2D:energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.07, 0.12, 0.7 ),
+"times": PoolRealArray( 0, 0.07, 0.12, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, 5.0, 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Node2D/Light2D:texture")
+tracks/1/path = NodePath("Light2D:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -434,7 +294,7 @@ tracks/1/keys = {
 "values": [ ExtResource( 30 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Node2D/Sprite:texture")
+tracks/2/path = NodePath("Sprite:texture")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -446,148 +306,23 @@ tracks/2/keys = {
 "values": [ ExtResource( 23 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Node2D/Sprite:visible")
+tracks/3/path = NodePath("Sprite:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.02, 0.65 ),
+"times": PoolRealArray( 0, 0.02, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("../../ParallaxBackground2/ParallaxLayer4L:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.02, 0.07, 0.12, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("../../ParallaxBackground2/ParallaxLayer3L:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.02, 0.07, 0.12, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("../../ParallaxBackground/ParallaxLayer3:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0, 0.02, 0.07, 0.12, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
 
-[sub_resource type="Animation" id=8]
-resource_name = "lightning5"
-length = 0.8
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("Node2D/Light2D:energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.07, 0.12, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.0, 5.0, 0.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Node2D/Light2D:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 32 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Node2D/Sprite:texture")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 24 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Node2D/Sprite:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.02, 0.65 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("../../ParallaxBackground2/ParallaxLayer4L:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.02, 0.07, 0.12, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("../../ParallaxBackground2/ParallaxLayer3L:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.02, 0.07, 0.12, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("../../ParallaxBackground/ParallaxLayer3:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0, 0.02, 0.07, 0.12, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=8]
 size = 45
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("overlay/screen/right:modulate")
@@ -622,7 +357,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("overlay/screen/left:modulate")
@@ -657,7 +392,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 loop = true
 step = 0.05
 tracks/0/type = "value"
@@ -710,29 +445,19 @@ texture = ExtResource( 18 )
 
 [node name="lightning" type="CanvasLayer" parent="Camera2D"]
 layer = -100
-offset = Vector2( 500, 0 )
-transform = Transform2D( 1, 0, 0, 1, 500, 0 )
+scale = Vector2( 0.866, 0.613 )
+transform = Transform2D( 0.866, 0, 0, 0.613, 0, 0 )
 
-[node name="Node2D" type="Node2D" parent="Camera2D/lightning"]
-scale = Vector2( 0.7, 0.7 )
-
-[node name="Light2D" type="Light2D" parent="Camera2D/lightning/Node2D"]
-scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 32 )
-energy = 0.0
+[node name="Light2D" type="Light2D" parent="Camera2D/lightning"]
+texture = ExtResource( 27 )
+energy = 1.13636
 range_layer_min = -101
 range_layer_max = -100
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Camera2D/lightning/Node2D"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Camera2D/lightning"]
 visible = false
-scale = Vector2( 0.8, 0.8 )
 z_index = -100
 frames = SubResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="Camera2D/lightning/Node2D"]
-visible = false
-scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 24 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D/lightning"]
 anims/lightning0 = SubResource( 3 )
@@ -740,7 +465,9 @@ anims/lightning1 = SubResource( 4 )
 anims/lightning2 = SubResource( 5 )
 anims/lightning3 = SubResource( 6 )
 anims/lightning4 = SubResource( 7 )
-anims/lightning5 = SubResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="Camera2D/lightning"]
+texture = ExtResource( 21 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -837,7 +564,7 @@ margin_left = 272.0
 margin_top = 126.0
 margin_right = 752.0
 margin_bottom = 172.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 text = "Deep Dish Delivery"
 align = 1
 valign = 1
@@ -892,8 +619,8 @@ margin_bottom = 147.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/main_menu"]
 playback_speed = 5.0
-anims/options = SubResource( 10 )
-anims/site12 = SubResource( 11 )
+anims/options = SubResource( 9 )
+anims/site12 = SubResource( 10 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -101
@@ -929,7 +656,6 @@ __meta__ = {
 }
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-modulate = Color( 1, 1, 1, 0 )
 motion_scale = Vector2( 0.2, 0.2 )
 motion_mirroring = Vector2( 2560, 0 )
 
@@ -961,21 +687,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ParallaxLayer3L" type="ParallaxLayer" parent="ParallaxBackground2"]
-modulate = Color( 1, 1, 1, 0 )
-motion_scale = Vector2( 0.4, 0.4 )
-motion_mirroring = Vector2( 2560, 0 )
-
-[node name="treesb" type="TextureRect" parent="ParallaxBackground2/ParallaxLayer3L"]
-margin_top = -200.0
-margin_right = 2560.0
-margin_bottom = 384.0
-texture = ExtResource( 33 )
-stretch_mode = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground2"]
 motion_scale = Vector2( 0.6, 0.6 )
 motion_mirroring = Vector2( 5120, 0 )
@@ -986,22 +697,6 @@ margin_right = 2560.0
 margin_bottom = 260.0
 rect_scale = Vector2( 2, 2 )
 texture = ExtResource( 9 )
-stretch_mode = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ParallaxLayer4L" type="ParallaxLayer" parent="ParallaxBackground2"]
-modulate = Color( 1, 1, 1, 0 )
-motion_scale = Vector2( 0.6, 0.6 )
-motion_mirroring = Vector2( 5120, 0 )
-
-[node name="treesf" type="TextureRect" parent="ParallaxBackground2/ParallaxLayer4L"]
-margin_top = -376.0
-margin_right = 2560.0
-margin_bottom = 260.0
-rect_scale = Vector2( 2, 2 )
-texture = ExtResource( 34 )
 stretch_mode = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1038,7 +733,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 1.25
-anims/wheels = SubResource( 12 )
+anims/wheels = SubResource( 11 )
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2( 0, 32 )
