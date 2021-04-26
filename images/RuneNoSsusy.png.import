@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Hells_Gate.png-ebedf0238dd89412a587e483f46fc44d.stex"
+path="res://.import/RuneNoSsusy.png-f2f1ae3977de63c1a1217e9cc97da3a8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/Hells_Gate.png"
-dest_files=[ "res://.import/Hells_Gate.png-ebedf0238dd89412a587e483f46fc44d.stex" ]
+source_file="res://images/RuneNoSsusy.png"
+dest_files=[ "res://.import/RuneNoSsusy.png-f2f1ae3977de63c1a1217e9cc97da3a8.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
