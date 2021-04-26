@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/318608__papercutterjohn__crunch-and-munch.wav-24ce6f6c0e20ccecf29ea3bee602d4d7.sample"
+
+[deps]
+
+source_file="res://sounds/sfx/318608__papercutterjohn__crunch-and-munch.wav"
+dest_files=[ "res://.import/318608__papercutterjohn__crunch-and-munch.wav-24ce6f6c0e20ccecf29ea3bee602d4d7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
