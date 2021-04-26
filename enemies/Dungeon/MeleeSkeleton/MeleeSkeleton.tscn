@@ -369,7 +369,7 @@ script = ExtResource( 1 )
 texture = ExtResource( 9 )
 hframes = 4
 vframes = 3
-frame = 10
+frame = 8
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 visible = false
@@ -480,8 +480,7 @@ margin_right = 40.0
 margin_bottom = -10.064
 custom_styles/fg = SubResource( 23 )
 custom_styles/bg = SubResource( 24 )
-max_value = 45.0
-value = 45.0
+value = 100.0
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false

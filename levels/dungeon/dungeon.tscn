@@ -766,7 +766,7 @@ tracks/1/keys = {
 [node name="root" type="Node2D"]
 
 [node name="Mina" parent="." instance=ExtResource( 2 )]
-position = Vector2( 8144, 2512 )
+position = Vector2( 104, 456 )
 
 [node name="level" type="Node" parent="."]
 
@@ -1450,7 +1450,7 @@ position = Vector2( 40, 320 )
 scale = Vector2( 0.125, 0.125 )
 z_index = 10
 frames = SubResource( 36 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="audio" type="Node" parent="."]
@@ -1467,47 +1467,37 @@ anims/fade_in = SubResource( 37 )
 
 [node name="torch" parent="Node" instance=ExtResource( 30 )]
 position = Vector2( 1392.04, 561.75 )
-frame = 0
 
 [node name="torch2" parent="Node" instance=ExtResource( 30 )]
 position = Vector2( 1999.75, 341.048 )
-frame = 0
 flip_h = true
 
 [node name="torch3" parent="Node" instance=ExtResource( 30 )]
 position = Vector2( 1359.79, 1205.05 )
-frame = 0
 flip_h = true
 
 [node name="torch4" parent="Node" instance=ExtResource( 30 )]
 position = Vector2( 944, 944 )
-frame = 0
 
 [node name="torch5" parent="Node" instance=ExtResource( 30 )]
 position = Vector2( 944, 1672 )
-frame = 0
 
 [node name="torch6" parent="Node" instance=ExtResource( 30 )]
 position = Vector2( 2960, 1864 )
-frame = 0
 flip_h = true
 
 [node name="torch7" parent="Node" instance=ExtResource( 30 )]
 position = Vector2( 4816, 1624 )
-frame = 0
 flip_h = true
 
 [node name="torch8" parent="Node" instance=ExtResource( 30 )]
 position = Vector2( 4208, 2192 )
-frame = 0
 
 [node name="torch9" parent="Node" instance=ExtResource( 30 )]
 position = Vector2( 8624, 2280 )
-frame = 0
 
 [node name="torch10" parent="Node" instance=ExtResource( 30 )]
 position = Vector2( 9936, 2256 )
-frame = 0
 flip_h = true
 
 [node name="chandelier" parent="Node" instance=ExtResource( 28 )]

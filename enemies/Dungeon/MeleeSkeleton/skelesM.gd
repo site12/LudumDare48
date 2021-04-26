@@ -7,7 +7,7 @@ const GRAVITY = 9.8 *300
 var run_speed = 65
 var velocity = Vector2.ZERO
 var dir_to_player
-var health = 200
+var health = 100
 var player = null
 export var canmove = true
 var knockback = 50
@@ -95,10 +95,12 @@ func _on_line_of_sight_body_exited(body):
 		player = null
 
 func take_damage(dmg):
+	
 	if not dead:
 		$audio/AudioStreamPlayer.play()
 	print("took damage")
 	health = health - dmg
+	$hud/ProgressBar.value = health
 	emit_signal("im_injured", health)
 	$DamageAnimation.play("took_damage")
 	if $Sprite.flip_h == true:
@@ -112,9 +114,10 @@ func take_damage(dmg):
 
 func die():
 	emit_signal("im_dead")
-	$CollisionShape2D.queue_free()
 	self.visible = false
 	dead = true
+	yield(get_tree().create_timer(.5), "timeout")
+	self.queue_free()
 
 func _on_player_entered(playerwhoentered):
 	player = playerwhoentered
