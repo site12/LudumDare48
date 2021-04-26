@@ -63,15 +63,15 @@ rect_min_size = Vector2( 0, 25 )
 [node name="move" type="VBoxContainer" parent="list"]
 margin_top = 62.0
 margin_right = 256.0
-margin_bottom = 139.0
+margin_bottom = 123.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="name" type="Label" parent="list/move"]
-margin_top = 28.0
+margin_top = 20.0
 margin_right = 256.0
-margin_bottom = 48.0
+margin_bottom = 40.0
 custom_fonts/font = SubResource( 2 )
 text = "Move: WASD"
 align = 1
@@ -79,55 +79,73 @@ valign = 1
 uppercase = true
 
 [node name="punch" type="VBoxContainer" parent="list"]
-margin_top = 143.0
+margin_top = 127.0
 margin_right = 256.0
-margin_bottom = 221.0
+margin_bottom = 188.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="name" type="Label" parent="list/punch"]
-margin_top = 29.0
+margin_top = 20.0
 margin_right = 256.0
-margin_bottom = 49.0
+margin_bottom = 40.0
 custom_fonts/font = SubResource( 2 )
-text = "Attack: O"
+text = "Attack: P"
 align = 1
 valign = 1
 uppercase = true
 
 [node name="roll" type="VBoxContainer" parent="list"]
-margin_top = 225.0
+margin_top = 192.0
 margin_right = 256.0
-margin_bottom = 302.0
+margin_bottom = 253.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="name" type="Label" parent="list/roll"]
-margin_top = 28.0
+margin_top = 20.0
 margin_right = 256.0
-margin_bottom = 48.0
+margin_bottom = 40.0
 custom_fonts/font = SubResource( 2 )
-text = "Roll: I"
+text = "Roll: O"
 align = 1
 valign = 1
 uppercase = true
 
 [node name="interact" type="VBoxContainer" parent="list"]
-margin_top = 306.0
+margin_top = 257.0
+margin_right = 256.0
+margin_bottom = 318.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="name" type="Label" parent="list/interact"]
+margin_top = 20.0
+margin_right = 256.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 2 )
+text = "Interact: E"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="interact2" type="VBoxContainer" parent="list"]
+margin_top = 322.0
 margin_right = 256.0
 margin_bottom = 384.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="name" type="Label" parent="list/interact"]
-margin_top = 29.0
+[node name="name" type="Label" parent="list/interact2"]
+margin_top = 21.0
 margin_right = 256.0
-margin_bottom = 49.0
+margin_bottom = 41.0
 custom_fonts/font = SubResource( 2 )
-text = "Interact: E"
+text = "Eat Pizza: T"
 align = 1
 valign = 1
 uppercase = true
