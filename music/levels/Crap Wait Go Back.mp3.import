@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Crap Wait Go Back.mp3-65a72e35d9900186784f1ef4c10fe8c9.mp3str"
+
+[deps]
+
+source_file="res://music/levels/Crap Wait Go Back.mp3"
+dest_files=[ "res://.import/Crap Wait Go Back.mp3-65a72e35d9900186784f1ef4c10fe8c9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
