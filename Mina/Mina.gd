@@ -8,7 +8,7 @@ const MAX_SPEED = 500
 const JUMP_HEIGHT = -1300
 const MIN_JUMP_HEIGHT = -350
 
-
+var shown = false
 var motion = Vector2()
 var grabbing = false
 var jumping = false
@@ -48,7 +48,13 @@ func _ready():
 
 func _physics_process(delta):
 	$CanvasLayer/Control/ProgressBar.value = health
+	if health < 200:
+		if not shown:
+			$CanvasLayer/AnimationPlayer.play("show")
+			shown = true
+			print(shown)
 	if health <=0:
+		
 		yield(get_tree().create_timer(2), "timeout")
 		get_tree().change_scene("res://levels/library/library.tscn")
 	on_wall = $Right.is_colliding() || $Left.is_colliding() || $TopRight.is_colliding() || $TopLeft.is_colliding()
