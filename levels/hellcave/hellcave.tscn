@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://Tiles/stone.png" type="Texture" id=1]
 [ext_resource path="res://Mina/Mina.tscn" type="PackedScene" id=2]
@@ -29,6 +29,9 @@
 [ext_resource path="res://images/torches/torch4.png" type="Texture" id=27]
 [ext_resource path="res://images/torches/torch3.png" type="Texture" id=28]
 [ext_resource path="res://images/Demon_Pod.png" type="Texture" id=29]
+[ext_resource path="res://enemies/Dungeon/MeleeSkeleton/MeleeSkeleton.tscn" type="PackedScene" id=30]
+[ext_resource path="res://enemies/library/ghost/ghost.tscn" type="PackedScene" id=31]
+[ext_resource path="res://images/Candlabra.png" type="Texture" id=32]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 64, 0, 0, 64, 0, 64, 16, 16, 16, 16, 64, 0, 64, 0, 64 )
@@ -754,6 +757,26 @@ scale = Vector2( 1.5, 1.5 )
 z_index = -1
 texture = ExtResource( 29 )
 
+[node name="Candlabra" type="Sprite" parent="level"]
+position = Vector2( 375.959, -558.789 )
+z_index = -1
+texture = ExtResource( 32 )
+
+[node name="Candlabra2" type="Sprite" parent="level"]
+position = Vector2( 3712.69, -107.799 )
+z_index = -1
+texture = ExtResource( 32 )
+
+[node name="Candlabra3" type="Sprite" parent="level"]
+position = Vector2( 5413.02, 1362.07 )
+z_index = -1
+texture = ExtResource( 32 )
+
+[node name="Candlabra4" type="Sprite" parent="level"]
+position = Vector2( 3731.12, 2263.34 )
+z_index = -1
+texture = ExtResource( 32 )
+
 [node name="tips" type="Node" parent="."]
 
 [node name="tip" parent="tips" instance=ExtResource( 10 )]
@@ -1154,6 +1177,35 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 anims/fade = SubResource( 34 )
+
+[node name="enemies" type="Node" parent="."]
+
+[node name="melee_skeleton" parent="enemies" instance=ExtResource( 30 )]
+position = Vector2( 1634.65, -400.65 )
+
+[node name="melee_skeleton2" parent="enemies" instance=ExtResource( 30 )]
+position = Vector2( 2789.82, -209.583 )
+
+[node name="melee_skeleton3" parent="enemies" instance=ExtResource( 30 )]
+position = Vector2( 5758.68, 1387.49 )
+
+[node name="melee_skeleton4" parent="enemies" instance=ExtResource( 30 )]
+position = Vector2( 6710.68, 2535.49 )
+
+[node name="ghost" parent="enemies" instance=ExtResource( 31 )]
+position = Vector2( 4335.46, 47.7928 )
+
+[node name="ghost2" parent="enemies" instance=ExtResource( 31 )]
+position = Vector2( 4700.84, 811.305 )
+
+[node name="ghost3" parent="enemies" instance=ExtResource( 31 )]
+position = Vector2( 7364.84, 1441.3 )
+
+[node name="ghost4" parent="enemies" instance=ExtResource( 31 )]
+position = Vector2( 7382.84, 2029.3 )
+
+[node name="ghost5" parent="enemies" instance=ExtResource( 31 )]
+position = Vector2( 5266.84, 2485.3 )
 
 [connection signal="body_entered" from="BossEntrance" to="BossEntrance" method="_on_BossEntrance_body_entered"]
 [connection signal="body_entered" from="dead" to="dead" method="_on_dead_body_entered"]
