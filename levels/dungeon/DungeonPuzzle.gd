@@ -5,7 +5,7 @@ func _ready():
 
 var correct = ["snake", "bat", "bird"]
 var order = []
-onready var show = get_tree().get_root().get_node("root/BricksRevealBoss")
+onready var show = get_parent().get_parent().get_node("level/BricksRevealBoss")
 var inRange = false
 
 func _on_Button_pressed():
@@ -29,6 +29,7 @@ func check_order():
 		yield(get_tree().create_timer(2), "timeout")
 		show.queue_free()
 		self.visible = false
+		get_parent().get_parent().get_node("Mina").canmove = true
 	else:
 		order.clear()
 		$Control/Light_Red.visible = true
