@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Puzzle_Shelf.png-e2a45a0fee8865066b0df9fc687c8b64.stex"
+path="res://.import/Puzzle_Button_2.png-cc864918c47360fa42e2fcee6a0c644c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/Puzzle_Shelf.png"
-dest_files=[ "res://.import/Puzzle_Shelf.png-e2a45a0fee8865066b0df9fc687c8b64.stex" ]
+source_file="res://images/Puzzle_Button_2.png"
+dest_files=[ "res://.import/Puzzle_Button_2.png-cc864918c47360fa42e2fcee6a0c644c.stex" ]
 
 [params]
 

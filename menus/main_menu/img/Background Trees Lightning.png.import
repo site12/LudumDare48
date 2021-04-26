@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Puzzle_Shelf.png-e2a45a0fee8865066b0df9fc687c8b64.stex"
+path="res://.import/Background Trees Lightning.png-77a06ba05e96095e64f44e9e662951a6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/Puzzle_Shelf.png"
-dest_files=[ "res://.import/Puzzle_Shelf.png-e2a45a0fee8865066b0df9fc687c8b64.stex" ]
+source_file="res://menus/main_menu/img/Background Trees Lightning.png"
+dest_files=[ "res://.import/Background Trees Lightning.png-77a06ba05e96095e64f44e9e662951a6.stex" ]
 
 [params]
 
