@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Level_2_Backround.png-3005409f0ccb41b94ea056b7fd6cfc89.stex"
+path="res://.import/MeleeSkeletonWalk_0001.png-3a8978e7b03f42a740df5a3bd19ba0bf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/Level_2_Backround.png"
-dest_files=[ "res://.import/Level_2_Backround.png-3005409f0ccb41b94ea056b7fd6cfc89.stex" ]
+source_file="res://enemies/Dungeon/MeleeSkeleton/MeleeSkeletonWalk_0001.png"
+dest_files=[ "res://.import/MeleeSkeletonWalk_0001.png-3a8978e7b03f42a740df5a3bd19ba0bf.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
