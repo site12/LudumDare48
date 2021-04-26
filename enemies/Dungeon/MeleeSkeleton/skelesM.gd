@@ -7,7 +7,7 @@ const GRAVITY = 9.8 *300
 var run_speed = 65
 var velocity = Vector2.ZERO
 var dir_to_player
-var health = 100
+var health = 60
 var player = null
 export var canmove = true
 var knockback = 50
@@ -142,4 +142,4 @@ func _on_target_zone_body_entered(body):
 
 func _on_smack_box_body_entered(body):
 	if body.name == "Mina" and not dead:
-		body.take_damage(70, self)
+		body.take_damage(45, self)
