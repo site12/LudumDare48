@@ -2,16 +2,11 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BigSlimeIdle_0004.png-bf096c1f1eb832f346d22d5884afafe8.stex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://enemies/Dungeon/BigSlime/BigSlimeIdle_0004.png"
-dest_files=[ "res://.import/BigSlimeIdle_0004.png-bf096c1f1eb832f346d22d5884afafe8.stex" ]
-
 [params]
 
 compress/mode=0
