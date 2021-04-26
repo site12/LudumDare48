@@ -2,16 +2,11 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BigSlimeJump_0008.png-8843dc1e0535a8da66fde9a0b9bf7b28.stex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://enemies/Dungeon/BigSlime/BigSlimeJump_0008.png"
-dest_files=[ "res://.import/BigSlimeJump_0008.png-8843dc1e0535a8da66fde9a0b9bf7b28.stex" ]
-
 [params]
 
 compress/mode=0
