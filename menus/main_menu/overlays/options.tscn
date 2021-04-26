@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://fonts/Louis George Cafe Bold.ttf" type="DynamicFontData" id=1]
 
@@ -10,12 +10,6 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 17
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 15
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
@@ -55,7 +49,7 @@ __meta__ = {
 margin_right = 256.0
 margin_bottom = 29.0
 custom_fonts/font = SubResource( 1 )
-text = "Options"
+text = "Controls"
 align = 1
 valign = 1
 uppercase = true
@@ -66,81 +60,74 @@ margin_right = 256.0
 margin_bottom = 58.0
 rect_min_size = Vector2( 0, 25 )
 
-[node name="audio" type="VBoxContainer" parent="list"]
+[node name="move" type="VBoxContainer" parent="list"]
 margin_top = 62.0
 margin_right = 256.0
-margin_bottom = 166.0
+margin_bottom = 139.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="name" type="Label" parent="list/audio"]
-margin_top = 32.0
+[node name="name" type="Label" parent="list/move"]
+margin_top = 28.0
 margin_right = 256.0
-margin_bottom = 52.0
+margin_bottom = 48.0
 custom_fonts/font = SubResource( 2 )
-text = "Audio"
+text = "Move: WASD"
 align = 1
 valign = 1
 uppercase = true
 
-[node name="HSlider" type="HSlider" parent="list/audio"]
-margin_top = 56.0
+[node name="punch" type="VBoxContainer" parent="list"]
+margin_top = 143.0
 margin_right = 256.0
-margin_bottom = 72.0
-step = 5.0
-value = 100.0
-
-[node name="resolution" type="VBoxContainer" parent="list"]
-margin_top = 170.0
-margin_right = 256.0
-margin_bottom = 275.0
+margin_bottom = 221.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="name" type="Label" parent="list/resolution"]
-margin_top = 31.0
+[node name="name" type="Label" parent="list/punch"]
+margin_top = 29.0
 margin_right = 256.0
-margin_bottom = 51.0
+margin_bottom = 49.0
 custom_fonts/font = SubResource( 2 )
-text = "Resolution"
+text = "Attack: O"
 align = 1
 valign = 1
 uppercase = true
 
-[node name="role" type="Label" parent="list/resolution"]
-margin_top = 55.0
+[node name="roll" type="VBoxContainer" parent="list"]
+margin_top = 225.0
 margin_right = 256.0
-margin_bottom = 73.0
-custom_fonts/font = SubResource( 3 )
-text = "Small  Big  Lorge"
+margin_bottom = 302.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="name" type="Label" parent="list/roll"]
+margin_top = 28.0
+margin_right = 256.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 2 )
+text = "Roll: I"
 align = 1
 valign = 1
+uppercase = true
 
-[node name="jeff" type="VBoxContainer" parent="list"]
-margin_top = 279.0
+[node name="interact" type="VBoxContainer" parent="list"]
+margin_top = 306.0
 margin_right = 256.0
 margin_bottom = 384.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="name" type="Label" parent="list/jeff"]
-margin_top = 31.0
+[node name="name" type="Label" parent="list/interact"]
+margin_top = 29.0
 margin_right = 256.0
-margin_bottom = 51.0
+margin_bottom = 49.0
 custom_fonts/font = SubResource( 2 )
-text = "Window Mode"
+text = "Interact: E"
 align = 1
 valign = 1
 uppercase = true
-
-[node name="role" type="Label" parent="list/jeff"]
-margin_top = 55.0
-margin_right = 256.0
-margin_bottom = 73.0
-custom_fonts/font = SubResource( 3 )
-text = "Windowed  Borderless  Fullscreen"
-align = 1
-valign = 1
