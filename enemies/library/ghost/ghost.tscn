@@ -55,20 +55,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/2/type = "audio"
-tracks/2/path = NodePath("audio/AudioStreamPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 10 )
-} ],
-"times": PoolRealArray( 0.083 )
-}
 
 [sub_resource type="CanvasItemMaterial" id=6]
 light_mode = 1

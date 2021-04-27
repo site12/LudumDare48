@@ -7,7 +7,7 @@ const GRAVITY = 9.8 *300
 var run_speed = 65
 var velocity = Vector2.ZERO
 var dir_to_player
-var health = 200
+var health = 60
 var player = null
 export var canmove = true
 var knockback = 50
@@ -15,6 +15,8 @@ var state_machine :AnimationNodeStateMachinePlayback
 
 signal im_dead
 signal im_injured
+
+var dead = false
 
 func _ready():
 	state_machine = $AnimationTree.get("parameters/playback")
@@ -93,8 +95,12 @@ func _on_line_of_sight_body_exited(body):
 		player = null
 
 func take_damage(dmg):
+	
+	if not dead:
+		$audio/AudioStreamPlayer.play()
 	print("took damage")
 	health = health - dmg
+	$hud/ProgressBar.value = health
 	emit_signal("im_injured", health)
 	$DamageAnimation.play("took_damage")
 	if $Sprite.flip_h == true:
@@ -108,6 +114,9 @@ func take_damage(dmg):
 
 func die():
 	emit_signal("im_dead")
+	self.visible = false
+	dead = true
+	yield(get_tree().create_timer(.5), "timeout")
 	self.queue_free()
 
 func _on_player_entered(playerwhoentered):
@@ -123,14 +132,14 @@ func attack():
 
 
 func _on_damage_radius_body_entered(body):
-	if body.name == "Mina":
+	if body.name == "Mina" and not dead:
 		body.take_damage(10, self)
 		#make player take damage based on time spent in zone
 
 func _on_target_zone_body_entered(body):
-	if body.name == "Mina":
+	if body.name == "Mina" and not dead:
 		attack()
 
 func _on_smack_box_body_entered(body):
-	if body.name == "Mina":
-		body.take_damage(70, self)
+	if body.name == "Mina" and not dead:
+		body.take_damage(45, self)

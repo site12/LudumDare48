@@ -900,8 +900,7 @@ anims/site12 = SubResource( 11 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -101
-rotation = 3.14159
-scale = Vector2( -1, -1 )
+rotation = 8.74228e-08
 transform = Transform2D( 1, 8.74228e-08, -8.74228e-08, 1, 0, 0 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -952,8 +951,7 @@ __meta__ = {
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 layer = -99
-rotation = 3.14159
-scale = Vector2( -1, -1 )
+rotation = 8.74228e-08
 transform = Transform2D( 1, 8.74228e-08, -8.74228e-08, 1, 0, 0 )
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground2"]
