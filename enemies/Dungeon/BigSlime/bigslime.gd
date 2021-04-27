@@ -107,9 +107,10 @@ func take_damage(dmg):
 		die()
 
 func die():
-	player.slimey = null
-	emit_signal("im_dead")
-	self.queue_free()
+	if player:
+		player.slimey = null
+		emit_signal("im_dead")
+		self.queue_free()
 
 func _on_player_entered(playerwhoentered):
 	player = playerwhoentered

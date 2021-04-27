@@ -5,7 +5,7 @@
 [ext_resource path="res://Doorhighlight.png" type="Texture" id=3]
 [ext_resource path="res://enemies/library/ghost/a1843961409a40687a09056418bf6132d0d87ca8.png" type="Texture" id=4]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=38]
 extents = Vector2( 80.0415, 81.718 )
 
 [node name="Door" type="Sprite"]
@@ -22,9 +22,11 @@ texture = ExtResource( 3 )
 
 [node name="Area2D" type="Area2D" parent="."]
 monitoring = false
+collision_layer = 0
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 1 )
+shape = SubResource( 38 )
 
 [node name="spiketh29" type="Light2D" parent="."]
 position = Vector2( 0, -3.70808 )
