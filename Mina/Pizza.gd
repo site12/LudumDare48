@@ -3,7 +3,7 @@ extends Node
 
 var pieces_ate = 0
 var health = 200
-
+var location = "library"
 
 func adjust_health(dmg):
 	health = health - dmg

@@ -54,10 +54,8 @@ func _physics_process(delta):
 			$CanvasLayer/AnimationPlayer.play("show")
 			shown = true
 			print(shown)
-	if health <=0:
 		
-		yield(get_tree().create_timer(2), "timeout")
-		get_tree().change_scene("res://levels/library/library.tscn")
+		
 	on_wall = $Right.is_colliding() || $Left.is_colliding() || $TopRight.is_colliding() || $TopLeft.is_colliding()
 	if $Right.is_colliding() || $TopRight.is_colliding():
 		which_wall = -1
@@ -224,8 +222,18 @@ func take_damage(damage, source):
 
 func die():
 	# canmove = false
+	Pizza.adjust_health(200)
+	$CanvasLayer/Control/ProgressBar.value = health
 	state_machine.travel("dead")
 	set_physics_process(false)
+	yield(get_tree().create_timer(2), "timeout")
+	if Pizza.location == "library":
+		get_tree().change_scene("res://levels/library/library.tscn")
+	elif Pizza.location == "dungeon":
+		get_tree().change_scene("res://levels/dungeon/dungeon.tscn")
+	elif Pizza.location == "hellcave":
+		get_tree().change_scene("res://levels/hellcave/hellcave.tscn")
+	
 
 func _on_jump_timer_timeout():
 	if Input.is_action_pressed('jump'):
