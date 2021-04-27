@@ -5,6 +5,13 @@ var pieces_ate = 0
 var health = 200
 var location = "library"
 var tipmoney = 0
+var totalmoney = 0
+var oldlocation = location
+
+func _physics_process(delta):
+	if location != oldlocation:
+		totalmoney += tipmoney
+		oldlocation = location
 
 func adjust_health(dmg):
 	health = health - dmg

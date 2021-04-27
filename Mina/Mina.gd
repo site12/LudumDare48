@@ -281,7 +281,7 @@ func pizza():
 		$CanvasLayer/Control/AnimatedSprite.visible = false
 
 func score():
-	$CanvasLayer/Control/Label2.text = "Tip Jar: $" + str(Pizza.tipmoney)
+	$CanvasLayer/Control/Label2.text = "Tip Jar: $" + str(Pizza.tipmoney + Pizza.totalmoney)
 
 #func pass_camera_shake(amount):
 #	camera.add_trauma(amount)
