@@ -34,7 +34,7 @@ height = 92.9756
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 155.607, 96.1058 )
 
-[sub_resource type="CapsuleShape2D" id=21]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 35.9753
 height = 289.271
 
@@ -57,42 +57,41 @@ tracks/0/keys = {
 "values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=14]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "fire"
 
-[sub_resource type="AnimationNodeAnimation" id=15]
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "idle"
 
-[sub_resource type="AnimationNodeAnimation" id=16]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "swing"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachine" id=8]
-states/fire/node = SubResource( 14 )
+[sub_resource type="AnimationNodeStateMachine" id=15]
+states/fire/node = SubResource( 8 )
 states/fire/position = Vector2( 443, 169 )
-states/idle/node = SubResource( 15 )
+states/idle/node = SubResource( 9 )
 states/idle/position = Vector2( 206, 124 )
-states/swing/node = SubResource( 16 )
+states/swing/node = SubResource( 10 )
 states/swing/position = Vector2( 374, 21 )
-transitions = [ "idle", "swing", SubResource( 17 ), "idle", "fire", SubResource( 18 ), "fire", "idle", SubResource( 19 ), "swing", "idle", SubResource( 20 ) ]
+transitions = [ "idle", "swing", SubResource( 11 ), "idle", "fire", SubResource( 12 ), "fire", "idle", SubResource( 13 ), "swing", "idle", SubResource( 14 ) ]
 start_node = "idle"
 graph_offset = Vector2( -60, -95 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=9]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=16]
 
-[sub_resource type="Animation" id=12]
-resource_name = "fire"
+[sub_resource type="Animation" id=17]
 length = 0.833333
 step = 0.0833333
 tracks/0/type = "value"
@@ -168,7 +167,7 @@ tracks/5/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=18]
 length = 0.416667
 loop = true
 step = 0.0833333
@@ -245,7 +244,7 @@ tracks/5/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=19]
 length = 0.833333
 step = 0.0833333
 tracks/0/type = "value"
@@ -356,6 +355,7 @@ script = ExtResource( 15 )
 texture = ExtResource( 1 )
 hframes = 4
 vframes = 2
+frame = 1
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 visible = false
@@ -397,7 +397,7 @@ collision_mask = 17
 [node name="CollisionShape2D" type="CollisionShape2D" parent="smack_box"]
 position = Vector2( 6.56136, -21.7851 )
 rotation = 1.44339
-shape = SubResource( 21 )
+shape = SubResource( 5 )
 
 [node name="target_zone" type="Area2D" parent="."]
 position = Vector2( 0, 40.97 )
@@ -411,15 +411,15 @@ shape = SubResource( 6 )
 anims/took_damage = SubResource( 7 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 8 )
+tree_root = SubResource( 15 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 9 )
+parameters/playback = SubResource( 16 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/fire = SubResource( 12 )
-anims/idle = SubResource( 10 )
-anims/swing = SubResource( 11 )
+anims/fire = SubResource( 17 )
+anims/idle = SubResource( 18 )
+anims/swing = SubResource( 19 )
 
 [node name="left" type="RayCast2D" parent="."]
 position = Vector2( -20, 70 )
@@ -441,7 +441,7 @@ cast_to = Vector2( 50, 0 )
 position = Vector2( 0, 56 )
 
 [node name="fireball_timer" type="Timer" parent="."]
-one_shot = true
+autostart = true
 
 [connection signal="body_entered" from="line_of_sight" to="." method="_on_line_of_sight_body_entered"]
 [connection signal="body_exited" from="line_of_sight" to="." method="_on_line_of_sight_body_exited"]

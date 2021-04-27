@@ -28,6 +28,7 @@ var speed_mod = 1
 var slimey
 #var jump_particle = load("res://land.tscn")
 var state_machine :AnimationNodeStateMachinePlayback
+var locked = false
 onready var jt = $'jump_timer'
 #onready var camerapos = $camerapos
 #onready var camera = $camerapos/Camera2D
@@ -64,11 +65,12 @@ func _physics_process(delta):
 	# print(str(on_wall))
 	motion.y += GRAVITY*delta
 	var friction = false
-	if canmove:
-		movement(friction)
-	direction()
-	slide(delta)
-	motion = move_and_slide(motion, UP)
+	if not locked:
+		if canmove:
+			movement(friction)
+		direction()
+		slide(delta)
+		motion = move_and_slide(motion, UP)
 func slide(delta):
 	# if on_ladder and Input.is_action_pressed("grab"):
 	# 	climbing = true

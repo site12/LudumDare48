@@ -70,6 +70,10 @@ func take_damage(dmg):
 func die():
 	emit_signal("im_dead")
 	self.queue_free()
+	get_parent().get_node('CanvasLayer/AnimationPlayer').play("fade")
+	yield(get_tree().create_timer(2), "timeout")
+	get_tree().get_root().get_node("root/audio").get_node("AnimationPlayer").play_backwards("fade_in")
+	get_tree().change_scene("res://menus/end/end.tscn")
 
 func _on_player_entered(playerwhoentered):
 	player = playerwhoentered
@@ -116,5 +120,5 @@ func _on_left_target_zone_body_entered(body):
 
 func _on_fireball_timer_timeout():
 	attack()
-	$fireball_timer.wait_time = rand_range(0.5,3)
+	$fireball_timer.wait_time = rand_range(0.833,1.5)
 	$fireball_timer.start()
