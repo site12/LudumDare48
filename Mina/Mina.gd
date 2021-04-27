@@ -49,6 +49,7 @@ func _ready():
 
 func _physics_process(delta):
 	pizza()
+	score()
 	$CanvasLayer/Control/ProgressBar.value = health
 	if health < 200:
 		if not shown:
@@ -230,6 +231,7 @@ func die():
 	set_physics_process(false)
 	yield(get_tree().create_timer(2), "timeout")
 	Pizza.health = 200
+	Pizza.tipmoney = 0
 	if Pizza.location == "library":
 		get_tree().change_scene("res://levels/library/library.tscn")
 	elif Pizza.location == "dungeon":
@@ -279,6 +281,9 @@ func pizza():
 		health = Pizza.healthy()
 	if Pizza.pieces() == 6:
 		$CanvasLayer/Control/AnimatedSprite.visible = false
+
+func score():
+	$CanvasLayer/Control/Label2.text = "Tip Jar: $" + str(Pizza.tipmoney + Pizza.totalmoney)
 
 #func pass_camera_shake(amount):
 #	camera.add_trauma(amount)
