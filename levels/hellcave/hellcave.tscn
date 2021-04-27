@@ -955,7 +955,7 @@ tracks/5/keys = {
 [node name="root" type="Node2D"]
 
 [node name="Mina" parent="." instance=ExtResource( 2 )]
-position = Vector2( 4324.36, 2367.61 )
+position = Vector2( 249.242, -682.909 )
 
 [node name="level" type="Node" parent="."]
 
@@ -1497,7 +1497,7 @@ collision_mask = 5
 texture = ExtResource( 36 )
 hframes = 4
 vframes = 2
-frame = 4
+frame = 1
 
 [node name="DamageAnimation" type="AnimationPlayer" parent="fake_natas"]
 anims/took_damage = SubResource( 35 )
