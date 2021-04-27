@@ -66,11 +66,11 @@ func _physics_process(delta):
 	# print(str(on_wall))
 	motion.y += GRAVITY*delta
 	var friction = false
+	
+	movement(friction)
+	direction()
+	slide(delta)
 	if not locked:
-		if canmove:
-			movement(friction)
-		direction()
-		slide(delta)
 		motion = move_and_slide(motion, UP)
 func slide(delta):
 	# if on_ladder and Input.is_action_pressed("grab"):
@@ -172,6 +172,8 @@ func movement(friction):
 			else:
 				if current != "roll":
 					friction = true
+		else:
+			motion = Vector2.ZERO
 	elif current != "roll":
 		motion.x = lerp(motion.x, 0, FRICTION)
 

@@ -9,6 +9,7 @@ onready var parentnode = get_tree().get_root().get_node("root/speaker_pos/Contro
 onready var satan = preload("res://enemies/Hellcave/Natas/natass.tscn")
 
 func after_dialog(timeline_name):
+	# mina.locked = false
 	mina.canmove = true
 	audio.get_node("AnimationPlayer").play("fade_in")
 	parentnode.queue_free()
@@ -37,6 +38,7 @@ func _on_dialogic_dialogue2_body_entered(body):
 		parentnode.add_child(g2d)
 		mina.toggle_hud()
 		begun = true
+		# mina.locked = true
 		audio.get_node("AnimationPlayer").play_backwards("fade_in")
 		g2d.connect('timeline_end', self, 'after_dialog')
 		yield(get_tree().create_timer(.2), "timeout")
