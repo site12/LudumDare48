@@ -5,6 +5,8 @@ var velocity = Vector2.ZERO
 var health = 45
 var player = null
 var knockback = 50
+var dead = false
+
 
 func _physics_process(_delta):
 	velocity = Vector2.ZERO
@@ -19,14 +21,16 @@ func _physics_process(_delta):
 	$hud/ProgressBar.value = health
 
 func _on_line_of_sight_body_entered(body):
-	if body.name == "Mina":
+	if body.name == "Mina" and not dead:
 		player = body
 
 func _on_line_of_sight_body_exited(body):
-	if body.name == "Mina":
+	if body.name == "Mina" and not dead:
 		player = null
 
 func take_damage(dmg):
+	if not dead:
+		$audio/AudioStreamPlayer.play()
 	print("took damage")
 	health = health - dmg
 	$AnimationPlayer.play("took_damage")
@@ -40,10 +44,11 @@ func take_damage(dmg):
 		die()
 
 func die():
-	self.queue_free()
+	dead = true
+	self.visible = false
 
 
 func _on_damage_radius_body_entered(body):
-	if body == player:
+	if body == player and not dead:
 		body.take_damage(50, self)
 		#make player take damage based on time spent in zone
