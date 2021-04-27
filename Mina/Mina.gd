@@ -227,6 +227,7 @@ func die():
 	state_machine.travel("dead")
 	set_physics_process(false)
 	yield(get_tree().create_timer(2), "timeout")
+	Pizza.health = 200
 	if Pizza.location == "library":
 		get_tree().change_scene("res://levels/library/library.tscn")
 	elif Pizza.location == "dungeon":
