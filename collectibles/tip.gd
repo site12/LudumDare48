@@ -17,3 +17,4 @@ func _on_Area2D_body_entered(body):
 		$img.visible = false
 		$Light2D.visible = false
 		$audio/AudioStreamPlayer.play()
+		Pizza.addscore(1)
