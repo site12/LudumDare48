@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Level_3_Atmosphere.png-853b1ceaf0736744094673bf81ca0dfa.stex"
+path="res://.import/fire.png-17a4d73e8b498238b01f930c44523ee3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/Level_3_Atmosphere.png"
-dest_files=[ "res://.import/Level_3_Atmosphere.png-853b1ceaf0736744094673bf81ca0dfa.stex" ]
+source_file="res://enemies/Hellcave/Natas/fire.png"
+dest_files=[ "res://.import/fire.png-17a4d73e8b498238b01f930c44523ee3.stex" ]
 
 [params]
 
