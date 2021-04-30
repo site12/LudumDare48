@@ -69,7 +69,7 @@ func take_damage(dmg):
 
 func die():
 	emit_signal("im_dead")
-	self.queue_free()
+	#self.queue_free() // this made it not able to get to the end scene :(
 	get_parent().get_node('CanvasLayer/AnimationPlayer').play("fade")
 	yield(get_tree().create_timer(2), "timeout")
 	get_tree().get_root().get_node("root/audio").get_node("AnimationPlayer").play_backwards("fade_in")
