@@ -1510,7 +1510,7 @@ position = Vector2( 40, 320 )
 scale = Vector2( 0.125, 0.125 )
 z_index = 10
 frames = SubResource( 38 )
-frame = 4
+frame = 5
 playing = true
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]

@@ -95,6 +95,7 @@ func is_on_down():
 func take_damage(dmg):
 	print("took damage")
 	health = health - dmg
+	print(health)
 	emit_signal("im_injured", health)
 	$DamageAnimation.play("took_damage")
 	if $Sprite.flip_h == true:
